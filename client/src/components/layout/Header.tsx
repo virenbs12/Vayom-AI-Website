@@ -78,9 +78,9 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/business-functions">
+                <Link href="/pricing">
                   <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
-                    Business Functions
+                    Pricing
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -151,8 +151,8 @@ export function Header() {
             <Link href="/markets">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             </Link>
-            <Link href="/business-functions">
-              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Business Functions</a>
+            <Link href="/pricing">
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             </Link>
             <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
             <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
