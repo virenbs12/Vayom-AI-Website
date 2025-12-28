@@ -21,6 +21,13 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 const formSchema = z.object({
   fullName: z.string().min(1, "Full name is required."),
@@ -80,129 +87,187 @@ export function ContactForm() {
         </div>
 
         <div className="bg-white p-8 rounded-2xl shadow-sm border border-border">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="fullName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Full Name <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Input placeholder="John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Work Email <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Input placeholder="name@company.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="company"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Company <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Input placeholder="Company Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="website"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Company Website <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Input placeholder="www.company.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="numUsers"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Number of Users <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Input type="number" placeholder="Estimated user count" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="system"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Primary System <span className="text-destructive">*</span></FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <TooltipProvider>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Full Name <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>Your full legal or professional name.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select your primary system" />
-                        </SelectTrigger>
+                        <Input placeholder="John Doe" {...field} />
                       </FormControl>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="erp">ERP (Netsuite, Xero)</SelectItem>
-                        <SelectItem value="crm">CRM (Salesforce, Zoho)</SelectItem>
-                        <SelectItem value="interaction">Customer Interaction (Facebook, WhatsApp)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="question"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>What do you want to answer? <span className="text-destructive">*</span></FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="e.g. Which customers are billed on outdated pricing?" 
-                        className="resize-none min-h-[100px]"
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Work Email <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>We recommend using your official company email.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="name@company.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Company <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>The organization you are representing.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="Company Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <div className="pt-4 flex flex-col gap-3">
-                <Button type="submit" size="lg" className="w-full text-lg h-12">
-                  Request a workflow demo
-                </Button>
-                <div className="text-center text-sm text-muted-foreground">
-                  Or email us at <a href="mailto:sales@vayomai.com" className="text-primary hover:underline">sales@vayomai.com</a>
+                <FormField
+                  control={form.control}
+                  name="website"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Company Website <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>URL of your company's official website.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="www.company.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="numUsers"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Number of Users <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>Estimated number of people who will use the system.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="Estimated user count" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="system"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        Primary System <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>The main software environment RIAA will link to.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select your primary system" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent className="bg-white">
+                          <SelectItem value="erp">ERP (Netsuite, Xero)</SelectItem>
+                          <SelectItem value="crm">CRM (Salesforce, Zoho)</SelectItem>
+                          <SelectItem value="interaction">Customer Interaction (Facebook, WhatsApp)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="question"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        What do you want to answer? <span className="text-destructive">*</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>Describe the specific business question or pain point.</TooltipContent>
+                        </Tooltip>
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="e.g. Which customers are billed on outdated pricing?" 
+                          className="resize-none min-h-[100px]"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="pt-4 flex flex-col gap-3">
+                  <Button type="submit" size="lg" className="w-full text-lg h-12">
+                    Request a workflow demo
+                  </Button>
+                  <div className="text-center text-sm text-muted-foreground">
+                    Or email us at <a href="mailto:sales@vayomai.com" className="text-primary hover:underline">sales@vayomai.com</a>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </Form>
+              </form>
+            </Form>
+          </TooltipProvider>
         </div>
       </div>
     </section>
