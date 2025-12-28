@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container-width">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
-            <Logo className="mb-4" />
+            <Logo className="mb-4 h-12 md:h-16" />
             <p className="text-muted-foreground text-sm max-w-xs">
               Edison, NJ.<br />
               SaaS and VPC deployment.

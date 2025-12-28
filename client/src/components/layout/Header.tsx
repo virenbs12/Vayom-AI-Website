@@ -38,13 +38,13 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/80 backdrop-blur-md border-border py-3 shadow-sm" : "bg-transparent py-5"
+        isScrolled ? "bg-white/80 backdrop-blur-md border-border py-2 shadow-sm" : "bg-transparent py-4"
       )}
     >
       <div className="container-width flex items-center justify-between">
         <Link href="/">
           <a className="cursor-pointer block">
-            <Logo />
+            <Logo className="h-10 md:h-12" />
           </a>
         </Link>
 
@@ -54,14 +54,14 @@ export function Header() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/">
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">Markets</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent font-medium">Markets</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                     <ListItem href="/markets#b2c" title="B2C">
@@ -83,7 +83,7 @@ export function Header() {
               <NavigationMenuItem>
                 <Link href="/#how-it-works">
                   <NavigationMenuLink 
-                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer")}
+                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
                     onClick={(e) => {
                       if (location === '/') {
                         e.preventDefault();
@@ -99,7 +99,7 @@ export function Header() {
               <NavigationMenuItem>
                 <Link href="/#contact">
                   <NavigationMenuLink 
-                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer")}
+                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
                     onClick={(e) => {
                       if (location === '/') {
                         e.preventDefault();

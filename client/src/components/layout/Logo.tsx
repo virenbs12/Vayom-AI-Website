@@ -1,9 +1,9 @@
 import React from "react";
 import logoImage from "@assets/Full_logo_side_text_without_bg_(2000px)_1766952657667.png";
 
-export function Logo({ className = "h-8" }: { className?: string }) {
+export function Logo({ className }: { className?: string }) {
   return (
-    <div className={`flex items-center ${className}`}>
+    <div className={`flex items-center ${className || "h-12"}`}>
       <img 
         src={logoImage} 
         alt="Vayom AI" 
