@@ -555,19 +555,31 @@ export default function Pricing() {
                 <div className="space-y-12">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {data.plans.map((plan) => (
-                      <Card key={plan.name} className={cn(
-                        "relative flex flex-col border-2 transition-all hover:shadow-lg",
-                        plan.popular ? "border-primary shadow-md" : "border-border"
-                      )}>
+                      <Card 
+                        key={plan.name} 
+                        className={cn(
+                          "relative flex flex-col border-2 transition-all duration-300 group cursor-pointer",
+                          plan.popular 
+                            ? "border-primary shadow-md bg-primary/[0.02]" 
+                            : "border-border hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-slate-950",
+                          selectedPlan === plan.name && "border-primary ring-2 ring-primary/20 shadow-xl bg-primary/[0.04]"
+                        )}
+                        onClick={() => setSelectedPlan(plan.name)}
+                      >
                         {plan.popular && (
-                          <div className="absolute top-0 right-0">
-                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-6 rotate-45 translate-x-4 translate-y-1">
+                          <div className="absolute top-0 right-0 z-10 overflow-hidden rounded-tr-lg">
+                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-6 rotate-45 translate-x-4 translate-y-1 shadow-sm">
                               Popular
                             </div>
                           </div>
                         )}
                         <CardHeader className="pb-4">
-                          <CardTitle className="text-lg font-bold">{plan.name}</CardTitle>
+                          <CardTitle className={cn(
+                            "text-lg font-bold transition-colors",
+                            (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-foreground"
+                          )}>
+                            {plan.name}
+                          </CardTitle>
                           <CardDescription className="text-xs h-8">{plan.desc}</CardDescription>
                         </CardHeader>
                         <CardContent className="flex-grow flex flex-col">
@@ -585,42 +597,45 @@ export default function Pricing() {
                           <div className="space-y-4 mb-6 text-xs flex-grow">
                             <div className="pb-3 border-b border-border/50">
                               <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                <Database className="w-3 h-3 text-primary" /> Data Sources
+                                <Database className={cn("w-3 h-3 transition-colors", (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-muted-foreground")} /> Data Sources
                               </div>
                               <div className="text-muted-foreground">{plan.features.structuredSources}</div>
                               <div className="text-[10px] text-muted-foreground mt-0.5">{plan.features.extraSource}</div>
                             </div>
                             <div className="pb-3 border-b border-border/50">
                               <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                <FileText className="w-3 h-3 text-primary" /> Documents
+                                <FileText className={cn("w-3 h-3 transition-colors", (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-muted-foreground")} /> Documents
                               </div>
                               <div className="text-muted-foreground">{plan.features.documents}</div>
                             </div>
                             <div className="pb-3 border-b border-border/50">
                               <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                <Zap className="w-3 h-3 text-primary" /> Streaming Feeds
+                                <Zap className={cn("w-3 h-3 transition-colors", (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-muted-foreground")} /> Streaming Feeds
                               </div>
                               <div className="text-muted-foreground">{plan.features.streaming}</div>
                             </div>
                             <div className="pb-3 border-b border-border/50">
                               <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                <Check className="w-3 h-3 text-primary" /> Daily Prompts
+                                <Check className={cn("w-3 h-3 transition-colors", (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-muted-foreground")} /> Daily Prompts
                               </div>
                               <div className="text-muted-foreground">{plan.features.prompts}</div>
                               <div className="text-[10px] text-muted-foreground mt-0.5">Extra: {plan.features.extraPrompts}</div>
                             </div>
                             <div>
                               <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                <Globe className="w-3 h-3 text-primary" /> Sessions
+                                <Globe className={cn("w-3 h-3 transition-colors", (selectedPlan === plan.name || plan.popular) ? "text-primary" : "text-muted-foreground")} /> Sessions
                               </div>
                               <div className="text-muted-foreground">{plan.features.sessions}</div>
                             </div>
                           </div>
                           
                           <Button 
-                            className="w-full h-10 rounded-lg text-sm font-semibold" 
-                            variant={plan.popular ? "default" : "outline"}
-                            onClick={() => handleChoosePlan(plan.name)}
+                            className="w-full h-10 rounded-lg text-sm font-semibold transition-all group-hover:scale-[1.02]" 
+                            variant={(selectedPlan === plan.name || plan.popular) ? "default" : "outline"}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleChoosePlan(plan.name);
+                            }}
                           >
                             {plan.price === "Custom" ? "Contact Sales" : "Choose Plan"}
                           </Button>
