@@ -4,9 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Zap, Shield, BarChart3, Globe, Database, FileText, Info } from "lucide-react";
+import { Check, Zap, Shield, BarChart3, Globe, Database, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const pricingData = [
   {
@@ -126,8 +125,69 @@ const pricingData = [
     currency: "INR",
     symbol: "₹",
     plans: [
-      { name: "Starter", price: "1,50,000", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "6,00,000", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "900", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "₹500 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "₹0.50 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "2,100", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "₹500 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "₹0.25 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "4,500", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "₹0.25 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "₹20,000.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   },
   {
@@ -173,7 +233,7 @@ export default function Pricing() {
 
             {pricingData.map((data) => (
               <TabsContent key={data.country} value={data.country} className="animate-in fade-in-50 duration-500">
-                {data.country === "US" ? (
+                {(data.country === "US" || data.country === "India") ? (
                   <div className="space-y-12">
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                       {data.plans.map((plan) => (
@@ -247,7 +307,7 @@ export default function Pricing() {
                       ))}
                     </div>
 
-                    {/* Implementation Section for US */}
+                    {/* Implementation Section */}
                     <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-8 border border-border">
                       <h3 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
                         <BarChart3 className="w-5 h-5 text-primary" /> Implementation & Setup
