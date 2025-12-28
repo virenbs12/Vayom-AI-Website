@@ -20,7 +20,9 @@ import {
   LayoutDashboard,
   Zap,
   Network,
-  Users
+  Users,
+  Briefcase,
+  History
 } from "lucide-react";
 import { Link } from "wouter";
 
