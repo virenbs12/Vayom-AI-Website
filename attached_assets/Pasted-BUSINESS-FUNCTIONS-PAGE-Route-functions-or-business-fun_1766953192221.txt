@@ -1,0 +1,162 @@
+BUSINESS FUNCTIONS PAGE (Route: /functions or /business-functions)
+Replit build instruction (1 paragraph)
+Create a standalone page titled Business Functions linked from the main navigation and also as a sub-item under Markets. Use a sticky on-page jump bar (Finance, RevOps, Sales, Marketing, Operations, Leadership, IT/Security). Each function section should use the same layout: H2 + 2 short paragraphs + “Common workflows” list + “Outputs” list + Visual instruction + CTA. Keep the page scannable, enterprise-clean, and include one consistent UI pattern across the page: Issue list → Evidence chips → Owner → Next action.
+________________________________________
+[HERO SYSTEM] Page hero
+H1: Business Functions
+Subheadline: One truth across teams, with proof attached. Reduce leakage, speed up reviews, and eliminate spreadsheet handoffs.
+Support line: Built on RIAA (Revenue Intelligence Agentic Atlas). Deploy as SaaS or in your VPC.
+Primary CTA: Request a workflow demo
+Secondary CTA: See how RIAA works
+Visual instruction (hero):
+Show a role-based “workbench” mock with a role selector (Finance, RevOps, Sales) and the same issue list re-rendered with role-appropriate columns.
+________________________________________
+[SECTION] Why this page exists
+H2: Different teams, same problem: the evidence is scattered
+Finance, commercial ops, and leadership often chase the same question across different tools and files. Time gets spent reconciling, not resolving. This page shows how each function uses the same RIAA foundation to move from question to verified action.
+Visual instruction:
+A simple 3-column strip labeled: Systems (ERP/CRM) + Documents (Contracts/Policies) + Feeds (Updates/Reports) → “Verified outputs”.
+________________________________________
+[HERO SYSTEM] Sticky jump bar (anchors)
+•	Finance → #finance
+•	RevOps & Deal Desk → #revops
+•	Sales → #sales
+•	Marketing → #marketing
+•	Operations → #operations
+•	Leadership → #leadership
+•	IT & Security → #it-security
+________________________________________
+FINANCE
+H2: Finance: close-ready answers with a clean evidence trail
+Finance teams lose days to reconciliation when contract terms, billing activity, credits, and deductions live in different places. RIAA brings the proof into one view so review cycles compress and leakage gets caught earlier.
+This is designed for action, not reporting. Every flagged item carries its supporting records and excerpts, plus an owner and next step, so teams can resolve, document, and move on.
+Common workflows
+•	Contract-to-invoice compliance checks (terms, effective dates, exceptions)
+•	Duplicate credits, duplicate payments, and repeated adjustments review
+•	Deductions and claims packaging (what is valid, what is not, and why)
+•	Close readiness queue (items that must be fixed or documented before close)
+Outputs Finance gets
+•	A prioritized exception queue with evidence links
+•	A reviewable packet for each issue (records + excerpts)
+•	A resolution trail: detected → reviewed → corrected → approved
+Visual instruction (Finance section):
+Use a Close Readiness Queue table: Account | Amount | Issue type | Evidence chips | Owner | Status | Due date with a right-side drawer titled “Source record + Source excerpt”.
+CTA (inline): Request a workflow demo
+________________________________________
+REVOPS & DEAL DESK
+H2: RevOps & Deal Desk: keep pricing and approvals consistent at scale
+RevOps teams manage guardrails, not just exceptions. RIAA highlights where pricing drift, discount exceptions, and approval gaps are creating margin leakage, then makes the “why” immediately reviewable.
+This helps standardize execution across regions and teams without forcing every check into manual review. The output is a consistent workflow: flag, verify, approve, resolve.
+Common workflows
+•	Discount governance (policy thresholds, approvals, non-standard exceptions)
+•	Transaction validation against price lists and effective dates
+•	Deal-to-cash alignment checks before close (terms → invoice → payment patterns)
+•	Root-cause summaries (where drift is repeating and why)
+Outputs RevOps gets
+•	An exception list grouped by rep, region, product, and account
+•	Approval-ready summaries with supporting proof
+•	Prevent-next-cycle recommendations (what to tighten in process)
+Visual instruction (RevOps section):
+Use a Deal Guardrails card with: “Policy threshold”, “Requested vs allowed”, “Approval status”, “Impact”, plus an expandable “Evidence” area.
+CTA (inline): See markets for B2B workflows
+________________________________________
+SALES
+H2: Sales: account answers you can trust, tied back to sources
+Sales teams need fast clarity without chasing internal threads and outdated notes. RIAA unifies account context across CRM fields, contract terms, and recent updates, then shows the supporting proof so reps act with confidence.
+This is especially valuable in renewals and expansions, where pricing, terms, and recent account changes directly impact outcomes.
+Common workflows
+•	Renewal prep: current terms, exceptions, and billing signals in one view
+•	Account brief: key changes from updates and internal notes, with references
+•	Deal risk checks: non-standard terms, pricing exceptions, missing approvals
+•	Stakeholder alignment: shareable summaries with clickable sources
+Outputs Sales gets
+•	A “one-page account brief” that is source-linked
+•	A renewal checklist with what to confirm and where the proof is
+•	A clean escalation package when exceptions are needed
+Visual instruction (Sales section):
+Use a Shareable Account Brief layout: Summary at top, “Key terms” and “Recent changes” blocks, then “Evidence chips” under each item.
+CTA (inline): Request a workflow demo
+________________________________________
+MARKETING
+H2: Marketing: target with consistent signals, not guesswork
+Marketing performance improves when targeting is aligned to reality: what customers bought, what they are contracted for, and what changed recently. RIAA keeps signals consistent by tying each insight to a source.
+This enables cleaner segmentation, stronger account-based programs, and faster response to market-moving events.
+Common workflows
+•	Account segmentation using consistent, source-backed criteria
+•	Trigger monitoring from updates and recurring reports (new launches, partnerships, changes)
+•	Campaign readiness: validate account lists against current status and terms
+•	Messaging alignment: ensure claims and offers match active agreements
+Outputs Marketing gets
+•	A “target account triggers” feed with references
+•	Segment lists with explainable inclusion logic
+•	A shared view that Sales and Marketing can align on quickly
+Visual instruction (Marketing section):
+Use a Trigger Feed + Segment Builder mock: left side feed items, right side segment list, with “Evidence” links on each trigger.
+CTA (inline): See Business Functions in action
+________________________________________
+OPERATIONS
+H2: Operations: link operational events to financial impact
+Operational friction becomes financial leakage when the connection is not visible. RIAA ties service issues, fulfillment exceptions, and recurring operational signals to the downstream impact, with evidence.
+This helps ops teams prioritize fixes that reduce real costs, not just noise.
+Common workflows
+•	Exception tracking: recurring issues tied to credits, refunds, or deductions
+•	Fulfillment and service mismatch investigations with supporting records
+•	Root cause grouping by warehouse, route, product, or partner
+•	Action routing: who owns the fix and what proof supports it
+Outputs Operations gets
+•	A ranked list of operational issues by financial impact
+•	Drill-down to supporting records and related cases
+•	A repeat-pattern view to prevent the next cycle
+Visual instruction (Operations section):
+Use an Issue-to-Impact map: Issue category → impacted transactions → total impact, with click-through lists and evidence chips.
+CTA (inline): Request a workflow demo
+________________________________________
+LEADERSHIP
+H2: Leadership: a clear view of leakage, owners, and outcomes
+Leadership needs clarity without debate. RIAA provides a consistent executive view of where leakage is occurring, what actions are underway, and what changed.
+This is not a dashboard of static numbers. It is an operating view: what is verified, what is unresolved, and what will move outcomes this quarter.
+Common workflows
+•	Leakage overview by category (pricing drift, duplicates, deductions, exceptions)
+•	“Top 10” action list with owners and due dates
+•	Trend view: what is getting better and what is recurring
+•	Board-ready summaries with source-backed evidence
+Outputs Leadership gets
+•	A weekly operating summary with drill-down proof
+•	Clear accountability: owner, status, next step
+•	A consistent narrative for finance and commercial alignment
+Visual instruction (Leadership section):
+Use an Executive Cockpit with three tiles: “Total exposure”, “Resolved this month”, “Top recurring drivers”, plus a “Top actions” list.
+CTA (inline): See how RIAA works
+________________________________________
+IT & SECURITY
+H2: IT & Security: controlled access, governed outputs, flexible deployment
+RIAA is designed to fit enterprise control expectations. It supports role-based access patterns and deployment options that match your environment requirements.
+Teams get value without opening uncontrolled paths to sensitive systems. Outputs stay tied to approved sources and reviewers.
+Common workflows
+•	Source connection governance (what’s connected, who can access what)
+•	Permissions and role mapping by team and function
+•	Deployment planning: SaaS or VPC
+•	Operational monitoring: usage, workflows, and adoption reporting
+Outputs IT/Security gets
+•	A clear access model aligned to roles
+•	Traceable usage and activity patterns
+•	Deployment options that fit internal requirements
+Visual instruction (IT/Security section):
+Use a Permissions + Sources console: connected sources list, role selector, and a small “Activity timeline” panel.
+CTA (inline): Request a workflow demo
+________________________________________
+[SECTION] Shared foundation across every function
+H2: The same output pattern, everywhere
+No matter the function, RIAA standardizes the output so teams do not reinvent workflows each time.
+Standard output components (3 cards):
+1.	Issue list (prioritized, grouped, assignable)
+2.	Evidence links (record and excerpt references)
+3.	Next actions (approve, flag, resolve, document)
+Visual instruction:
+Show the same issue card three times with different role views (Finance vs Sales vs Leadership), changing only columns and labels.
+________________________________________
+[HERO SYSTEM] Bottom CTA strip
+H2: Launch in weeks. Improve continuously.
+Body (1 sentence): Start with one workflow for one team, then expand once trust is established.
+Primary CTA: Request a workflow demo
+Secondary CTA: Explore Markets
