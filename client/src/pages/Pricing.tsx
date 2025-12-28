@@ -657,6 +657,13 @@ export default function Pricing() {
                         </div>
                       ))}
                     </div>
+
+                    <div className="mt-8 p-6 bg-primary/[0.03] border border-primary/10 rounded-2xl">
+                      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                        <span className="font-bold text-primary block mb-2 text-xs uppercase tracking-wider">What to expect</span>
+                        Implementation covers connecting your selected systems, document sources, and feeds, training RIAA on your data, configuring the first workflow, and enabling your core users to run and review outputs confidently. You will receive a working setup, a validated sample output pack, and a short handover session so your team can operate day to day without relying on spreadsheets.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </TabsContent>
