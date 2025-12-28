@@ -46,7 +46,7 @@ export function MarketsContent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["b2c", "b2b", "riaa"];
+      const sections = ["b2c", "b2b", "riaa", "business-functions"];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -79,6 +79,7 @@ export function MarketsContent() {
             { id: "b2c", label: "B2C" },
             { id: "b2b", label: "B2B" },
             { id: "riaa", label: "RIAA" },
+            { id: "business-functions", label: "Business Functions" },
           ].map((item) => (
             <button
               key={item.id}
@@ -724,6 +725,60 @@ export function MarketsContent() {
                     <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
                  </div>
                ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Business Functions Preview */}
+        <section id="business-functions" className="scroll-mt-40 border-t border-border pt-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-display font-bold">One truth across teams, with proof attached</h2>
+              <p className="text-lg text-muted-foreground">
+                Revenue Intelligence is not just for Finance. RIAA unifies the evidence layer across the entire business, so every function moves from question to action with the same trusted foundation.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: "Finance", desc: "Close-ready answers" },
+                  { label: "RevOps", desc: "Governance at scale" },
+                  { label: "Sales", desc: "Account-level truth" },
+                  { label: "Leadership", desc: "Clear impact view" }
+                ].map((f, i) => (
+                  <div key={i} className="p-4 bg-white border border-border rounded-xl">
+                    <div className="font-bold text-sm">{f.label}</div>
+                    <div className="text-xs text-muted-foreground">{f.desc}</div>
+                  </div>
+                ))}
+              </div>
+              <Button size="lg" className="rounded-full px-8" onClick={() => window.location.href='/business-functions'}>
+                Explore Business Functions <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
+            <div className="bg-slate-50 border border-border rounded-3xl p-8 relative overflow-hidden">
+               <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
+               <div className="relative space-y-4">
+                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center animate-in slide-in-from-left-4 duration-500">
+                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"><Users className="w-5 h-5" /></div>
+                     <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase">Cross-team Signal</div>
+                        <div className="text-xs font-bold">Pricing drift detected in Region B</div>
+                     </div>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center translate-x-8 animate-in slide-in-from-left-8 duration-700">
+                     <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600"><ClipboardCheck className="w-5 h-5" /></div>
+                     <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase">Evidence Check</div>
+                        <div className="text-xs font-bold">Contract #992 vs NetSuite Invoice</div>
+                     </div>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center translate-x-4 animate-in slide-in-from-left-6 duration-1000">
+                     <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600"><CheckCircle2 className="w-5 h-5" /></div>
+                     <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase">Actioned</div>
+                        <div className="text-xs font-bold">$42k leakage prevented this cycle</div>
+                     </div>
+                  </div>
+               </div>
             </div>
           </div>
         </section>
