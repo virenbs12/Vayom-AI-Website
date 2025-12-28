@@ -1,0 +1,71 @@
+B2B
+Stop sending cash out the door across contracts, pricing, and billing
+In B2B, cash walks out the door when contract terms live in PDFs, pricing lives in spreadsheets, and invoices live in ERP. Vayom AI brings them together so teams can spot leakage early, fix it before close, and keep a clean trail of proof.
+Visual instruction (B2B section header):
+Add a “Deal-to-cash timeline” visual: Deal → Contract → Order → Invoice → Payment, with small callouts at each step (Pricing drift, Duplicate credits, Deductions, Rebate errors).
+________________________________________
+B2B Function 1: Contract-to-invoice compliance
+This workflow confirms that what you billed matches what you agreed to. It highlights pricing drift, expired discounts, missed surcharges, and exceptions that never had approval.
+•	It shows the relevant contract excerpt next to the invoice line item that deviates, so teams resolve faster.
+•	It handles common naming variations across customers, subsidiaries, and SKUs so matches stay reliable.
+•	It outputs a prioritized list of issues to correct, credit, or document before financial close.
+Visual instruction:
+Use a 3-panel comparison view: “Contract term” (excerpt), “ERP invoice line,” and “Variance & recommended next step,” with a “Copy evidence link” action.
+________________________________________
+B2B Function 2: Discount governance and deal desk guardrails
+Unauthorized discounts and inconsistent approvals create margin leakage deal-by-deal. This workflow surfaces discount exceptions early and makes the cumulative impact visible.
+•	It flags discounts that exceed policy thresholds or lack documented approval.
+•	It summarizes exposure by region, segment, rep, and product line to reveal repeat patterns.
+•	It supports faster approvals by showing exactly what changed and where it deviates.
+Visual instruction:
+Use a deal review card with: “Discount requested vs policy max,” “Approval status,” and “Margin impact,” plus a small “trend” chip showing repeat behavior for the account or rep.
+________________________________________
+B2B Function 3: Transaction deduplication (B2B)
+Duplicate invoices, duplicate credits, and repeated payments are direct cash leakage. This workflow detects duplicates across AR activity and stops cash from leaving twice.
+•	It detects potential duplicates across invoices, credit memos, payments, and order entries, even when references do not match perfectly.
+•	It groups duplicates into a single review bundle with supporting record links for quick confirmation.
+•	It reduces write-offs and cleanup work by catching issues before they cascade into disputes.
+Visual instruction:
+Use a “Duplicate cluster” visual: one cluster card that expands to show all related transactions (Invoice A, Invoice B, Credit Memo, Payment), with a “Mark as duplicate” decision button.
+________________________________________
+B2B Function 4: Transaction validation (B2B)
+Validation prevents incorrect billing before it becomes customer friction. This workflow checks invoice lines against contracted price lists, discount rules, and effective dates.
+•	It validates line-level price, discount, and fee logic against the active agreement for that customer.
+•	It highlights exceptions with the specific contract reference and the exact transaction fields that failed validation.
+•	It outputs an “Approve / Flag / Resolve” queue that finance and RevOps can work through quickly.
+Visual instruction:
+Use a validation queue table: “Account | Invoice | Rule violated | Evidence | Owner | Status,” with a “View rule” flyout and a “View evidence” flyout.
+________________________________________
+B2B Function 5: Rebates, incentives, and deductions control
+Rebate claims and deductions can quietly drain cash when eligibility and documentation are inconsistent. This workflow ties claims to contract terms and supporting records.
+•	It identifies claims that lack support, exceed eligibility, or do not align to the contracted program terms.
+•	It highlights where deductions patterns are increasing for specific accounts or product lines.
+•	It gives a clean package for recovery conversations: what is valid, what is not, and why.
+Visual instruction:
+Use a rebate claim packet mock: left side “Program terms summary,” right side “Claim lines,” and a bottom “Missing documentation” checklist.
+________________________________________
+B2B Function 6: Payment terms and cash collection leakage
+Late payments, missed early-pay discounts, and inconsistent enforcement create cash flow drag. This workflow surfaces patterns early and ties them back to accounts and terms.
+•	It identifies early-pay discounts taken incorrectly and late-pay behavior that is trending worse.
+•	It highlights accounts with frequent short-pays or recurring deductions.
+•	It outputs a prioritized account list for AR follow-up with supporting evidence.
+Visual instruction:
+Use a timeline card per account showing “Invoice date → Due date → Payment date” with a simple “On-time / Late” badge and a link to supporting transactions.
+________________________________________
+B2B Function 7: Channel partner and distributor compliance
+Channel leakage happens when partner terms, pricing, and territory rules are not consistently followed. This workflow monitors adherence and exposes exceptions.
+•	It flags transactions that violate channel pricing, territory, or partner agreement terms.
+•	It aggregates exceptions by partner, region, and product family to spot systematic drift.
+•	It supports partner conversations with evidence that is easy to review and share.
+Visual instruction:
+Use a partner scorecard tile: “Compliance rate,” “Top violations,” and “At-risk partners,” each linking to exception lists.
+________________________________________
+B2B Function 8: Revenue readiness and audit trail packaging
+Close gets painful when teams cannot show the “why” behind numbers. This workflow keeps revenue-relevant decisions traceable and review-ready.
+•	It captures a clear trail of what changed, who reviewed it, and which records support the decision.
+•	It helps teams resolve mismatches earlier instead of discovering them during close.
+•	It provides audit-ready summaries without forcing teams into spreadsheet back-and-forth.
+Visual instruction:
+Use an “Evidence timeline” component: a chronological list of actions (Detected → Reviewed → Corrected → Approved) with links to source records and excerpts.
+HOME PAGE INSERT: RIAA section (place after “Answers are scattered…” and before “What Vayom AI delivers”)
+________________________________________

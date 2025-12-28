@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
-import { ArrowRight, Check, Database, FileText, AlertCircle, Search, User, Ship, CreditCard, Headphones, Repeat, RotateCcw } from "lucide-react";
+import { ArrowRight, Check, Database, FileText, AlertCircle, Search, User, Ship, CreditCard, Headphones, Repeat, RotateCcw, TrendingDown, ClipboardCheck, History, ShieldCheck, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -72,7 +72,6 @@ export function MarketsContent() {
             </p>
           </div>
 
-          {/* B2C Header Visual: Leakage Map */}
           <div className="mb-16 bg-white p-8 rounded-2xl border border-border shadow-sm">
              <h3 className="font-semibold mb-8 text-center text-sm uppercase text-muted-foreground">Leakage Map</h3>
              <div className="flex justify-between items-center max-w-4xl mx-auto relative px-4">
@@ -97,7 +96,6 @@ export function MarketsContent() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
-             {/* B2C Function 1: Promo */}
              <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
                 <h3 className="text-xl font-bold mb-4">B2C Function 1: Promo and discount integrity</h3>
                 <p className="text-sm text-muted-foreground mb-6">
@@ -109,10 +107,6 @@ export function MarketsContent() {
                   <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs a clean list of "what happened, where, and why," ready for review.</li>
                 </ul>
                 <div className="bg-white border border-border rounded-xl p-4 shadow-sm relative overflow-hidden">
-                   <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50 border-l border-border p-3 text-[10px] transform translate-x-full group-hover:translate-x-0 transition-transform hidden md:block">
-                      <div className="font-bold border-b pb-1 mb-2">Policy Reference</div>
-                      <div className="text-slate-500 italic">"Rule PR-01: Discounts cannot be combined with 'WELCOME20' code..."</div>
-                   </div>
                    <div className="text-[10px] font-bold uppercase text-muted-foreground mb-3 flex justify-between">
                      <span>Promo Audit</span>
                      <span className="text-primary cursor-pointer hover:underline">View Policy →</span>
@@ -134,9 +128,8 @@ export function MarketsContent() {
                 </div>
              </div>
 
-             {/* B2C Function 2: Duplicate */}
              <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <h3 className="text-xl font-bold mb-4">B2C Function 2: Duplicate charges and refunds</h3>
+                <h3 className="text-xl font-bold mb-4">B2C Function 2: Duplicate charges and duplicate refunds</h3>
                 <p className="text-sm text-muted-foreground mb-6">
                   High volume payment retries, gateway timeouts, and repeat submissions can create duplicate charges or duplicate refunds.
                 </p>
@@ -147,7 +140,7 @@ export function MarketsContent() {
                 </ul>
                 <div className="grid grid-cols-2 gap-3">
                    <div className="bg-white p-4 border border-border rounded-xl">
-                      <div className="text-[10px] font-bold text-slate-400 mb-2">ORIGINAL TRANSACTION</div>
+                      <div className="text-[10px] font-bold text-slate-400 mb-2 uppercase">Original Transaction</div>
                       <div className="space-y-1 text-[11px]">
                          <div className="font-bold">$124.50</div>
                          <div className="text-slate-500">Card ending 4242</div>
@@ -168,127 +161,6 @@ export function MarketsContent() {
                    </div>
                 </div>
              </div>
-
-             {/* B2C Function 3: Returns */}
-             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <h3 className="text-xl font-bold mb-4">B2C Function 3: Returns and refund accuracy</h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Returns are where margin disappears if reasons, policies, and outcomes are inconsistent. This workflow highlights outliers and repeat behavior.
-                </p>
-                <ul className="space-y-3 mb-8 flex-grow">
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Summarizes return reasons and outcomes with clear evidence for each case.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights outliers by product, warehouse, carrier route, and customer segment.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Flags cases for investigation for repeat behavior or process gaps.</li>
-                </ul>
-                <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
-                   <div className="text-[10px] font-bold text-slate-400 uppercase mb-4">Reason-to-Cost Dashboard</div>
-                   <div className="space-y-4">
-                      {[
-                        { label: "Damaged", amount: "$42.1k", rate: "14%", color: "bg-red-500" },
-                        { label: "Sizing", amount: "$38.5k", rate: "12%", color: "bg-primary" },
-                        { label: "Changed Mind", amount: "$12.4k", rate: "4%", color: "bg-slate-400" }
-                      ].map((item, i) => (
-                        <div key={i} className="space-y-1 group cursor-pointer">
-                           <div className="flex justify-between text-[11px] font-medium">
-                              <span>{item.label}</span>
-                              <span className="text-slate-500">{item.amount} ({item.rate})</span>
-                           </div>
-                           <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                              <div className={cn("h-full rounded-full transition-all group-hover:opacity-80", item.color)} style={{ width: item.rate }} />
-                           </div>
-                        </div>
-                      ))}
-                   </div>
-                </div>
-             </div>
-
-             {/* B2C Function 4: Shipping */}
-             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <h3 className="text-xl font-bold mb-4">B2C Function 4: Shipping cost and fulfillment leakage</h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Shipping overcharges and fulfillment mismatches quietly drain cash. This workflow compares expected vs actual costs.
-                </p>
-                <ul className="space-y-3 mb-8 flex-grow">
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Finds shipments where carrier charges exceed expected rates based on zone/weight.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights fulfillment exceptions (split shipments, wrong service level).</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs an action list: dispute, renegotiate, or tighten shipping rules.</li>
-                </ul>
-                <div className="bg-white border border-border rounded-xl p-4 shadow-sm text-[10px]">
-                   <div className="flex justify-between mb-4">
-                      <span className="font-bold uppercase text-slate-400">Carrier Reconciliation</span>
-                      <div className="flex gap-2">
-                         <Badge variant="secondary" className="text-[8px] h-4">UPS</Badge>
-                         <Badge variant="secondary" className="text-[8px] h-4">Zone 4</Badge>
-                      </div>
-                   </div>
-                   <div className="grid grid-cols-4 gap-2 font-bold border-b pb-2 mb-2">
-                      <div>Shipment</div>
-                      <div>Expected</div>
-                      <div>Actual</div>
-                      <div>Variance</div>
-                   </div>
-                   <div className="grid grid-cols-4 gap-2 py-1 items-center border-b border-slate-50">
-                      <div className="font-mono">#SH-442</div>
-                      <div>$12.50</div>
-                      <div className="text-red-600 font-bold">$18.20</div>
-                      <div className="text-red-600 font-bold">+$5.70</div>
-                   </div>
-                </div>
-             </div>
-
-             {/* B2C Function 5: Subscription */}
-             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <h3 className="text-xl font-bold mb-4">B2C Function 5: Subscription billing hygiene</h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Subscription businesses leak cash through failed renewals, duplicate retries, and mismatched plan terms.
-                </p>
-                <ul className="space-y-3 mb-8 flex-grow">
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Identifies renewals that failed and subscriptions that received duplicate credits.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Groups issues by plan, cohort, and payment method to fix biggest drivers first.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Creates prioritized "recover now" and "prevent next cycle" lists.</li>
-                </ul>
-                <div className="grid grid-cols-3 gap-2">
-                   {[
-                     { label: "Failed Renewals", count: "142", icon: RotateCcw, color: "text-red-500" },
-                     { label: "Duplicate Retries", count: "28", icon: Repeat, color: "text-amber-500" },
-                     { label: "Credit Issues", count: "12", icon: CreditCard, color: "text-blue-500" }
-                   ].map((item, i) => (
-                     <div key={i} className="bg-white p-3 border border-border rounded-xl text-center group cursor-pointer hover:border-primary transition-colors">
-                        <item.icon className={cn("w-4 h-4 mx-auto mb-2", item.color)} />
-                        <div className="text-lg font-bold leading-none mb-1">{item.count}</div>
-                        <div className="text-[8px] font-bold text-slate-400 uppercase">{item.label}</div>
-                     </div>
-                   ))}
-                </div>
-             </div>
-
-             {/* B2C Function 6: Impact Mapping */}
-             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <h3 className="text-xl font-bold mb-4">B2C Function 6: Customer service impact mapping</h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Support tickets and complaints are early indicators of future refunds and churn. This workflow connects service signals to revenue impact.
-                </p>
-                <ul className="space-y-3 mb-8 flex-grow">
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Links common complaint themes to downstream outcomes like refunds and chargebacks.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights accounts and products with rising service friction before costs spike.</li>
-                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Produces weekly "top drivers" summary with drill-down to interactions.</li>
-                </ul>
-                <div className="bg-white border border-border rounded-xl p-4 shadow-sm">
-                   <div className="text-[10px] font-bold text-slate-400 uppercase mb-4">Service-to-Impact</div>
-                   <div className="space-y-3">
-                      {[
-                        { theme: "Late Delivery", outcome: "Refund Request", count: 48, impact: "High" },
-                        { theme: "Pricing Confusion", outcome: "Cancellation", count: 22, impact: "Med" }
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 text-[11px] group cursor-pointer">
-                           <div className="flex-1 bg-slate-50 p-2 rounded border border-transparent group-hover:border-primary/20">{item.theme}</div>
-                           <ArrowRight className="w-3 h-3 text-slate-300" />
-                           <div className="flex-1 bg-primary/5 p-2 rounded text-primary font-bold border border-transparent group-hover:border-primary/20">{item.outcome} ({item.count})</div>
-                        </div>
-                      ))}
-                   </div>
-                </div>
-             </div>
           </div>
         </section>
 
@@ -298,16 +170,265 @@ export function MarketsContent() {
             <span className="text-primary font-bold tracking-wide uppercase text-sm">Market: B2B</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">Stop sending cash out the door across contracts, pricing, and billing</h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              In B2B, cash walks out the door when contract terms live in PDFs, pricing lives in spreadsheets, and invoices live in ERP. Vayom AI brings them together.
+              In B2B, cash walks out the door when contract terms live in PDFs, pricing lives in spreadsheets, and invoices live in ERP. Vayom AI brings them together so teams can spot leakage early, fix it before close, and keep a clean trail of proof.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-             {["Contract Compliance", "Invoice Verification", "Credit Note Audit"].map((title, i) => (
-               <div key={i} className="p-6 rounded-xl bg-white border border-border shadow-sm hover:border-primary/50 transition-colors">
-                 <h3 className="font-bold text-lg mb-2">{title}</h3>
-                 <p className="text-sm text-muted-foreground">Automatically verify against source documents and system records.</p>
-               </div>
-             ))}
+          
+          <div className="mb-16 bg-white p-8 rounded-2xl border border-border shadow-sm">
+             <h3 className="font-semibold mb-8 text-center text-sm uppercase text-muted-foreground">Deal-to-cash timeline</h3>
+             <div className="flex justify-between items-center max-w-4xl mx-auto relative px-4">
+                <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0" />
+                {[
+                  { label: "Deal", sub: "" },
+                  { label: "Contract", sub: "Pricing drift" },
+                  { label: "Order", sub: "Duplicate credits" },
+                  { label: "Invoice", sub: "Deductions" },
+                  { label: "Payment", sub: "Rebate errors" }
+                ].map((step, i) => (
+                  <div key={i} className="relative z-10 flex flex-col items-center">
+                    <div className="w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm" />
+                    <div className="mt-4 text-xs font-bold text-slate-600">{step.label}</div>
+                    {step.sub && (
+                       <div className="absolute -top-8 bg-red-50 text-red-600 text-[9px] px-2 py-0.5 rounded border border-red-100 font-bold whitespace-nowrap">
+                         {step.sub}
+                       </div>
+                    )}
+                  </div>
+                ))}
+             </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+             {/* B2B Function 1 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 1: Contract-to-invoice compliance</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  This workflow confirms that what you billed matches what you agreed to. It highlights pricing drift, expired discounts, and missed surcharges.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Shows contract excerpt next to invoice line items that deviate.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Handles naming variations across customers and subsidiaries.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs a prioritized list to correct before financial close.</li>
+                </ul>
+                <div className="grid grid-cols-3 gap-2 h-40">
+                   <div className="bg-white p-3 border border-border rounded-xl text-[9px]">
+                      <div className="font-bold mb-2 uppercase text-slate-400 border-b pb-1">Contract Term</div>
+                      <div className="italic">"...rate shall increase to $45.00 effective Jan 1..."</div>
+                   </div>
+                   <div className="bg-white p-3 border border-border rounded-xl text-[9px]">
+                      <div className="font-bold mb-2 uppercase text-slate-400 border-b pb-1">ERP Invoice Line</div>
+                      <div>Item: Cloud Core</div>
+                      <div>Rate: <span className="text-red-600 font-bold">$29.00</span></div>
+                   </div>
+                   <div className="bg-primary/5 p-3 border border-primary/20 rounded-xl text-[9px]">
+                      <div className="font-bold mb-2 uppercase text-primary border-b pb-1">Variance</div>
+                      <div className="text-red-600 font-bold">-$16.00 Variance</div>
+                      <Button size="sm" variant="outline" className="h-6 w-full text-[8px] mt-4">Copy Evidence Link</Button>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 2 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 2: Discount governance</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Unauthorized discounts create margin leakage. This workflow surfaces exceptions early and makes cumulative impact visible.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Flags discounts exceeding policy thresholds.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Summarizes exposure by region, segment, and rep.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Supports faster approvals by showing deviations.</li>
+                </ul>
+                <div className="bg-white p-5 border border-border rounded-xl shadow-sm">
+                   <div className="flex justify-between items-start mb-4">
+                      <div>
+                         <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">Deal Review</div>
+                         <div className="font-bold text-sm">TechCorp Enterprise</div>
+                      </div>
+                      <Badge className="bg-amber-50 text-amber-700 border-amber-200 text-[10px] h-5">Review Required</Badge>
+                   </div>
+                   <div className="grid grid-cols-3 gap-3 text-center mb-4">
+                      <div className="bg-slate-50 p-2 rounded">
+                         <div className="text-[8px] uppercase font-bold text-slate-400">Req vs Max</div>
+                         <div className="text-red-600 font-bold">35% / 20%</div>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded">
+                         <div className="text-[8px] uppercase font-bold text-slate-400">Status</div>
+                         <div className="font-bold">Pending</div>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded">
+                         <div className="text-[8px] uppercase font-bold text-slate-400">Impact</div>
+                         <div className="font-bold">-$4.2k</div>
+                      </div>
+                   </div>
+                   <div className="flex items-center gap-1.5 text-[10px] bg-amber-50 text-amber-800 px-2 py-1 rounded border border-amber-100">
+                      <TrendingDown className="w-3 h-3" />
+                      <span>Repeat behavior: Account rep has 4 similar deviations this quarter.</span>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 3 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2C Function 3: Transaction deduplication (B2B)</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Duplicate invoices and payments are direct cash leakage. Detects duplicates across AR activity.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Detects potential duplicates across invoices, credits, and payments.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Groups duplicates into a review bundle with record links.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Reduces write-offs by catching issues before disputes.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-sm">
+                   <div className="flex justify-between items-center mb-3">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase">Duplicate Cluster</span>
+                      <Button size="sm" className="h-6 text-[9px] bg-red-600">Mark as Duplicate</Button>
+                   </div>
+                   <div className="space-y-2">
+                      <div className="flex justify-between p-2 bg-slate-50 rounded border border-slate-100 text-[10px]">
+                         <span>Invoice #INV-202</span>
+                         <span className="font-bold">$8,400.00</span>
+                      </div>
+                      <div className="flex justify-between p-2 bg-red-50 rounded border border-red-100 text-[10px]">
+                         <span>Invoice #INV-203</span>
+                         <span className="font-bold text-red-600">$8,400.00</span>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 4 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 4: Transaction validation</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Prevents incorrect billing before it becomes customer friction. Checks against contracted price lists.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Validates price and discount logic against active agreements.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights exceptions with specific contract references.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs an "Approve / Flag / Resolve" queue for finance.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-3 shadow-sm text-[9px] overflow-hidden">
+                   <div className="grid grid-cols-4 gap-2 font-bold uppercase text-slate-400 border-b pb-2 mb-2">
+                      <div>Account</div>
+                      <div>Rule</div>
+                      <div>Evidence</div>
+                      <div>Status</div>
+                   </div>
+                   <div className="grid grid-cols-4 gap-2 items-center">
+                      <div className="font-bold">Global Ltd</div>
+                      <div className="text-red-600">Price Drift</div>
+                      <div className="text-primary cursor-pointer hover:underline">View Proof</div>
+                      <div><Badge className="bg-amber-100 text-amber-700 border-none text-[8px] h-4">Flagged</Badge></div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 5 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 5: Rebates and incentives control</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Rebate claims can quietly drain cash when documentation is inconsistent. Ties claims to contract terms.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Identifies claims that lack support or exceed eligibility.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights increasing deduction patterns for accounts.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Provides clean recovery packages for conversations.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-sm text-[10px]">
+                   <div className="grid grid-cols-2 gap-4">
+                      <div>
+                         <div className="font-bold text-slate-400 border-b pb-1 mb-2">Program Summary</div>
+                         <div className="bg-slate-50 p-2 rounded">Volume Rebate: Tier 2 (3.5%)</div>
+                      </div>
+                      <div>
+                         <div className="font-bold text-slate-400 border-b pb-1 mb-2">Claim Lines</div>
+                         <div className="text-red-600 font-bold underline">Claim #882: 5% (OVER-LIMIT)</div>
+                      </div>
+                   </div>
+                   <div className="mt-4 pt-2 border-t text-red-600 font-bold flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" /> Missing: Signed amendment for 2025
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 6 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 6: Payment terms and collection leakage</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Late payments and inconsistent enforcement create cash flow drag. Surfaces patterns early.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Identifies early-pay discounts taken incorrectly.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights accounts with frequent short-pays.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs prioritized AR follow-up lists with evidence.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-sm">
+                   <div className="flex justify-between items-center mb-3">
+                      <span className="text-[10px] font-bold">Acme Corp Collection</span>
+                      <Badge className="bg-red-100 text-red-600 border-none text-[9px]">TRENDING LATE</Badge>
+                   </div>
+                   <div className="flex justify-between items-center text-[10px] relative px-2">
+                      <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2" />
+                      <div className="relative bg-white z-10 text-slate-400">Inv: 01/01</div>
+                      <div className="relative bg-white z-10 text-slate-400">Due: 02/01</div>
+                      <div className="relative bg-red-100 text-red-600 font-bold z-10 px-1 rounded">Paid: 02/15</div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 7 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 7: Channel partner compliance</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Channel leakage happens when partner terms are not followed. Monitors adherence and exposes exceptions.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Flags transactions violating territory or pricing.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Aggregates exceptions by partner and region.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Supports partner conversations with clear evidence.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-sm grid grid-cols-3 gap-2">
+                   <div className="text-center">
+                      <div className="text-[8px] uppercase font-bold text-slate-400">Compliance</div>
+                      <div className="text-lg font-bold text-red-600">62%</div>
+                   </div>
+                   <div className="text-center border-x border-slate-100 px-2">
+                      <div className="text-[8px] uppercase font-bold text-slate-400">Top Violation</div>
+                      <div className="text-[10px] font-bold">Territory Shift</div>
+                   </div>
+                   <div className="text-center">
+                      <div className="text-[8px] uppercase font-bold text-slate-400">At-Risk</div>
+                      <div className="text-[10px] font-bold">Global Dist.</div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2B Function 8 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2B Function 8: Revenue readiness</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Close gets painful when teams cannot show the "why". Keeps revenue decisions traceable.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Captures a clear trail of changes and approvals.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Resolves mismatches earlier instead of at close.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Provides audit-ready summaries without spreadsheets.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-3 shadow-sm space-y-2">
+                   {[
+                     { label: "Detected", icon: Search },
+                     { label: "Reviewed", icon: User },
+                     { label: "Approved", icon: ShieldCheck }
+                   ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 text-[9px]">
+                         <item.icon className="w-3 h-3 text-primary" />
+                         <span className="font-bold">{item.label}</span>
+                         <span className="text-slate-400">02/12/25 - Ref #292</span>
+                      </div>
+                   ))}
+                </div>
+             </div>
           </div>
         </section>
 
