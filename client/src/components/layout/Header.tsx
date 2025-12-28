@@ -73,11 +73,19 @@ export function Header() {
                     <ListItem href="/markets#riaa" title="RIAA">
                       Evidence-first answer system.
                     </ListItem>
-                    <ListItem href="/markets#business-functions" title="Business Functions">
+                    <ListItem href="/business-functions" title="Business Functions">
                       Finance, Sales, Ops unified truth.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link href="/business-functions">
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
+                    Functions
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -145,6 +153,9 @@ export function Header() {
             </Link>
             <Link href="/markets">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Markets</a>
+            </Link>
+            <Link href="/business-functions">
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Functions</a>
             </Link>
             <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
             <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
