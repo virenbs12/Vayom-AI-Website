@@ -1,7 +1,6 @@
 import React from "react";
 import { Database, FileText, Rss, ArrowRight, CheckCircle, FileCheck, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 
 export function RIAASection() {
   return (
@@ -58,66 +57,72 @@ export function RIAASection() {
 
           {/* Diagram Visual - Premium Organic Style */}
           <div className="relative">
-            <div className="bg-card/40 backdrop-blur-sm border border-border/60 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl relative">
-               <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent rounded-[2.5rem] pointer-events-none" />
+            <div className="bg-[#FCFBF8] backdrop-blur-md border border-[#E8E2D9] rounded-[3rem] p-12 lg:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] relative">
+               <div className="absolute inset-0 bg-radial-gradient(from_top_left,_circle,_rgba(255,255,255,0.8),_transparent) pointer-events-none" />
                
-               <div className="flex flex-col gap-14 relative z-10">
+               <div className="flex flex-col gap-16 relative z-10 items-center">
                  
                  {/* Sources Layer */}
-                 <div className="grid grid-cols-1 gap-4">
-                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-2">Sources</div>
-                    <div className="flex gap-5">
-                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-border/50 shadow-lg hover:border-primary/40 transition-all hover:scale-105">
-                        <Database className="w-10 h-10 text-vayom-green-600" />
+                 <div className="w-full flex flex-col items-center">
+                    <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-bold mb-8 text-center opacity-70">Sources</div>
+                    <div className="flex justify-center gap-6">
+                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-[#E8E2D9] shadow-md hover:shadow-xl hover:border-primary/40 transition-all hover:-translate-y-1">
+                        <Database className="w-10 h-10 text-[#0D1B1E]" />
                       </div>
-                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-border/50 shadow-lg hover:border-accent/40 transition-all hover:scale-105">
+                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-[#E8E2D9] shadow-md hover:shadow-xl hover:border-accent/40 transition-all hover:-translate-y-1">
                         <FileText className="w-10 h-10 text-accent" />
                       </div>
-                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-border/50 shadow-lg hover:border-vayom-green-500/40 transition-all hover:scale-105">
-                        <Rss className="w-10 h-10 text-vayom-green-500" />
+                      <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center border border-[#E8E2D9] shadow-md hover:shadow-xl hover:border-vayom-green-500/40 transition-all hover:-translate-y-1">
+                        <Rss className="w-10 h-10 text-[#0D1B1E]" />
                       </div>
                     </div>
                  </div>
 
                  {/* Connection Arrows */}
-                 <div className="relative h-14 flex justify-center">
-                   <div className="absolute top-0 w-px h-full bg-linear-to-b from-border to-primary/40" />
-                   <div className="absolute top-1/2 -translate-y-1/2 bg-white border border-border/50 rounded-full p-2 z-10 shadow-md">
+                 <div className="relative h-16 flex justify-center items-center">
+                   <div className="w-px h-full bg-linear-to-b from-[#E8E2D9] to-[#E8E2D9]/20" />
+                   <div className="absolute top-1/2 -translate-y-1/2 bg-white border border-[#E8E2D9] rounded-full p-2.5 z-10 shadow-sm">
                      <ArrowRight className="w-5 h-5 text-primary rotate-90" />
                    </div>
                  </div>
 
                  {/* RIAA Core */}
-                 <div className="bg-linear-to-br from-primary to-vayom-green-900 border border-primary/20 rounded-3xl p-10 text-center relative overflow-hidden shadow-2xl group">
-                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    <div className="absolute -top-24 -left-24 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                    <h3 className="text-3xl font-display font-bold text-white relative z-10 tracking-tight">RIAA</h3>
-                    <p className="text-sm text-vayom-mint-100/90 relative z-10 font-medium mt-1">Revenue Intelligence Agentic Atlas</p>
+                 <div className="w-full max-w-md bg-linear-to-br from-primary/90 to-vayom-green-800 border border-primary/20 rounded-[2rem] p-12 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(14,124,107,0.3)] group">
+                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+                    <h3 className="text-4xl font-display font-bold text-white relative z-10 tracking-tight mb-2">RIAA</h3>
+                    <p className="text-base text-vayom-mint-100/90 relative z-10 font-medium">Revenue Intelligence Agentic Atlas</p>
                  </div>
 
                  {/* Output Arrows */}
-                 <div className="relative h-14 flex justify-center">
-                   <div className="absolute top-0 w-px h-full bg-linear-to-b from-primary/40 to-border" />
-                   <div className="absolute top-1/2 -translate-y-1/2 bg-white border border-border/50 rounded-full p-2 z-10 shadow-md">
+                 <div className="relative h-16 flex justify-center items-center">
+                   <div className="w-px h-full bg-linear-to-b from-[#E8E2D9]/20 to-[#E8E2D9]" />
+                   <div className="absolute top-1/2 -translate-y-1/2 bg-white border border-[#E8E2D9] rounded-full p-2.5 z-10 shadow-sm">
                      <ArrowRight className="w-5 h-5 text-primary rotate-90" />
                    </div>
                  </div>
 
                  {/* Outputs Layer */}
-                 <div className="grid grid-cols-1 gap-4">
-                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-2 text-right">Outputs</div>
-                    <div className="grid gap-4">
-                      <div className="bg-white border border-border/40 text-foreground p-4 rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center justify-between group">
-                         <span className="font-semibold text-sm">Evidence-linked Answer</span>
-                         <CheckCircle className="w-5 h-5 text-vayom-green-500 group-hover:scale-110 transition-transform" />
+                 <div className="w-full flex flex-col items-center">
+                    <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-bold mb-8 text-center opacity-70">Outputs</div>
+                    <div className="grid gap-4 w-full max-w-sm">
+                      <div className="bg-white border border-[#E8E2D9] text-foreground p-5 rounded-2xl shadow-sm hover:shadow-lg transition-all flex items-center justify-between group cursor-default">
+                         <span className="font-semibold text-base">Evidence-linked Answer</span>
+                         <div className="w-6 h-6 rounded-full bg-vayom-mint-100 flex items-center justify-center">
+                           <CheckCircle className="w-4 h-4 text-primary" />
+                         </div>
                       </div>
-                      <div className="bg-white/80 border border-border/40 text-foreground p-4 rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center justify-between opacity-95 group">
-                         <span className="font-semibold text-sm">Action Queue</span>
-                         <FileCheck className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                      <div className="bg-white border border-[#E8E2D9] text-foreground p-5 rounded-2xl shadow-sm hover:shadow-lg transition-all flex items-center justify-between group cursor-default">
+                         <span className="font-semibold text-base">Action Queue</span>
+                         <div className="w-6 h-6 rounded-full bg-orange-50 flex items-center justify-center">
+                           <FileCheck className="w-4 h-4 text-accent" />
+                         </div>
                       </div>
-                      <div className="bg-white/60 border border-border/40 text-foreground p-4 rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center justify-between opacity-80 group">
-                         <span className="font-semibold text-sm">Audit Trail</span>
-                         <ShieldCheck className="w-5 h-5 text-muted-foreground group-hover:scale-110 transition-transform" />
+                      <div className="bg-white border border-[#E8E2D9] text-foreground p-5 rounded-2xl shadow-sm hover:shadow-lg transition-all flex items-center justify-between group cursor-default">
+                         <span className="font-semibold text-base">Audit Trail</span>
+                         <div className="w-6 h-6 rounded-full bg-slate-50 flex items-center justify-center">
+                           <ShieldCheck className="w-4 h-4 text-slate-400" />
+                         </div>
                       </div>
                     </div>
                  </div>
@@ -133,4 +138,3 @@ export function RIAASection() {
     </section>
   );
 }
-
