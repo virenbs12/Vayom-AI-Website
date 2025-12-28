@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Zap, Shield, BarChart3, Globe, Database, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OnboardingModal } from "@/components/pricing/OnboardingModal";
 
 const pricingData = [
   {
@@ -508,19 +509,28 @@ const pricingData = [
 ];
 
 export default function Pricing() {
+  const [activeCountry, setActiveCountry] = useState("US");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const handleChoosePlan = (planName: string) => {
+    setSelectedPlan(planName);
+    setModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main className="pt-32 pb-20">
         <div className="container-width">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">Simple, transparent pricing</h1>
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-[#0D1B1E] dark:text-[#F1F4F5]">Simple, transparent pricing</h1>
             <p className="text-xl text-muted-foreground">
               Select your region to see localized pricing and plans tailored for your market.
             </p>
           </div>
 
-          <Tabs defaultValue="US" className="w-full">
+          <Tabs defaultValue="US" className="w-full" onValueChange={setActiveCountry}>
             <div className="flex justify-center mb-12">
               <TabsList className="h-14 p-1 bg-muted/50 rounded-full border border-border overflow-x-auto scrollbar-hide">
                 {pricingData.map((data) => (
@@ -607,7 +617,11 @@ export default function Pricing() {
                             </div>
                           </div>
                           
-                          <Button className="w-full h-10 rounded-lg text-sm font-semibold" variant={plan.popular ? "default" : "outline"}>
+                          <Button 
+                            className="w-full h-10 rounded-lg text-sm font-semibold" 
+                            variant={plan.popular ? "default" : "outline"}
+                            onClick={() => handleChoosePlan(plan.name)}
+                          >
                             {plan.price === "Custom" ? "Contact Sales" : "Choose Plan"}
                           </Button>
                         </CardContent>
@@ -616,14 +630,14 @@ export default function Pricing() {
                   </div>
 
                   {/* Implementation Section */}
-                  <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-8 border border-border">
+                  <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-8 border border-border dark:bg-slate-900">
                     <h3 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
                       <BarChart3 className="w-5 h-5 text-primary" /> Implementation & Setup
                     </h3>
                     <div className="grid gap-4">
                       {data.implementation?.map((item, idx) => (
-                        <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl border border-border/50 shadow-sm gap-2">
-                          <div className="font-semibold text-sm text-slate-600">{item.item}</div>
+                        <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl border border-border/50 shadow-sm gap-2 dark:bg-slate-800">
+                          <div className="font-semibold text-sm text-slate-600 dark:text-slate-300">{item.item}</div>
                           <div className="text-sm font-bold text-primary sm:text-right max-w-md">{item.value}</div>
                         </div>
                       ))}
@@ -633,6 +647,13 @@ export default function Pricing() {
               </TabsContent>
             ))}
           </Tabs>
+
+          <OnboardingModal 
+            open={modalOpen} 
+            onOpenChange={setModalOpen}
+            selectedPlan={selectedPlan}
+            country={activeCountry}
+          />
 
           {/* ROI Section */}
           <div className="mt-32 p-12 bg-slate-50 rounded-3xl border border-border">
