@@ -8,8 +8,8 @@ export function MarketsPreview() {
     <section className="bg-slate-50 py-24 border-y border-border">
       <div className="container-width">
         <div className="mb-12">
-          <h2 className="text-3xl font-display font-bold mb-4">Built for how each market actually runs</h2>
-          <p className="text-lg text-muted-foreground">Pick your market to see the workflows Vayom AI supports end-to-end.</p>
+          <h2 className="text-3xl font-display font-bold mb-4">Built for how each industry actually runs</h2>
+          <p className="text-lg text-muted-foreground">Pick your sector to see the workflows Vayom AI supports end-to-end.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

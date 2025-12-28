@@ -23,12 +23,19 @@ export function HeroSlideOne() {
           </motion.div>
           
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="rounded-full px-8 text-lg h-12">
-              Request a workflow demo
+            <Button 
+              size="lg" 
+              className="rounded-full px-8 text-lg h-12"
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Request a Demo
             </Button>
             <Link href="/markets">
               <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2">
-                Explore markets
+                Explore Solutions
               </Button>
             </Link>
           </div>

@@ -82,7 +82,7 @@ export function ContactForm() {
     <section className="bg-slate-50 py-24 border-t border-border" id="contact">
       <div className="container-width max-w-2xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Scope a workflow and see it live</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Request a Demo</h2>
           <p className="text-muted-foreground">Get a scoped workflow in 6-12 weeks. Start by telling us what you need.</p>
         </div>
 
@@ -259,7 +259,7 @@ export function ContactForm() {
 
                 <div className="pt-4 flex flex-col gap-3">
                   <Button type="submit" size="lg" className="w-full text-lg h-12">
-                    Request a workflow demo
+                    Request a Demo
                   </Button>
                   <div className="text-center text-sm text-muted-foreground">
                     Or email us at <a href="mailto:sales@vayomai.com" className="text-primary hover:underline">sales@vayomai.com</a>

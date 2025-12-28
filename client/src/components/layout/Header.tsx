@@ -136,7 +136,7 @@ export function Header() {
               else window.location.href = '/#contact';
             }}
           >
-            Request a workflow demo
+            Request a Demo
           </Button>
         </div>
 
@@ -167,7 +167,16 @@ export function Header() {
             </Link>
             <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
             <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-            <Button className="w-full mt-2" onClick={() => setMobileMenuOpen(false)}>Request a workflow demo</Button>
+            <Button 
+              className="w-full mt-2" 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (location === '/') scrollToSection('contact');
+                else window.location.href = '/#contact';
+              }}
+            >
+              Request a Demo
+            </Button>
           </div>
         </div>
       )}
