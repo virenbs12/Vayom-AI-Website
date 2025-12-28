@@ -85,8 +85,69 @@ const pricingData = [
     currency: "GBP",
     symbol: "£",
     plans: [
-      { name: "Starter", price: "2,000", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "8,000", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "49", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "£19.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "£0.2 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "89", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "£19.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "£0.1 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "189", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "£0.1 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "£2,250.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   },
   {
@@ -95,8 +156,69 @@ const pricingData = [
     currency: "EUR",
     symbol: "€",
     plans: [
-      { name: "Starter", price: "2,300", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "9,200", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "59", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "€29.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "€0.3 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "99", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "€29.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "€0.1 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "219", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "€0.1 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "€2,500.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   },
   {
@@ -105,18 +227,140 @@ const pricingData = [
     currency: "AUD",
     symbol: "A$",
     plans: [
-      { name: "Starter", price: "3,800", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "15,200", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "109", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "A$49.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "A$0.05 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "179", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "A$49.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "A$0.02 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "379", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "A$0.02 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "A$4,600.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   },
   {
     country: "UAE",
     flag: "🇦🇪",
     currency: "AED",
-    symbol: "د.إ",
+    symbol: "AED ",
     plans: [
-      { name: "Starter", price: "9,200", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "36,700", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "249", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "AED 109.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "AED 0.11 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "439", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "AED 109.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "AED 0.04 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "919", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "AED 0.04 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "AED 11,000.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   },
   {
@@ -196,8 +440,69 @@ const pricingData = [
     currency: "SGD",
     symbol: "S$",
     plans: [
-      { name: "Starter", price: "3,400", desc: "Perfect for emerging brands" },
-      { name: "Enterprise", price: "13,600", desc: "For high-volume global operations" }
+      { 
+        name: "Starter (2 systems)", 
+        price: "89", 
+        desc: "Essential revenue intelligence",
+        features: {
+          structuredSources: "2 included",
+          extraSource: "S$39.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Not included",
+          prompts: "20 / day",
+          extraPrompts: "S$0.04 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Growth (5 systems + feeds)", 
+        price: "159", 
+        desc: "For expanding businesses",
+        popular: true,
+        features: {
+          structuredSources: "5 included",
+          extraSource: "S$39.00 / mo per user",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "100 / day",
+          extraPrompts: "S$0.01 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Power (all systems + feeds)", 
+        price: "319", 
+        desc: "Full platform scale",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "250 / day",
+          extraPrompts: "S$0.01 per prompt",
+          sessions: "1 active session"
+        }
+      },
+      { 
+        name: "Enterprise", 
+        price: "Custom", 
+        desc: "Tailored for large organizations",
+        features: {
+          structuredSources: "Unlimited",
+          extraSource: "No extra charge",
+          documents: "Unlimited",
+          streaming: "Included",
+          prompts: "Unlimited",
+          extraPrompts: "Not applicable",
+          sessions: "Up to 3 active sessions"
+        }
+      }
+    ],
+    implementation: [
+      { item: "Daily implementation fee", value: "S$3,900.00 per project day" },
+      { item: "Minimum project length", value: "5 days" },
+      { item: "Typical project range", value: "10-15 days" },
+      { item: "Scope", value: "Connection, configuration, and basic team training across chosen systems and documents" }
     ]
   }
 ];
@@ -233,148 +538,94 @@ export default function Pricing() {
 
             {pricingData.map((data) => (
               <TabsContent key={data.country} value={data.country} className="animate-in fade-in-50 duration-500">
-                {(data.country === "US" || data.country === "India") ? (
-                  <div className="space-y-12">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                      {data.plans.map((plan) => (
-                        <Card key={plan.name} className={cn(
-                          "relative flex flex-col border-2 transition-all hover:shadow-lg",
-                          plan.popular ? "border-primary shadow-md" : "border-border"
-                        )}>
-                          {plan.popular && (
-                            <div className="absolute top-0 right-0">
-                              <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-6 rotate-45 translate-x-4 translate-y-1">
-                                Popular
-                              </div>
-                            </div>
-                          )}
-                          <CardHeader className="pb-4">
-                            <CardTitle className="text-lg font-bold">{plan.name}</CardTitle>
-                            <CardDescription className="text-xs h-8">{plan.desc}</CardDescription>
-                          </CardHeader>
-                          <CardContent className="flex-grow flex flex-col">
-                            <div className="mb-6">
-                              {plan.price === "Custom" ? (
-                                <span className="text-2xl font-bold">Contact us</span>
-                              ) : (
-                                <>
-                                  <span className="text-3xl font-bold">{data.symbol}{plan.price}</span>
-                                  <span className="text-xs text-muted-foreground ml-1">/ user / mo</span>
-                                </>
-                              )}
-                            </div>
-                            
-                            <div className="space-y-4 mb-6 text-xs flex-grow">
-                              <div className="pb-3 border-b border-border/50">
-                                <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                  <Database className="w-3 h-3 text-primary" /> Data Sources
-                                </div>
-                                <div className="text-muted-foreground">{plan.features.structuredSources}</div>
-                                <div className="text-[10px] text-muted-foreground mt-0.5">{plan.features.extraSource}</div>
-                              </div>
-                              <div className="pb-3 border-b border-border/50">
-                                <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                  <FileText className="w-3 h-3 text-primary" /> Documents
-                                </div>
-                                <div className="text-muted-foreground">{plan.features.documents}</div>
-                              </div>
-                              <div className="pb-3 border-b border-border/50">
-                                <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                  <Zap className="w-3 h-3 text-primary" /> Streaming Feeds
-                                </div>
-                                <div className="text-muted-foreground">{plan.features.streaming}</div>
-                              </div>
-                              <div className="pb-3 border-b border-border/50">
-                                <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                  <Check className="w-3 h-3 text-primary" /> Daily Prompts
-                                </div>
-                                <div className="text-muted-foreground">{plan.features.prompts}</div>
-                                <div className="text-[10px] text-muted-foreground mt-0.5">Extra: {plan.features.extraPrompts}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold flex items-center gap-1.5 mb-1">
-                                  <Globe className="w-3 h-3 text-primary" /> Sessions
-                                </div>
-                                <div className="text-muted-foreground">{plan.features.sessions}</div>
-                              </div>
-                            </div>
-                            
-                            <Button className="w-full h-10 rounded-lg text-sm font-semibold" variant={plan.popular ? "default" : "outline"}>
-                              {plan.price === "Custom" ? "Contact Sales" : "Choose Plan"}
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-
-                    {/* Implementation Section */}
-                    <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-8 border border-border">
-                      <h3 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
-                        <BarChart3 className="w-5 h-5 text-primary" /> Implementation & Setup
-                      </h3>
-                      <div className="grid gap-4">
-                        {data.implementation?.map((item, idx) => (
-                          <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl border border-border/50 shadow-sm gap-2">
-                            <div className="font-semibold text-sm text-slate-600">{item.item}</div>
-                            <div className="text-sm font-bold text-primary sm:text-right max-w-md">{item.value}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="space-y-12">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {data.plans.map((plan) => (
                       <Card key={plan.name} className={cn(
-                        "relative overflow-hidden border-2 transition-all hover:shadow-xl",
-                        plan.name === "Enterprise" ? "border-primary shadow-lg" : "border-border"
+                        "relative flex flex-col border-2 transition-all hover:shadow-lg",
+                        plan.popular ? "border-primary shadow-md" : "border-border"
                       )}>
-                        {plan.name === "Enterprise" && (
+                        {plan.popular && (
                           <div className="absolute top-0 right-0">
-                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-8 rotate-45 translate-x-6 translate-y-2">
+                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-6 rotate-45 translate-x-4 translate-y-1">
                               Popular
                             </div>
                           </div>
                         )}
-                        <CardHeader className="pb-8">
-                          <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                          <CardDescription className="text-base">{plan.desc}</CardDescription>
+                        <CardHeader className="pb-4">
+                          <CardTitle className="text-lg font-bold">{plan.name}</CardTitle>
+                          <CardDescription className="text-xs h-8">{plan.desc}</CardDescription>
                         </CardHeader>
-                        <CardContent>
-                          <div className="mb-8">
-                            <span className="text-4xl font-bold">{data.symbol}{plan.price}</span>
-                            <span className="text-muted-foreground ml-2">/ month</span>
+                        <CardContent className="flex-grow flex flex-col">
+                          <div className="mb-6">
+                            {plan.price === "Custom" ? (
+                              <span className="text-2xl font-bold">Contact us</span>
+                            ) : (
+                              <>
+                                <span className="text-3xl font-bold">{data.symbol}{plan.price}</span>
+                                <span className="text-xs text-muted-foreground ml-1">/ user / mo</span>
+                              </>
+                            )}
                           </div>
                           
-                          <div className="space-y-4 mb-8">
-                            <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">What's included</h4>
-                            <ul className="space-y-3">
-                              {[
-                                "Full RIAA Platform Access",
-                                "Revenue Leakage Scanning",
-                                "Evidence-linked Outputs",
-                                "Custom Workflow Deployment",
-                                "Priority Support",
-                                "Unlimited Agents"
-                              ].map((feature) => (
-                                <li key={feature} className="flex items-center gap-3 text-sm">
-                                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                                    <Check className="w-3 h-3" />
-                                  </div>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
+                          <div className="space-y-4 mb-6 text-xs flex-grow">
+                            <div className="pb-3 border-b border-border/50">
+                              <div className="font-semibold flex items-center gap-1.5 mb-1">
+                                <Database className="w-3 h-3 text-primary" /> Data Sources
+                              </div>
+                              <div className="text-muted-foreground">{plan.features.structuredSources}</div>
+                              <div className="text-[10px] text-muted-foreground mt-0.5">{plan.features.extraSource}</div>
+                            </div>
+                            <div className="pb-3 border-b border-border/50">
+                              <div className="font-semibold flex items-center gap-1.5 mb-1">
+                                <FileText className="w-3 h-3 text-primary" /> Documents
+                              </div>
+                              <div className="text-muted-foreground">{plan.features.documents}</div>
+                            </div>
+                            <div className="pb-3 border-b border-border/50">
+                              <div className="font-semibold flex items-center gap-1.5 mb-1">
+                                <Zap className="w-3 h-3 text-primary" /> Streaming Feeds
+                              </div>
+                              <div className="text-muted-foreground">{plan.features.streaming}</div>
+                            </div>
+                            <div className="pb-3 border-b border-border/50">
+                              <div className="font-semibold flex items-center gap-1.5 mb-1">
+                                <Check className="w-3 h-3 text-primary" /> Daily Prompts
+                              </div>
+                              <div className="text-muted-foreground">{plan.features.prompts}</div>
+                              <div className="text-[10px] text-muted-foreground mt-0.5">Extra: {plan.features.extraPrompts}</div>
+                            </div>
+                            <div>
+                              <div className="font-semibold flex items-center gap-1.5 mb-1">
+                                <Globe className="w-3 h-3 text-primary" /> Sessions
+                              </div>
+                              <div className="text-muted-foreground">{plan.features.sessions}</div>
+                            </div>
                           </div>
                           
-                          <Button className="w-full h-12 rounded-xl text-lg font-semibold" variant={plan.name === "Enterprise" ? "default" : "outline"}>
-                            Get Started
+                          <Button className="w-full h-10 rounded-lg text-sm font-semibold" variant={plan.popular ? "default" : "outline"}>
+                            {plan.price === "Custom" ? "Contact Sales" : "Choose Plan"}
                           </Button>
                         </CardContent>
                       </Card>
                     ))}
                   </div>
-                )}
+
+                  {/* Implementation Section */}
+                  <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-8 border border-border">
+                    <h3 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
+                      <BarChart3 className="w-5 h-5 text-primary" /> Implementation & Setup
+                    </h3>
+                    <div className="grid gap-4">
+                      {data.implementation?.map((item, idx) => (
+                        <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white rounded-xl border border-border/50 shadow-sm gap-2">
+                          <div className="font-semibold text-sm text-slate-600">{item.item}</div>
+                          <div className="text-sm font-bold text-primary sm:text-right max-w-md">{item.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </TabsContent>
             ))}
           </Tabs>
