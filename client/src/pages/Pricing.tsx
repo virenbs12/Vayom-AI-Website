@@ -567,8 +567,8 @@ export default function Pricing() {
                         onClick={() => setSelectedPlan(plan.name)}
                       >
                         {plan.popular && (
-                          <div className="absolute top-0 right-0 z-10 overflow-hidden rounded-tr-lg">
-                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-6 rotate-45 translate-x-4 translate-y-1 shadow-sm">
+                          <div className="absolute top-0 right-0 z-20 overflow-visible">
+                            <div className="bg-primary text-primary-foreground text-[10px] font-bold uppercase py-1 px-10 rotate-45 translate-x-[32px] translate-y-[12px] shadow-md border-b border-white/20 whitespace-nowrap">
                               Popular
                             </div>
                           </div>
