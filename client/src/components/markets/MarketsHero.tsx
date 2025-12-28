@@ -24,8 +24,12 @@ export function MarketsHero() {
           </p>
           
           <div className="flex gap-4 pt-4">
-            <Button size="lg" className="rounded-full px-8" onClick={() => window.location.href='/#contact'}>
-              Request a workflow demo
+            <Button size="lg" className="rounded-full px-8" onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+              else window.location.href = '/#contact';
+            }}>
+              Request a Demo
             </Button>
           </div>
         </div>
