@@ -61,7 +61,7 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent font-medium">Markets</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent font-medium">Solutions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                     <ListItem href="/markets#b2c" title="B2C">
@@ -73,9 +73,6 @@ export function Header() {
                     <ListItem href="/markets#riaa" title="RIAA">
                       Evidence-first answer system.
                     </ListItem>
-                    <ListItem href="/business-functions" title="Business Functions">
-                      Finance, Sales, Ops unified truth.
-                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -83,7 +80,7 @@ export function Header() {
               <NavigationMenuItem>
                 <Link href="/business-functions">
                   <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
-                    Functions
+                    Business Functions
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -152,10 +149,10 @@ export function Header() {
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Home</a>
             </Link>
             <Link href="/markets">
-              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Markets</a>
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             </Link>
             <Link href="/business-functions">
-              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Functions</a>
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Business Functions</a>
             </Link>
             <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
             <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
