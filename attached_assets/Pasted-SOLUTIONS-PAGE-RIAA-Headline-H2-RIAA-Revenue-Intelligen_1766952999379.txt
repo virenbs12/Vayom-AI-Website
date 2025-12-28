@@ -1,0 +1,55 @@
+SOLUTIONS PAGE: RIAA 
+Headline (H2): RIAA: Revenue Intelligence Agentic Atlas (the core platform)
+Short paragraph:
+RIAA is the system that makes multi-source answers usable in real operations. It coordinates retrieval across databases, documents, and feeds, then returns results with proof attached. Teams can validate fast, act fast, and stop sending cash out the door due to slow verification and execution drift.
+Technology framework (communicate “how,” without noise)
+RIAA is built around four platform layers (use a 4-column visual):
+1.	Connect
+Pre-built connectors for ERP/CRM, contract repositories, and recurring feeds. No rip-and-replace.
+2.	Normalize
+Align entities across sources (customers, products, subsidiaries, aliases) so cross-system linking stays reliable.
+3.	Coordinate
+A web of specialized agents handles discrete work: domain checks, data extraction, governance, and orchestration.
+4.	Prove + Act
+Every output includes evidence links, a clear rationale trail, and an action-ready queue (approve, flag, resolve).
+Visual instruction (Technology framework):
+Create a 4-layer “platform stack” graphic with short captions under each layer. Add a small side callout: “Patent-pending multi-modal architecture for coordinated extraction across databases, documents, and feeds.”
+Provenance-first outputs (what makes it enterprise-grade)
+RIAA outputs are designed for reviewers, not just viewers:
+•	Evidence-linked by default: every result includes links back to the exact record or excerpt used
+•	Cross-source context: results are not isolated; they are linked across systems and documents
+•	Audit-ready trail: what was checked, what was flagged, and what was approved is preserved for follow-through
+•	Permission-aware: role-based access patterns for who can see what, aligned to enterprise expectations
+Visual instruction (Provenance):
+Use a result card pattern that always shows: “Answer summary” + “Evidence chips” (ERP record, Contract excerpt, Feed link) + “Owner / Status / Next step.”
+Rapid deployment and continuous optimization (include the attached framework)
+Deployment and onboarding timelines (display as an 8-card grid):
+•	~3 Days: Structured data source onboarding
+Integrate a new structured source quickly.
+•	~10 mins: Document and news feed ingestion
+Bring in new documents and updates rapidly.
+•	~10 Days: RIAA training on new sources
+Tune RIAA to perform reliably on added sources.
+•	~10 Days: Agent build and training
+Develop and train specialized agents for the workflow.
+•	~6 Hours: New user training and onboarding
+Get teams productive quickly with guided onboarding.
+•	~5–10 Days: External agent integration
+Connect to platforms like Agentforce, Azure Copilot Agent, and other enterprise agent systems.
+•	~5 Days: New entity onboarding (NER)
+Add new entities and naming patterns for consistent matching.
+•	~5–10 Days: Quarterly refinement cycles
+Regular improvement cycles to tighten outcomes and expand coverage.
+Footnote (small text):
+All timeframes refer to business days.
+Visual instruction (Timelines):
+Design the 8 items as uniform cards with the time in large type, a short title, then a single sentence (no long bullets). Add a small footer tag on the grid: “Rapid Deployment & Continuous Optimization.”
+Why it matters (tie to outcomes)
+RIAA is optimized for outcomes that teams can measure:
+•	Faster verification when terms are in documents and transactions are in systems
+•	Fewer avoidable leakage events because exceptions are surfaced earlier
+•	Less spreadsheet-driven reconciliation and fewer handoff failures
+•	Stronger internal alignment because everyone can see the same proof
+CTA (end of RIAA section):
+Request a workflow demo (button)
+Secondary link: See Markets →
