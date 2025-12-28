@@ -1,5 +1,5 @@
 import React from "react";
-import logoImage from "@assets/Full_logo_side_text_without_bg_(4000px)_1766964703537.png";
+import logoImage from "@assets/generated_images/vayom_ai_unified_output_flow_diagram.png";
 
 export function WhyVayom() {
   return (
