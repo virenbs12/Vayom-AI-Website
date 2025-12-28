@@ -527,10 +527,14 @@ export default function Pricing() {
                   <TabsTrigger 
                     key={data.country} 
                     value={data.country}
-                    className="rounded-full px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm text-lg"
+                    className="rounded-full px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm text-lg flex items-center gap-2"
                   >
-                    <span className="mr-2">{data.flag}</span>
-                    <span className="hidden sm:inline">{data.country}</span>
+                    <span className="flex items-center justify-center w-8 h-6 bg-slate-100 rounded text-sm font-bold text-slate-500 uppercase shrink-0">
+                      {data.country.substring(0, 2)}
+                    </span>
+                    <span className="font-semibold text-slate-700 whitespace-nowrap">
+                      {data.country}
+                    </span>
                   </TabsTrigger>
                 ))}
               </TabsList>
