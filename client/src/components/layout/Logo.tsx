@@ -1,5 +1,5 @@
 import React from "react";
-import logoImage from "@assets/generated_images/vayom_ai_premium_brand_logo_asset.png";
+import logoImage from "@assets/Full_logo_side_text_without_bg_(4000px)_1766964703537.png";
 
 export function Logo({ className }: { className?: string }) {
   return (
@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
       <img 
         src={logoImage} 
         alt="Vayom AI" 
-        className="h-full w-auto object-contain brightness-0 dark:brightness-0 dark:invert"
+        className="h-full w-auto object-contain"
       />
     </div>
   );
