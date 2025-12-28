@@ -32,7 +32,11 @@ import {
   CheckCircle2,
   Calendar,
   Briefcase as BriefcaseIcon,
-  Globe
+  Globe,
+  Truck,
+  RefreshCcw,
+  MessageSquare,
+  BarChart
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -128,6 +132,7 @@ export function MarketsContent() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
+             {/* B2C Function 1 */}
              <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
                 <h3 className="text-xl font-bold mb-4">B2C Function 1: Promo and discount integrity</h3>
                 <p className="text-sm text-muted-foreground mb-6">
@@ -160,6 +165,7 @@ export function MarketsContent() {
                 </div>
              </div>
 
+             {/* B2C Function 2 */}
              <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
                 <h3 className="text-xl font-bold mb-4">B2C Function 2: Duplicate charges and duplicate refunds</h3>
                 <p className="text-sm text-muted-foreground mb-6">
@@ -186,6 +192,132 @@ export function MarketsContent() {
                          <div className="font-bold">$124.50</div>
                          <div className="text-slate-500">Card ending 4242</div>
                          <div className="text-slate-400">14:22:04</div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2C Function 3 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2C Function 3: Returns and refund accuracy</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Returns are where margin disappears if reasons, policies, and outcomes are inconsistent. This workflow highlights repeat refunds and out-of-policy approvals.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Summarizes return reasons and outcomes with clear evidence for each case.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights outliers by product, warehouse, carrier, and customer segment.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Flags cases for repeat behavior, process gaps, or policy misalignment.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-6 shadow-sm">
+                   <div className="text-[10px] font-bold text-slate-400 uppercase mb-4">Reason-to-Cost Dashboard</div>
+                   <div className="space-y-3">
+                      {[
+                        { reason: "Sizing", amount: "$42k", rate: "14%", color: "bg-primary" },
+                        { reason: "Defective", amount: "$12k", rate: "4%", color: "bg-amber-500" },
+                        { reason: "Not as Described", amount: "$8k", rate: "2%", color: "bg-slate-400" }
+                      ].map((item, i) => (
+                        <div key={i} className="group cursor-pointer">
+                           <div className="flex justify-between text-[10px] mb-1">
+                              <span className="font-bold">{item.reason}</span>
+                              <span className="text-slate-500">{item.amount} ({item.rate})</span>
+                           </div>
+                           <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                              <div className={cn("h-full rounded-full transition-all group-hover:opacity-80", item.color)} style={{ width: item.rate }} />
+                           </div>
+                        </div>
+                      ))}
+                   </div>
+                </div>
+             </div>
+
+             {/* B2C Function 4 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2C Function 4: Shipping cost and fulfillment leakage</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Shipping overcharges and fulfillment mismatches quietly drain cash. This workflow compares expected vs actual shipping costs.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Finds shipments where carrier charges exceed expected rates by zone and weight.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights split shipments and service level errors tied to refund impact.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Outputs an action list for logistics teams: dispute or renegotiate.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl overflow-hidden shadow-sm">
+                   <div className="p-3 bg-slate-50 border-b flex justify-between items-center">
+                      <div className="text-[9px] font-bold">Carrier Reconciliation</div>
+                      <div className="flex gap-2">
+                         <Badge variant="outline" className="text-[7px] h-4">FedEx</Badge>
+                         <Badge variant="outline" className="text-[7px] h-4">Zone 5</Badge>
+                      </div>
+                   </div>
+                   <div className="p-3">
+                      <table className="w-full text-[9px]">
+                         <thead>
+                            <tr className="text-left text-slate-400">
+                               <th className="pb-2">Expected</th>
+                               <th className="pb-2">Actual</th>
+                               <th className="pb-2">Variance</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <tr className="border-t border-slate-50">
+                               <td className="py-2">$8.40</td>
+                               <td className="py-2 font-bold text-red-600">$12.50</td>
+                               <td className="py-2 font-bold text-red-600">+$4.10</td>
+                            </tr>
+                         </tbody>
+                      </table>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2C Function 5 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2C Function 5: Subscription billing hygiene</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Subscription businesses leak cash through failed renewals and billing noise that reduces retained revenue.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Identifies failed renewals, repeated charge attempts, and duplicate credits.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Groups issues by plan and cohort to fix the biggest drivers first.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Creates prioritized "recover now" and "prevent next cycle" lists.</li>
+                </ul>
+                <div className="grid grid-cols-3 gap-2">
+                   {[
+                     { label: "Failed Renewals", count: "142", color: "text-red-600" },
+                     { label: "Duplicate Retries", count: "28", color: "text-amber-600" },
+                     { label: "Credit Issues", count: "14", color: "text-primary" }
+                   ].map((card, i) => (
+                     <div key={i} className="bg-white p-3 rounded-xl border border-border shadow-sm text-center cursor-pointer hover:border-primary transition-colors">
+                        <div className="text-[8px] font-bold text-slate-400 uppercase mb-1">{card.label}</div>
+                        <div className={cn("text-sm font-bold", card.color)}>{card.count}</div>
+                        <div className="text-[7px] mt-1 text-primary">View Evidence →</div>
+                     </div>
+                   ))}
+                </div>
+             </div>
+
+             {/* B2C Function 6 */}
+             <div className="bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <h3 className="text-xl font-bold mb-4">B2C Function 6: Customer service impact mapping</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Support tickets and complaints are early indicators of future refunds and churn. This workflow connects signals to revenue impact.
+                </p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Links complaint themes to downstream outcomes like refunds and chargebacks.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Highlights accounts and products with rising service friction.</li>
+                  <li className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0" /> Produces weekly "top drivers" summary with interaction drill-down.</li>
+                </ul>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-sm">
+                   <div className="text-[10px] font-bold text-slate-400 uppercase mb-4">Service-to-impact Mapping</div>
+                   <div className="flex items-center gap-4">
+                      <div className="flex-1 space-y-2">
+                         <div className="p-2 bg-slate-50 rounded border border-slate-100 text-[9px] font-bold">"Late Delivery"</div>
+                         <div className="p-2 bg-slate-50 rounded border border-slate-100 text-[9px] font-bold">"Wrong Item"</div>
+                      </div>
+                      <div className="text-slate-300"><ArrowRight className="w-4 h-4" /></div>
+                      <div className="flex-1 space-y-2">
+                         <div className="p-2 bg-red-50 rounded border border-red-100 text-[9px] font-bold text-red-600">82 Refunds</div>
+                         <div className="p-2 bg-amber-50 rounded border border-amber-100 text-[9px] font-bold text-amber-600">14 Cancellations</div>
                       </div>
                    </div>
                 </div>

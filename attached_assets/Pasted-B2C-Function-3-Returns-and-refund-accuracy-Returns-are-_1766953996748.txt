@@ -1,0 +1,31 @@
+B2C Function 3: Returns and refund accuracy
+Returns are where margin disappears if reasons, policies, and outcomes are inconsistent. This workflow highlights repeat refunds, out-of-policy approvals, and patterns that increase return-to-origin events.
+•	It summarizes return reasons and outcomes with clear evidence for each case.
+•	It highlights outliers by product, warehouse, carrier route, and customer segment so operations can intervene.
+•	It flags cases that should be investigated for repeat behavior, process gaps, or policy misalignment.
+Visual instruction:
+Use a returns “reason-to-cost” dashboard tile: a simple bar list (Reason → Total refund amount → Return rate) with a click-through to a case list.
+________________________________________
+B2C Function 4: Shipping cost and fulfillment leakage
+Shipping overcharges and fulfillment mismatches quietly drain cash. This workflow compares expected vs actual shipping costs and catches fulfillment errors that create avoidable reships and credits.
+•	It finds shipments where carrier charges exceed expected rates based on zone, weight, and service level.
+•	It highlights fulfillment exceptions (split shipments, wrong service level, late delivery patterns) tied to refund or credit impact.
+•	It outputs an action list for logistics teams: dispute, renegotiate, or tighten shipping rules.
+Visual instruction:
+Use a carrier invoice reconciliation visual: “Expected vs Actual” with a variance column, plus filters for Carrier, Service Level, and Zone.
+________________________________________
+B2C Function 5: Subscription billing hygiene
+Subscription businesses leak cash through failed renewals, duplicate retries, misapplied credits, and mismatched plan terms. This workflow highlights billing noise that reduces retained revenue.
+•	It identifies renewals that failed, repeated charge attempts, and subscriptions that received duplicate credits.
+•	It groups issues by plan, cohort, and payment method so teams can fix the biggest drivers first.
+•	It creates a prioritized “recover now” list and a separate “prevent next cycle” list.
+Visual instruction:
+Use a subscription “health grid”: cards for Failed renewals, Duplicate retries, Credit issues, each opening a drill-down list with evidence links.
+________________________________________
+B2C Function 6: Customer service impact mapping
+Support tickets, chats, and complaints are early indicators of future refunds and churn. This workflow connects service signals to measurable revenue impact so teams act earlier.
+•	It links common complaint themes to downstream outcomes like refunds, chargebacks, and cancellations.
+•	It highlights accounts and products with rising service friction before costs spike.
+•	It produces a weekly “top drivers” summary with drill-down to the supporting interactions.
+Visual instruction:
+Use a “Service-to-impact” Sankey-style mock (no complex charting needed): Complaint theme → Refunds / Returns / Cancellations, with clickable counts.
