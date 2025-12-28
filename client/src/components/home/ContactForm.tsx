@@ -23,12 +23,23 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
+  fullName: z.string().min(1, "Full name is required."),
   email: z.string().email({
     message: "Please enter a valid work email.",
   }),
   company: z.string().min(2, {
     message: "Company name is required.",
   }),
+  website: z.string().min(1, "Company website is required.").refine((val) => {
+    try {
+      const url = val.startsWith('http') ? val : `https://${val}`;
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }, "Enter a valid website URL."),
+  numUsers: z.coerce.number().int().min(1, "Enter a valid number of users."),
   system: z.string({
     required_error: "Please select a primary system.",
   }),
@@ -42,8 +53,11 @@ export function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      fullName: "",
       email: "",
       company: "",
+      website: "",
+      numUsers: 0,
       question: "",
     },
   });
@@ -70,10 +84,24 @@ export function ContactForm() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name <span className="text-destructive">*</span></FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Work Email</FormLabel>
+                    <FormLabel>Work Email <span className="text-destructive">*</span></FormLabel>
                     <FormControl>
                       <Input placeholder="name@company.com" {...field} />
                     </FormControl>
@@ -87,9 +115,37 @@ export function ContactForm() {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company</FormLabel>
+                    <FormLabel>Company <span className="text-destructive">*</span></FormLabel>
                     <FormControl>
                       <Input placeholder="Company Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="website"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Website <span className="text-destructive">*</span></FormLabel>
+                    <FormControl>
+                      <Input placeholder="www.company.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="numUsers"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Number of Users <span className="text-destructive">*</span></FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="Estimated user count" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -101,7 +157,7 @@ export function ContactForm() {
                 name="system"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Primary System</FormLabel>
+                    <FormLabel>Primary System <span className="text-destructive">*</span></FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
@@ -124,7 +180,7 @@ export function ContactForm() {
                 name="question"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>What do you want to answer?</FormLabel>
+                    <FormLabel>What do you want to answer? <span className="text-destructive">*</span></FormLabel>
                     <FormControl>
                       <Textarea 
                         placeholder="e.g. Which customers are billed on outdated pricing?" 
