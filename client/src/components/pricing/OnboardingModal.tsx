@@ -114,6 +114,8 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
   const departments = ["Sales", "Marketing", "Market Access", "Commercial Ops", "FP&A", "Business Analytics", "Others"];
   const clouds = ["AWS", "Azure", "GCP", "Other"];
 
+  const RequiredAsterisk = () => <span className="text-destructive ml-0.5">*</span>;
+
   return (
     <>
       <Dialog open={open} onOpenChange={(val) => !val && handleCancel()}>
@@ -145,7 +147,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Full Name
+                          Full Name <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -166,7 +168,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Work Email
+                          Work Email <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -187,7 +189,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Company Name
+                          Company Name <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -208,7 +210,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Company Website
+                          Company Website <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -234,7 +236,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Estimated Users
+                          Estimated Users <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -255,7 +257,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={() => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Departments
+                          Departments <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -295,6 +297,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                             name="otherDepartment"
                             render={({ field }) => (
                               <FormItem className="mt-2">
+                                <FormLabel className="text-xs">Specify others <RequiredAsterisk /></FormLabel>
                                 <FormControl><Input placeholder="Specify others..." {...field} /></FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -318,7 +321,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                     render={() => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-1">
-                          Cloud Providers
+                          Cloud Providers <RequiredAsterisk />
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -358,6 +361,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                             name="otherCloud"
                             render={({ field }) => (
                               <FormItem className="mt-2">
+                                <FormLabel className="text-xs">Specify other clouds <RequiredAsterisk /></FormLabel>
                                 <FormControl><Input placeholder="Specify other clouds..." {...field} /></FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -380,7 +384,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormLabel className="flex items-center gap-1">
-                            Data Lake?
+                            Data Lake? <RequiredAsterisk />
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
@@ -410,7 +414,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormLabel className="flex items-center gap-1">
-                            Data Warehouse?
+                            Data Warehouse? <RequiredAsterisk />
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
@@ -446,7 +450,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                   render={({ field }) => (
                     <FormItem className="space-y-2">
                       <FormLabel className="flex items-center gap-1">
-                        Vertical
+                        Vertical <RequiredAsterisk />
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
@@ -471,7 +475,11 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                           control={form.control}
                           name="otherVertical"
                           render={({ field }) => (
-                            <FormControl><Input className="mt-2" placeholder="Specify industry..." {...field} /></FormControl>
+                            <FormItem className="mt-2">
+                              <FormLabel className="text-xs">Specify industry <RequiredAsterisk /></FormLabel>
+                              <FormControl><Input placeholder="Specify industry..." {...field} /></FormControl>
+                              <FormMessage />
+                            </FormItem>
                           )}
                         />
                       )}
@@ -485,7 +493,7 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center gap-1">
-                        Describe your current systems
+                        Describe your current systems <RequiredAsterisk />
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
