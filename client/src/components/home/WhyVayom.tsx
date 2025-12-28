@@ -1,6 +1,5 @@
 import React from "react";
-import { Logo } from "@/components/layout/Logo";
-import skyTexture from "@assets/generated_images/subtle_boundless_sky_gradient_texture_for_background.png";
+import logoImage from "@assets/generated_images/vayom_ai_premium_brand_logo_asset.png";
 
 export function WhyVayom() {
   return (
@@ -41,17 +40,16 @@ export function WhyVayom() {
         </div>
 
         {/* Right Column: Brand Panel */}
-        <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-slate-100">
+        <div className="relative h-[600px] w-full rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white group">
            <img 
-            src={skyTexture} 
-            alt="Boundless Sky Background" 
-            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            src={logoImage} 
+            alt="Vayom AI Identity" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent pointer-events-none" />
           
-          <div className="relative z-10 bg-white/10 backdrop-blur-xl p-16 rounded-[2rem] border border-white/40 shadow-xl">
-            <Logo className="text-white scale-[2] h-32" />
-          </div>
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-vayom-mint-100 rounded-full blur-3xl opacity-40 pointer-events-none" />
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/5 rounded-full blur-3xl opacity-40 pointer-events-none" />
         </div>
       </div>
     </section>
