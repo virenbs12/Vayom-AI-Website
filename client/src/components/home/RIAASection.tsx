@@ -15,7 +15,7 @@ export function RIAASection() {
       <div className="container-width relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <Badge className="bg-vayom-mint-100 text-primary hover:bg-vayom-mint-200 border-none px-4 py-1.5 text-sm font-semibold tracking-wide shadow-xs">
+            <Badge className="bg-vayom-mint-100 text-primary hover:bg-vayom-mint-200 border-none px-6 py-2.5 text-lg font-bold tracking-wide shadow-md mb-4 uppercase">
               Meet RIAA: Revenue Intelligence Agentic Atlas
             </Badge>
             
