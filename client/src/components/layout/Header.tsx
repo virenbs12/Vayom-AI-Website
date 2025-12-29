@@ -94,22 +94,6 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/#how-it-works">
-                  <NavigationMenuLink 
-                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
-                    onClick={(e) => {
-                      if (location === '/') {
-                        e.preventDefault();
-                        scrollToSection('how-it-works');
-                      }
-                    }}
-                  >
-                    How it works
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
                 <Link href="/#contact">
                   <NavigationMenuLink 
                     className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
@@ -165,7 +149,6 @@ export function Header() {
             <Link href="/pricing">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             </Link>
-            <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
             <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <Button 
               className="w-full mt-2" 
