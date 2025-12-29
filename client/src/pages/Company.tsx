@@ -50,12 +50,6 @@ import {
   Info,
 } from "lucide-react";
 
-const PUBLIC_EMAIL_PROVIDERS = [
-  "gmail.com", "googlemail.com", "yahoo.com", "ymail.com", "hotmail.com", "outlook.com", "live.com", "msn.com",
-  "aol.com", "icloud.com", "me.com", "mac.com", "proton.me", "protonmail.com", "tutanota.com", "tutanota.de",
-  "gmx.com", "gmx.net", "yandex.com", "yandex.ru", "mail.com", "fastmail.com", "zoho.com", "zohomail.com"
-];
-
 export default function Company() {
   const [location] = useLocation();
   const { toast } = useToast();
@@ -68,7 +62,6 @@ export default function Company() {
   const [isDragging, setIsDragging] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCancelDialog, setShowCancelDialog] = useState(false);
-  const [emailError, setEmailError] = useState("");
 
   const scrollToContact = () => {
     if (location === '/') {
@@ -77,16 +70,6 @@ export default function Company() {
     } else {
       window.location.href = '/#contact';
     }
-  };
-
-  const validateEmail = (email: string) => {
-    const domain = email.split("@")[1];
-    if (PUBLIC_EMAIL_PROVIDERS.includes(domain?.toLowerCase())) {
-      setEmailError("Please use a company email address.");
-      return false;
-    }
-    setEmailError("");
-    return true;
   };
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -159,7 +142,6 @@ export default function Company() {
     setWorkEmail("");
     setUserLocation("");
     setResumeFile(null);
-    setEmailError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -171,10 +153,6 @@ export default function Company() {
         description: "Please fill in all required fields.",
         variant: "destructive",
       });
-      return;
-    }
-
-    if (!validateEmail(workEmail)) {
       return;
     }
 
@@ -506,31 +484,16 @@ export default function Company() {
 
                   <div>
                     <label className="text-sm font-medium flex items-center gap-1 mb-2">
-                      Work Email <span className="text-destructive">*</span>
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
-                          </TooltipTrigger>
-                          <TooltipContent>Company email addresses only.</TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      Email <span className="text-destructive">*</span>
                     </label>
                     <Input
                       type="email"
                       value={workEmail}
-                      onChange={(e) => {
-                        setWorkEmail(e.target.value);
-                        if (emailError) validateEmail(e.target.value);
-                      }}
-                      onBlur={() => workEmail && validateEmail(workEmail)}
-                      placeholder="name@company.com"
+                      onChange={(e) => setWorkEmail(e.target.value)}
+                      placeholder="your@email.com"
                       required
                       data-testid="input-careers-email"
                     />
-                    {emailError && (
-                      <p className="text-sm text-destructive mt-1">{emailError}</p>
-                    )}
                   </div>
 
                   <div>

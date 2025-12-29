@@ -220,14 +220,6 @@ Submitted: ${new Date().toLocaleString()}
         });
       }
 
-      // Validate company email
-      const emailDomain = workEmail.split("@")[1]?.toLowerCase();
-      if (PUBLIC_EMAIL_PROVIDERS.includes(emailDomain)) {
-        return res.status(400).json({
-          success: false,
-          message: "Please use a company email address.",
-        });
-      }
 
       // Validate location
       if (!["United States", "India"].includes(location)) {
