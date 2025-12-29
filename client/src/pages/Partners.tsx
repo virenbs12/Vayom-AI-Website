@@ -58,7 +58,12 @@ export default function Partners() {
                 <Button size="lg" className="rounded-full px-8 text-lg h-12" onClick={() => setIsApplyModalOpen(true)}>
                   Apply to partner
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2" onClick={() => setIsApplyModalOpen(true)}>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="rounded-full px-8 text-lg h-12 border-2" 
+                  onClick={() => window.open('https://outlook.office365.com/owa/calendar/VayomAI@vayomai.com/bookings/', '_blank')}
+                >
                   Book a partner briefing
                 </Button>
               </div>
@@ -652,7 +657,12 @@ export default function Partners() {
                   <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12" onClick={() => setIsApplyModalOpen(true)}>
                     Apply to partner
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12" onClick={() => setIsApplyModalOpen(true)}>
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12" 
+                    onClick={() => window.open('https://outlook.office365.com/owa/calendar/VayomAI@vayomai.com/bookings/', '_blank')}
+                  >
                     Book a partner briefing
                   </Button>
                 </div>
