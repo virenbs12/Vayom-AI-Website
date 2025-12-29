@@ -9,6 +9,7 @@ import Markets from "@/pages/Markets";
 import BusinessFunctions from "@/pages/BusinessFunctions";
 import Pricing from "@/pages/Pricing";
 import Partners from "@/pages/Partners";
+import Resources from "@/pages/Resources";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/markets" component={Markets} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/partners" component={Partners} />
+      <Route path="/resources" component={Resources} />
       <Route path="/functions" component={BusinessFunctions} />
       <Route path="/business-functions" component={BusinessFunctions} />
       <Route component={NotFound} />
