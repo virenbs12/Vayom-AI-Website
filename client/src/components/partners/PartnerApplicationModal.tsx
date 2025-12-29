@@ -128,22 +128,41 @@ export function PartnerApplicationModal({ open, onOpenChange }: PartnerModalProp
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
-    // Mock API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log("Partner Application Data:", {
-      ...values,
-      sourcePage: "/partners",
-      timestamp: new Date().toISOString(),
-      formVersion: "partner_v1"
-    });
     
-    setIsSubmitting(false);
-    onOpenChange(false);
-    form.reset();
-    toast({
-      title: "Received.",
-      description: "We will respond within 24 business hours.",
-    });
+    try {
+      const response = await fetch("/api/partner-application", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        onOpenChange(false);
+        form.reset();
+        toast({
+          title: "Received.",
+          description: "We will respond within 24 business hours.",
+        });
+      } else {
+        toast({
+          title: "Submission failed",
+          description: data.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Connection error",
+        description: "Please try again or email us at sales@vayomai.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCancelClick = () => {

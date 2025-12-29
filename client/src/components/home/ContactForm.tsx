@@ -69,13 +69,38 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Request received",
-      description: "We'll be in touch shortly to schedule your demo.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast({
+          title: "Request received",
+          description: "We'll be in touch shortly to schedule your demo.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Submission failed",
+          description: data.message || "Please try again or email us directly.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Connection error",
+        description: "Please try again or email us at sales@vayomai.com",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
