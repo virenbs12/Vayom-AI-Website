@@ -56,7 +56,7 @@ export default function Partners() {
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button size="lg" className="rounded-full px-8 text-lg h-12" onClick={() => setIsApplyModalOpen(true)}>
-                  Apply to partner
+                  Apply to Partner
                 </Button>
                 <Button 
                   size="lg" 
@@ -64,7 +64,7 @@ export default function Partners() {
                   className="rounded-full px-8 text-lg h-12 border-2" 
                   onClick={() => window.open('https://outlook.office365.com/owa/calendar/VayomAI@vayomai.com/bookings/', '_blank')}
                 >
-                  Book a partner briefing
+                  Book a Partner Briefing
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground font-medium">
