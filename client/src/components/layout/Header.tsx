@@ -117,21 +117,6 @@ export function Header() {
                 </Link>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <Link href="/#contact">
-                  <NavigationMenuLink 
-                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
-                    onClick={(e) => {
-                      if (location === '/') {
-                        e.preventDefault();
-                        scrollToSection('contact');
-                      }
-                    }}
-                  >
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -182,7 +167,6 @@ export function Header() {
             <Link href="/company">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Company</a>
             </Link>
-            <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <Button 
               className="w-full mt-2" 
               onClick={() => {
