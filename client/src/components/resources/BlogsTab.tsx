@@ -46,7 +46,7 @@ export function BlogsTab() {
               <SelectItem value="all">All Categories</SelectItem>
               <SelectItem value="B2B">B2B</SelectItem>
               <SelectItem value="B2C">B2C</SelectItem>
-              <SelectItem value="RIAA platform">RIAA platform</SelectItem>
+              <SelectItem value="RIAA solution">RIAA solution</SelectItem>
               <SelectItem value="Partnerships">Partnerships</SelectItem>
               <SelectItem value="Security and deployment">Security and deployment</SelectItem>
             </SelectContent>

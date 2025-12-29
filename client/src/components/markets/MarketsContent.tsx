@@ -623,7 +623,7 @@ export function MarketsContent() {
         <section id="riaa" className="scroll-mt-40 border-t border-border pt-20">
           <div className="mb-16">
             <span className="text-primary font-bold tracking-wide uppercase text-sm">Solutions Page: RIAA</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">RIAA: Revenue Intelligence Agentic Atlas (the core platform)</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">RIAA: Revenue Intelligence Agentic Atlas (the core solution)</h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
               RIAA is the system that makes multi-source answers usable in real operations. It coordinates retrieval across databases, documents, and feeds, then returns results with proof attached. Teams can validate fast, act fast, and stop sending cash out the door due to slow verification and execution drift.
             </p>

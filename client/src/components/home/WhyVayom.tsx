@@ -22,7 +22,7 @@ export function WhyVayom() {
               {[
                 "Enterprise-grade intelligence at middle-market pricing",
                 "Cross-functional workflows with minimal data engineering",
-                "Built for both B2B and B2C operations on one platform",
+                "Built for both B2B and B2C operations on one solution",
                 "Evidence-linked outputs so teams can verify and act quickly",
                 "SaaS or VPC deployment for control and scale"
               ].map((item, i) => (

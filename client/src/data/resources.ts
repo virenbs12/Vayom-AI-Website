@@ -49,8 +49,8 @@ export const blogs: Blog[] = [
     id: '2',
     title: 'Evidence-linked outputs, explained simply',
     summary: 'What “evidence-linked” means in practice and how teams review faster without spreadsheets.',
-    tags: ['RIAA platform', '3–5 min'],
-    category: 'RIAA platform',
+    tags: ['RIAA solution', '3–5 min'],
+    category: 'RIAA solution',
     readTime: '3–5 min',
     date: '2025-05-10'
   },
@@ -162,7 +162,7 @@ export const demos: Demo[] = [
   {
     id: 'd1',
     title: 'RIAA demo',
-    summary: 'A platform walk-through showing how systems, documents, and feeds become evidence-linked outputs.',
+    summary: 'A solution walk-through showing how systems, documents, and feeds become evidence-linked outputs.',
     duration: '6:20',
     track: 'RIAA',
     videoPlaceholder: 'RIAA_DEMO_VIDEO'

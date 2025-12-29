@@ -23,7 +23,7 @@ export function RIAASection() {
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              RIAA is the platform behind Vayom AI. It connects your systems and documents, links every result back to proof, and turns "we think" into "we can show." The goal is simple: stop sending cash out the door because the evidence was trapped in silos.
+              RIAA is the solution behind Vayom AI. It connects your systems and documents, links every result back to proof, and turns "we think" into "we can show." The goal is simple: stop sending cash out the door because the evidence was trapped in silos.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-4">

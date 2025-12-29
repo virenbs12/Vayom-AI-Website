@@ -47,7 +47,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "249", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -118,7 +118,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "189", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -189,7 +189,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "219", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -260,7 +260,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "379", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -331,7 +331,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "919", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -402,7 +402,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "4,500", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",
@@ -473,7 +473,7 @@ const pricingData = [
       { 
         name: "Power (all systems + feeds)", 
         price: "319", 
-        desc: "Full platform scale",
+        desc: "Full solution scale",
         features: {
           structuredSources: "Unlimited",
           extraSource: "No extra charge",

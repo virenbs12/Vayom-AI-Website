@@ -564,7 +564,7 @@ export function PartnerApplicationModal({ open, onOpenChange }: PartnerModalProp
                       render={() => (
                         <FormItem>
                           <div className="mb-4">
-                            <FormLabel>Systems you frequently work with * <InfoIcon tooltip="Select the platforms you commonly integrate or operate for clients." /></FormLabel>
+                            <FormLabel>Systems you frequently work with * <InfoIcon tooltip="Select the solutions you commonly integrate or operate for clients." /></FormLabel>
                           </div>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {["NetSuite", "Salesforce", "SAP", "Oracle", "Snowflake", "Databricks", "Microsoft Dynamics", "HubSpot", "Other"].map((sys) => (

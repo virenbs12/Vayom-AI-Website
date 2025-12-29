@@ -20,7 +20,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link href="/markets#b2c"><a className="hover:text-primary transition-colors">B2C Workflows</a></Link></li>
               <li><Link href="/markets#b2b"><a className="hover:text-primary transition-colors">B2B Workflows</a></Link></li>
-              <li><Link href="/markets#riaa"><a className="hover:text-primary transition-colors">RIAA Platform</a></Link></li>
+              <li><Link href="/markets#riaa"><a className="hover:text-primary transition-colors">RIAA Solution</a></Link></li>
               <li><Link href="/business-functions"><a className="hover:text-primary transition-colors">Business Functions</a></Link></li>
             </ul>
           </div>
