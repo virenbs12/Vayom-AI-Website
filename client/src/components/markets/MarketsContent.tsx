@@ -715,6 +715,30 @@ export function MarketsContent() {
             </div>
           </div>
 
+          {/* Out of the Box Integrations */}
+          <div className="mb-24">
+            <h3 className="text-2xl font-display font-bold mb-4">Out of the Box Integrations</h3>
+            <p className="text-muted-foreground mb-8 max-w-2xl">Pre-built connectors for the systems your teams already use. No rip-and-replace required.</p>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+              {[
+                "Salesforce", "MySQL", "PostgreSQL", "MongoDB", "Databricks", "Snowflake",
+                "Azure Blob Storage", "Amazon S3", "SAP", "Trino", "Microsoft Dynamics 365", "Microsoft 365",
+                "Slack", "Jira", "Azure DevOps", "Tally", "Zoho CRM", "Facebook Ads",
+                "Google Ads", "Shopify", "FreshDesk", "ZenDesk", "Zoom", "HubSpot"
+              ].map((system, i) => (
+                <div 
+                  key={i} 
+                  className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center text-xs font-medium hover:bg-slate-800 transition-colors cursor-default border border-slate-700"
+                >
+                  {system}
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-6 text-center">
+              Additional connectors available on request. Custom integrations supported.
+            </p>
+          </div>
+
           {/* Provenance-first outputs */}
           <div className="mb-24">
             <h3 className="text-2xl font-display font-bold mb-8">Provenance-first outputs</h3>
