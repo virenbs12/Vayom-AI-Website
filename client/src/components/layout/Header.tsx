@@ -44,7 +44,7 @@ export function Header() {
       <div className="container-width flex items-center justify-between">
         <Link href="/">
           <a className="cursor-pointer block">
-            <Logo className="h-10 md:h-12" />
+            <Logo className="h-24 md:h-32" />
           </a>
         </Link>
 
