@@ -187,9 +187,9 @@ export function PartnerApplicationModal({ open, onOpenChange }: PartnerModalProp
             </div>
           </DialogHeader>
 
-          <ScrollArea className="flex-1 p-6">
+          <div className="flex-1 overflow-y-auto p-6 min-h-0 bg-white">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 pb-8">
                 {/* SECTION A: CONTACT */}
                 <div className="space-y-6">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-primary border-b pb-2">A) Contact</h3>
@@ -667,7 +667,7 @@ export function PartnerApplicationModal({ open, onOpenChange }: PartnerModalProp
                 </div>
               </form>
             </Form>
-          </ScrollArea>
+          </div>
 
           <DialogFooter className="p-6 border-t bg-slate-50 shrink-0 gap-3">
             <Button variant="ghost" onClick={handleCancelClick}>Cancel</Button>
