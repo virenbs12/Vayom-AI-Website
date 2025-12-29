@@ -651,11 +651,11 @@ export default function Partners() {
               <div className="space-y-8">
                 <h2 className="text-4xl md:text-5xl font-display font-bold">Build what’s next, together</h2>
                 <p className="text-xl opacity-90 leading-relaxed">
-                  Apply to partner and we will schedule a briefing to align on your delivery model and first joint opportunity.
+                  Apply to Partner and we will schedule a briefing to align on your delivery model and first joint opportunity.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12" onClick={() => setIsApplyModalOpen(true)}>
-                    Apply to partner
+                    Apply to Partner
                   </Button>
                   <Button 
                     size="lg" 
@@ -663,7 +663,7 @@ export default function Partners() {
                     className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12" 
                     onClick={() => window.open('https://outlook.office365.com/owa/calendar/VayomAI@vayomai.com/bookings/', '_blank')}
                   >
-                    Book a partner briefing
+                    Book a Partner Briefing
                   </Button>
                 </div>
               </div>
