@@ -63,12 +63,18 @@ export default function Resources() {
                 Tell us your systems and what you need to verify. We will show the output format and the evidence trail.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12">
-                  Request a workflow demo
+                <Button 
+                  size="lg" 
+                  className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12"
+                  onClick={scrollToContact}
+                >
+                  Request a Demo
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12">
-                  Explore markets
-                </Button>
+                <Link href="/markets">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12">
+                    Explore Solutions
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
