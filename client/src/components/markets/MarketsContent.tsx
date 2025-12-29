@@ -36,7 +36,9 @@ import {
   Truck,
   RefreshCcw,
   MessageSquare,
-  BarChart
+  BarChart,
+  ListFilter,
+  Target
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -318,6 +320,63 @@ export function MarketsContent() {
                       <div className="flex-1 space-y-2">
                          <div className="p-2 bg-red-50 rounded border border-red-100 text-[9px] font-bold text-red-600">82 Refunds</div>
                          <div className="p-2 bg-amber-50 rounded border border-amber-100 text-[9px] font-bold text-amber-600">14 Cancellations</div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {/* B2C Function 7 */}
+             <div className="lg:col-span-2 bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
+                <span className="text-[10px] font-bold uppercase text-primary mb-2">B2C workflows (overview)</span>
+                <h3 className="text-xl font-bold mb-4">Customer Service Data Signals</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Turn support conversations into early-warning signals for churn, refunds, and reputation.
+                </p>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Traditional reporting tracks handle time and SLAs, but misses what customers actually experienced. This converts calls, tickets, and chats into structured signals that downstream teams can act on.
+                </p>
+                
+                <div className="mb-6">
+                   <div className="text-[11px] font-bold text-slate-600 mb-4">What Vayom AI flags:</div>
+                   <div className="grid md:grid-cols-3 gap-4">
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <h4 className="font-bold text-sm mb-2">Experience risk signals</h4>
+                         <p className="text-[11px] text-muted-foreground">from transcripts and text artifacts across channels (voice, tickets, messaging, chatbots).</p>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <h4 className="font-bold text-sm mb-2">Consistency, not anecdotes</h4>
+                         <p className="text-[11px] text-muted-foreground">a fixed set of metrics per interaction, including agent tactics tied to outcomes.</p>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <h4 className="font-bold text-sm mb-2">Actionable patterns</h4>
+                         <p className="text-[11px] text-muted-foreground">like confusion, escalation intent, empathy, clarity, and de-escalation signals.</p>
+                      </div>
+                   </div>
+                </div>
+
+                <div>
+                   <div className="text-[11px] font-bold text-slate-600 mb-4">What teams do next:</div>
+                   <div className="grid md:grid-cols-3 gap-4">
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                            <ListFilter className="w-4 h-4 text-primary" />
+                         </div>
+                         <h4 className="font-bold text-sm mb-2">Prioritize fixes</h4>
+                         <p className="text-[11px] text-muted-foreground">by theme, product, policy, or segment using the structured interaction signals.</p>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                            <Users className="w-4 h-4 text-primary" />
+                         </div>
+                         <h4 className="font-bold text-sm mb-2">Route at-risk customers</h4>
+                         <p className="text-[11px] text-muted-foreground">and high-friction issues to the right owner before they cascade.</p>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl border border-border">
+                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                            <Target className="w-4 h-4 text-primary" />
+                         </div>
+                         <h4 className="font-bold text-sm mb-2">Coach and standardize</h4>
+                         <p className="text-[11px] text-muted-foreground">service motion using tactic effectiveness outcomes (what worked, what did not).</p>
                       </div>
                    </div>
                 </div>
