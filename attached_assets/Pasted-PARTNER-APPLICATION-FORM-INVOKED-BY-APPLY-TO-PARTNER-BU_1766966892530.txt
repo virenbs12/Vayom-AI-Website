@@ -1,0 +1,287 @@
+PARTNER APPLICATION FORM (INVOKED BY “APPLY TO PARTNER” BUTTON)
+
+1. TRIGGER AND MODAL BEHAVIOR
+
+* When the user clicks “Apply to partner” anywhere on the Partners page, open a centered modal (do not navigate away).
+* Dim the background and lock page scroll while modal is open.
+* Modal title: “Partner application”
+* Modal subtitle: “Share a few details so we can route you to the right partner path and schedule a briefing.”
+* Add a lock icon + microcopy: “Used only for partner onboarding.”
+* Include manual close options:
+
+  * X icon (top right)
+  * Cancel button (bottom)
+* Persist entered data while the modal is open.
+
+2. FORM LAYOUT (IMPRESSIVE)
+
+* Desktop: 2-column grid layout, mobile: single column.
+* Group fields into section cards:
+  A) Contact
+  B) Company
+  C) Partner model and scope
+  D) Delivery and capabilities
+  E) Notes
+* Every field label must have a superscript info icon (ⓘ).
+* Tooltip behavior:
+
+  * Hover (desktop) or tap (mobile) to show a popover
+  * 1 to 2 sentences, practical, no fluff
+* Validation:
+
+  * Inline errors under the field
+  * Disable Submit until required fields pass validation
+
+3. FIELDS, REQUIRED FLAGS, VALIDATIONS, AND TOOLTIPS
+
+A) CONTACT
+
+1. Full name (required)
+
+* Tooltip: “Primary point of contact for partner onboarding and scheduling.”
+
+2. Title / role (required)
+
+* Tooltip: “Helps us route you to the right partner program and technical track.”
+
+3. Work email (required, must be company email, no public providers)
+
+* Tooltip: “Use your company email so we can validate your domain and set up partner communications.”
+* Validation:
+
+  * Valid email format.
+  * Block public providers at minimum:
+    gmail.com, googlemail.com, yahoo.com, ymail.com, hotmail.com, outlook.com, live.com, msn.com,
+    aol.com, icloud.com, me.com, mac.com,
+    proton.me, protonmail.com, tutanota.com, tutanota.de,
+    gmx.com, gmx.net, yandex.com, yandex.ru, mail.com, fastmail.com, zoho.com, zohomail.com
+  * Inline error: “Please enter a company email address (public email providers are not accepted).”
+
+4. Phone (optional)
+
+* Tooltip: “Optional. Useful for faster scheduling across time zones.”
+* Validation: basic phone format, allow country code.
+
+B) COMPANY
+5. Company name (required)
+
+* Tooltip: “Used to create your partner record and route internal review.”
+
+6. Company website (required)
+
+* Tooltip: “Used to validate your organization and understand your service offerings.”
+* Validation:
+
+  * Accept example.com or [https://example.com](https://example.com)
+  * Normalize to https:// if missing
+  * Must be valid domain/URL
+
+7. Headquarters country (required)
+
+* Tooltip: “Used to route you to the right regional partner contact.”
+
+8. Regions you serve (required, multi-select checkboxes)
+
+* Options: North America, Europe, Middle East, India, APAC, Latin America, Other
+* Tooltip: “Select all regions where you actively sell or deliver services.”
+* If Other selected: show “Other regions” text input (required when Other checked)
+
+9. Company size (required)
+
+* Dropdown: 1–50, 51–200, 201–1,000, 1,001–5,000, 5,001+
+* Tooltip: “Helps us align enablement and support expectations.”
+
+C) PARTNER MODEL AND SCOPE
+10. Partner type (required, single select)
+
+* Radio: Advisory/Consulting, System Integrator, BPO/Managed Services, Technology Partner, Other
+* Tooltip: “Select the category that best matches how you engage with clients.”
+* If Other selected: show “Partner type, please specify” (required)
+
+11. Engagement model (required, multi-select checkboxes)
+
+* Checkboxes: Referral, Co-sell, Delivery partner, White-label interest
+* Tooltip: “Select how you want to go to market with Vayom AI.”
+
+12. Primary vertical focus (required)
+
+* Radio: B2B, B2C, Both, Other
+* Tooltip: “Helps us align starter workflows and demo scenarios.”
+* If Other selected: show “Vertical, please specify” (required)
+
+13. Estimated number of client projects per year (optional)
+
+* Numeric input
+* Tooltip: “Helps us plan enablement and partner capacity.”
+* Validation: whole number if provided.
+
+D) DELIVERY AND CAPABILITIES
+14. Preferred deployment for clients (required, multi-select checkboxes)
+
+* Checkboxes: SaaS, VPC, Both, Not sure
+* Tooltip: “Select what your clients typically require. VPC is common for tighter control environments.”
+
+15. Client cloud environments you support (required, multi-select checkboxes)
+
+* Checkboxes: AWS, Azure, GCP, Other
+* Tooltip: “Select all platforms where you can deploy or support client environments.”
+* If Other selected: show “Other cloud(s)” text input (required)
+
+16. Systems you frequently work with (required, multi-select checkboxes)
+
+* Checkboxes: NetSuite, Salesforce, SAP, Oracle, Snowflake, Databricks, Microsoft Dynamics, HubSpot, Other
+* Tooltip: “Select the systems you commonly integrate or operate in client environments.”
+* If Other selected: show “Other systems” text input (required)
+
+17. What outcomes do you want to deliver first? (required, multi-select checkboxes)
+
+* Checkboxes:
+
+  * Contract-to-invoice alignment
+  * Discount governance
+  * Transaction deduplication
+  * Transaction validation
+  * Deductions and claims readiness
+  * Promo integrity (B2C)
+  * Returns/refunds leakage (B2C)
+  * Subscription billing hygiene (B2C)
+  * Other
+* Tooltip: “Pick the workflows you want to lead with so we can tailor the briefing and partner materials.”
+* If Other selected: show “Other outcomes” text input (required)
+
+18. Implementation approach (required)
+
+* Radio: We implement, We co-implement with client, Client implements with our guidance
+* Tooltip: “Helps define responsibilities, timelines, and partner enablement.”
+
+E) NOTES
+19. Tell us about your practice and why you want to partner (required, free text)
+
+* Placeholder: “What you sell, how you deliver, and where you see the best fit with Vayom AI.”
+* Tooltip: “Include your target clients, typical engagement size, and what you want to build together.”
+* Validation: minimum 40 characters.
+
+20. Anything else we should know? (optional, free text)
+
+* Tooltip: “Optional. Add context such as certifications, partner ecosystem, or special constraints.”
+
+HIDDEN FIELDS (auto-captured)
+
+* Source page: “/partners”
+* Timestamp UTC
+* Form version (example: “partner_v1”)
+
+4. BUTTONS AND CONFIRMATION FLOWS
+   Buttons (bottom right):
+
+* Cancel (secondary)
+* Submit application (primary)
+
+Cancel behavior
+
+* On Cancel click, show confirmation dialog:
+  Title: “Discard this application?”
+  Message: “Your entered information will be lost.”
+  Buttons: “Go back” (default) and “Discard”
+* Discard closes modal and clears form.
+* Go back returns to the form with entries preserved.
+
+Submit behavior
+
+* Disable Submit while sending and show “Submitting…”.
+* On success:
+
+  * Close modal
+  * Show success banner/toast:
+    “Received. We will respond within 24 business hours.”
+* On failure:
+
+  * Keep modal open
+  * Show error banner:
+    “We could not submit your application. Please try again or email [partners@vayomai.com](mailto:partners@vayomai.com).”
+
+5. EMAIL SENDING (AZURE COMMUNICATION SERVICES EMAIL)
+   Implementation requirement
+
+* Send emails from a server endpoint using Azure Communication Services (Email). Do not send from client-side code.
+
+A) INTERNAL EMAIL (to internal teams)
+To:
+
+* [partners@vayomai.com](mailto:partners@vayomai.com)
+  CC:
+* [sales@vayomai.com](mailto:sales@vayomai.com)
+
+Subject:
+New partner application: [Company name] ([Partner type])
+
+Body (include fields in this order)
+
+* Full name
+* Title / role
+* Work email
+* Phone (if provided)
+* Company name
+* Company website
+* Headquarters country
+* Regions served (and Other regions if provided)
+* Company size
+* Partner type (and specified text if Other)
+* Engagement model selections
+* Primary vertical focus (and specified text if Other)
+* Estimated client projects per year (if provided)
+* Preferred deployment (SaaS/VPC/Both/Not sure)
+* Client cloud environments supported (and Other cloud if provided)
+* Systems frequently worked with (and Other systems if provided)
+* Outcomes selected (and Other outcomes if provided)
+* Implementation approach
+* Notes: practice and why partner
+* Notes: anything else (if provided)
+* Source page
+* Timestamp UTC
+
+B) SUBMITTER CONFIRMATION EMAIL
+To:
+
+* submitter work email
+
+Subject:
+We received your partner application
+
+Body
+
+* “Thanks, we received your partner application.”
+* “Our team will respond within 24 business hours to schedule a briefing.”
+  Include:
+* Company name
+* Partner type
+* Engagement model selected
+  Closing:
+* “If you need to add context, reply to this email.”
+  Reply-To:
+* [partners@vayomai.com](mailto:partners@vayomai.com)
+
+Headers
+
+* From: verified sender on vayomai.com (example: [no-reply@vayomai.com](mailto:no-reply@vayomai.com))
+* Reply-To: [partners@vayomai.com](mailto:partners@vayomai.com)
+
+6. TOOLTIP COPY (READY TO PASTE)
+
+* Full name: “Primary point of contact for partner onboarding and scheduling.”
+* Title/role: “Helps us route you to the right partner program and technical track.”
+* Work email: “Use your company email so we can validate your domain and set up partner communications.”
+* Company website: “Used to validate your organization and understand your service offerings.”
+* HQ country: “Used to route you to the right regional partner contact.”
+* Regions served: “Select all regions where you actively sell or deliver services.”
+* Company size: “Helps align enablement and support expectations.”
+* Partner type: “Select the category that best matches how you engage with clients.”
+* Engagement model: “Select how you want to go to market with Vayom AI.”
+* Vertical focus: “Helps align starter workflows and demo scenarios.”
+* Deployment: “Select what your clients typically require. VPC is common for tighter control environments.”
+* Client clouds: “Select where you can deploy or support client environments.”
+* Systems: “Select the platforms you commonly integrate or operate for clients.”
+* Outcomes: “Pick the workflows you want to lead with so we can tailor the briefing and partner materials.”
+* Implementation approach: “Helps define responsibilities, timelines, and partner enablement.”
+* Practice notes: “Include your target clients, typical engagement size, and what you want to build together.”
+* Additional notes: “Optional. Add context such as certifications or ecosystem partnerships.”

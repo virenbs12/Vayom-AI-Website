@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -21,9 +21,11 @@ import {
   AlertCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PartnerApplicationModal } from "@/components/partners/PartnerApplicationModal";
 
 export default function Partners() {
   const [activeTab, setActiveTab] = React.useState("advisory");
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -53,10 +55,10 @@ export default function Partners() {
                 Bring your clients evidence-linked answers across ERP, CRM, contracts, and feeds, then turn those outputs into clear actions and outcomes.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button size="lg" className="rounded-full px-8 text-lg h-12" onClick={() => scrollToSection('apply')}>
+                <Button size="lg" className="rounded-full px-8 text-lg h-12" onClick={() => setIsApplyModalOpen(true)}>
                   Apply to partner
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2" onClick={() => scrollToSection('apply')}>
+                <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2" onClick={() => setIsApplyModalOpen(true)}>
                   Book a partner briefing
                 </Button>
               </div>
@@ -647,10 +649,10 @@ export default function Partners() {
                   Apply to partner and we will schedule a briefing to align on your delivery model and first joint opportunity.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12">
+                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12" onClick={() => setIsApplyModalOpen(true)}>
                     Apply to partner
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 h-12" onClick={() => setIsApplyModalOpen(true)}>
                     Book a partner briefing
                   </Button>
                 </div>
@@ -683,6 +685,7 @@ export default function Partners() {
       </main>
 
       <Footer />
+      <PartnerApplicationModal open={isApplyModalOpen} onOpenChange={setIsApplyModalOpen} />
     </div>
   );
 }
