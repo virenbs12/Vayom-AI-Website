@@ -16,19 +16,23 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Product</h4>
+            <h4 className="font-semibold mb-4">Solutions</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/markets"><a className="hover:text-primary transition-colors">Solutions</a></Link></li>
-              <li><Link href="/#riaa"><a className="hover:text-primary transition-colors">RIAA</a></Link></li>
+              <li><Link href="/markets#b2c"><a className="hover:text-primary transition-colors">B2C Workflows</a></Link></li>
+              <li><Link href="/markets#b2b"><a className="hover:text-primary transition-colors">B2B Workflows</a></Link></li>
+              <li><Link href="/markets#riaa"><a className="hover:text-primary transition-colors">RIAA Platform</a></Link></li>
+              <li><Link href="/business-functions"><a className="hover:text-primary transition-colors">Business Functions</a></Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/pricing"><a className="hover:text-primary transition-colors">Pricing</a></Link></li>
               <li><Link href="/partners"><a className="hover:text-primary transition-colors">Partners</a></Link></li>
+              <li><Link href="/resources"><a className="hover:text-primary transition-colors">Resources</a></Link></li>
               <li><Link href="/#contact"><a className="hover:text-primary transition-colors">Contact</a></Link></li>
-              <li><a href="mailto:sales@vayomai.com" className="hover:text-primary transition-colors">sales@vayomai.com</a></li>
+              <li><a href="mailto:sales@vayomai.com" className="hover:text-primary transition-colors pt-2 block">sales@vayomai.com</a></li>
             </ul>
           </div>
         </div>
