@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import { scrollToDemo } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -51,7 +52,6 @@ import {
 } from "lucide-react";
 
 export default function Company() {
-  const [location] = useLocation();
   const { toast } = useToast();
 
   // Careers form state
@@ -62,15 +62,6 @@ export default function Company() {
   const [isDragging, setIsDragging] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCancelDialog, setShowCancelDialog] = useState(false);
-
-  const scrollToContact = () => {
-    if (location === '/') {
-      const element = document.getElementById('contact');
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/#contact';
-    }
-  };
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -215,7 +206,8 @@ export default function Company() {
                 <Button 
                   size="lg" 
                   className="rounded-full px-8 text-lg h-12"
-                  onClick={scrollToContact}
+                  onClick={scrollToDemo}
+                  data-testid="button-request-demo-company-hero"
                 >
                   Request a Demo
                 </Button>
@@ -616,7 +608,8 @@ export default function Company() {
               <Button 
                 size="lg" 
                 className="rounded-full px-8 h-12"
-                onClick={scrollToContact}
+                onClick={scrollToDemo}
+                data-testid="button-request-demo-company-contact"
               >
                 Request a Demo
               </Button>

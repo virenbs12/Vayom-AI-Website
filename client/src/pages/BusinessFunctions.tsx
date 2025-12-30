@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/home/ContactForm";
-import { cn } from "@/lib/utils";
+import { cn, scrollToDemo } from "@/lib/utils";
 import { 
   Search, 
   Database, 
@@ -75,11 +75,12 @@ export default function BusinessFunctions() {
               </p>
               
               <div className="flex gap-4 pt-4">
-                <Button size="lg" className="rounded-full px-8" onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  else window.location.href = '/#contact';
-                }}>
+                <Button 
+                  size="lg" 
+                  className="rounded-full px-8" 
+                  onClick={scrollToDemo}
+                  data-testid="button-request-demo-functions-hero"
+                >
                   Request a Demo
                 </Button>
                 <Link href="/markets#riaa">
@@ -214,11 +215,13 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button className="rounded-full px-8 mt-4" onClick={() => {
-                     const element = document.getElementById('contact');
-                     if (element) element.scrollIntoView({ behavior: 'smooth' });
-                     else window.location.href = '/#contact';
-                   }}>Request a Demo</Button>
+                   <Button 
+                     className="rounded-full px-8 mt-4" 
+                     onClick={scrollToDemo}
+                     data-testid="button-request-demo-finance"
+                   >
+                     Request a Demo
+                   </Button>
                 </div>
                 
                 {/* Finance Visual */}
@@ -366,11 +369,13 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button className="rounded-full px-8 mt-4" onClick={() => {
-                     const element = document.getElementById('contact');
-                     if (element) element.scrollIntoView({ behavior: 'smooth' });
-                     else window.location.href = '/#contact';
-                   }}>Request a Demo</Button>
+                   <Button 
+                     className="rounded-full px-8 mt-4" 
+                     onClick={scrollToDemo}
+                     data-testid="button-request-demo-sales"
+                   >
+                     Request a Demo
+                   </Button>
                 </div>
                 
                 {/* Sales Visual: Shareable Account Brief */}
@@ -503,11 +508,13 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button className="rounded-full px-8 mt-4" onClick={() => {
-                     const element = document.getElementById('contact');
-                     if (element) element.scrollIntoView({ behavior: 'smooth' });
-                     else window.location.href = '/#contact';
-                   }}>Request a Demo</Button>
+                   <Button 
+                     className="rounded-full px-8 mt-4" 
+                     onClick={scrollToDemo}
+                     data-testid="button-request-demo-operations"
+                   >
+                     Request a Demo
+                   </Button>
                 </div>
                 
                 {/* Operations Visual: Issue-to-Impact Map */}
@@ -628,11 +635,13 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button className="rounded-full px-8 mt-4" onClick={() => {
-                     const element = document.getElementById('contact');
-                     if (element) element.scrollIntoView({ behavior: 'smooth' });
-                     else window.location.href = '/#contact';
-                   }}>Request a Demo</Button>
+                   <Button 
+                     className="rounded-full px-8 mt-4" 
+                     onClick={scrollToDemo}
+                     data-testid="button-request-demo-it-security"
+                   >
+                     Request a Demo
+                   </Button>
                 </div>
                 
                 {/* IT Visual: Permissions + Sources Console */}

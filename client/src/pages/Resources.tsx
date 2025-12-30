@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ResourceHero } from "@/components/resources/ResourceHero";
@@ -8,18 +8,9 @@ import { EventsTab } from "@/components/resources/EventsTab";
 import { DemosTab } from "@/components/resources/DemosTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { scrollToDemo } from "@/lib/utils";
 
 export default function Resources() {
-  const [location] = useLocation();
-
-  const scrollToContact = () => {
-    if (location === '/') {
-      const element = document.getElementById('contact');
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/#contact';
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -66,7 +57,8 @@ export default function Resources() {
                 <Button 
                   size="lg" 
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-12"
-                  onClick={scrollToContact}
+                  onClick={scrollToDemo}
+                  data-testid="button-request-demo-resources"
                 >
                   Request a Demo
                 </Button>

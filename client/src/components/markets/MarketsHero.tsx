@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, User, AlertCircle, Search } from "lucide-react";
 import { Link } from "wouter";
+import { scrollToDemo } from "@/lib/utils";
 
 export function MarketsHero() {
   const scrollTo = (id: string) => {
@@ -24,11 +25,12 @@ export function MarketsHero() {
           </p>
           
           <div className="flex gap-4 pt-4">
-            <Button size="lg" className="rounded-full px-8" onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-              else window.location.href = '/#contact';
-            }}>
+            <Button 
+              size="lg" 
+              className="rounded-full px-8" 
+              onClick={scrollToDemo}
+              data-testid="button-request-demo-markets"
+            >
               Request a Demo
             </Button>
           </div>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Search, FileText, Database, CheckCircle, ChevronRight, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { scrollToDemo } from "@/lib/utils";
 
 export function HeroSlideOne() {
   return (
@@ -26,10 +27,8 @@ export function HeroSlideOne() {
             <Button 
               size="lg" 
               className="rounded-full px-8 text-lg h-12"
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={scrollToDemo}
+              data-testid="button-request-demo-hero-one"
             >
               Request a Demo
             </Button>

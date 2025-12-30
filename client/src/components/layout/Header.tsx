@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
+import { cn, scrollToDemo } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
@@ -124,10 +124,8 @@ export function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Button 
             className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white font-medium"
-            onClick={() => {
-              if (location === '/') scrollToSection('contact');
-              else window.location.href = '/#contact';
-            }}
+            onClick={scrollToDemo}
+            data-testid="button-request-demo-header"
           >
             Request a Demo
           </Button>
@@ -171,9 +169,9 @@ export function Header() {
               className="w-full mt-2" 
               onClick={() => {
                 setMobileMenuOpen(false);
-                if (location === '/') scrollToSection('contact');
-                else window.location.href = '/#contact';
+                scrollToDemo();
               }}
+              data-testid="button-request-demo-mobile"
             >
               Request a Demo
             </Button>
