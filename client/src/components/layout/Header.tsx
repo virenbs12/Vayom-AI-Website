@@ -132,15 +132,65 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/business-functions">
-                  <NavigationMenuLink className={cn(
-                    navigationMenuTriggerStyle(), 
-                    "bg-transparent font-medium",
-                    isBusinessFunctionsActive && activeStyle
-                  )}>
-                    Business Functions
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium",
+                  isBusinessFunctionsActive && activeStyle
+                )}>
+                  Business Functions
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="flex items-center gap-1 p-4 bg-white whitespace-nowrap">
+                    <ListItem 
+                      href="/business-functions#finance" 
+                      title="Finance" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#finance"}
+                    />
+                    <ListItem 
+                      href="/business-functions#revops" 
+                      title="RevOps & Deal Desk" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#revops"}
+                    />
+                    <ListItem 
+                      href="/business-functions#sales" 
+                      title="Sales" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#sales"}
+                    />
+                    <ListItem 
+                      href="/business-functions#marketing" 
+                      title="Marketing" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#marketing"}
+                    />
+                    <ListItem 
+                      href="/business-functions#operations" 
+                      title="Operations" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#operations"}
+                    />
+                    <ListItem 
+                      href="/business-functions#leadership" 
+                      title="Leadership" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#leadership"}
+                    />
+                    <ListItem 
+                      href="/business-functions#it-security" 
+                      title="IT & Security" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      isActive={isBusinessFunctionsActive && currentHash === "#it-security"}
+                    />
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>

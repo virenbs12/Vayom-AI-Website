@@ -30,6 +30,18 @@ export default function BusinessFunctions() {
   const [activeSection, setActiveSection] = useState("finance");
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ["finance", "revops", "sales", "marketing", "operations", "leadership", "it-security"];
       for (const section of sections) {
