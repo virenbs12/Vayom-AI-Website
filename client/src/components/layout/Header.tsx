@@ -82,7 +82,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:block">
+        <div className="hidden md:block ml-25">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
