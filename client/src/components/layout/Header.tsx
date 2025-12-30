@@ -163,7 +163,7 @@ export function Header() {
                   Partners
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
+                  <ul className="flex items-center gap-1 p-4 bg-white whitespace-nowrap">
                     <ListItem 
                       href="/partners#why" 
                       title="Why Partner" 
