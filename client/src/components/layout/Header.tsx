@@ -38,13 +38,13 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/80 backdrop-blur-md border-border py-1 shadow-sm" : "bg-transparent py-1"
+        isScrolled ? "bg-white/80 backdrop-blur-md border-border py-2 shadow-sm" : "bg-transparent py-3"
       )}
     >
       <div className="container-width flex items-center justify-between">
         <Link href="/">
           <a className="cursor-pointer block">
-            <Logo style={{ height: '150px' }} />
+            <Logo style={{ height: '48px' }} />
           </a>
         </Link>
 
