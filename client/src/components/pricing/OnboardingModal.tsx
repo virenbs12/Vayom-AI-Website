@@ -86,7 +86,12 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
+      fullName: "",
+      email: "",
+      companyName: "",
+      website: "",
       departments: [],
       cloudProviders: [],
       systemsDescription: "",
