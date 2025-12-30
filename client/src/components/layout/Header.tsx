@@ -94,11 +94,25 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <a href="/partners" target="_blank" rel="noopener noreferrer">
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
-                    Partners
-                  </NavigationMenuLink>
-                </a>
+                <NavigationMenuTrigger className="bg-transparent font-medium">Partners</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
+                    <ListItem href="/partners#why" title="Why Partner" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#types" title="Partner Types" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#deliver" title="What You Deliver" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#enablement" title="Enablement" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#security" title="Security" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#model" title="Commercial Model" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                    <ListItem href="/partners#apply" title="Apply" target="_blank" rel="noopener noreferrer">
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
