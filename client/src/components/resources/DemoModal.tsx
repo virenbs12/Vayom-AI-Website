@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Demo } from "@/data/resources";
+import { scrollToDemo } from "@/lib/utils";
 
 interface DemoModalProps {
   demo: Demo | null;
@@ -52,8 +53,16 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
             </div>
             
             <div className="shrink-0">
-               <Button size="lg" className="rounded-full px-8">
-                 Request a workflow demo
+               <Button 
+                 size="lg" 
+                 className="rounded-full px-8"
+                 onClick={() => {
+                   onOpenChange(false);
+                   scrollToDemo();
+                 }}
+                 data-testid="button-request-demo-modal"
+               >
+                 Request a Workflow Demo
                </Button>
             </div>
           </div>
