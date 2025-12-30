@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "wouter";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -11,13 +11,14 @@ import { Button } from "@/components/ui/button";
 import { scrollToDemo } from "@/lib/utils";
 
 export default function Resources() {
+  const [globalSearch, setGlobalSearch] = useState("");
 
   return (
     <div className="min-h-screen bg-background font-sans">
       <Header />
       
       <main className="pt-20">
-        <ResourceHero />
+        <ResourceHero searchValue={globalSearch} onSearchChange={setGlobalSearch} />
 
         <div className="container-width py-12">
           <Tabs defaultValue="blogs" className="space-y-12">
@@ -30,15 +31,15 @@ export default function Resources() {
             </div>
 
             <TabsContent value="blogs" className="focus-visible:outline-none animate-in fade-in-50 slide-in-from-bottom-2 duration-500">
-              <BlogsTab />
+              <BlogsTab searchQuery={globalSearch} />
             </TabsContent>
 
             <TabsContent value="events" className="focus-visible:outline-none animate-in fade-in-50 slide-in-from-bottom-2 duration-500">
-              <EventsTab />
+              <EventsTab searchQuery={globalSearch} />
             </TabsContent>
 
             <TabsContent value="demos" className="focus-visible:outline-none animate-in fade-in-50 slide-in-from-bottom-2 duration-500">
-              <DemosTab />
+              <DemosTab searchQuery={globalSearch} />
             </TabsContent>
           </Tabs>
         </div>

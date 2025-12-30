@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { demos, Demo } from "@/data/resources";
 import { Button } from "@/components/ui/button";
-import { Play, Clock, ArrowRight } from "lucide-react";
+import { Play, Clock, ArrowRight, Filter } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -11,7 +11,11 @@ import {
 } from "@/components/ui/select";
 import { DemoModal } from "./DemoModal";
 
-export function DemosTab() {
+interface DemosTabProps {
+  searchQuery?: string;
+}
+
+export function DemosTab({ searchQuery = "" }: DemosTabProps) {
   const [selectedDemo, setSelectedDemo] = useState<Demo | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [track, setTrack] = useState("all");
@@ -24,7 +28,7 @@ export function DemosTab() {
 
   const filteredDemos = demos.filter((demo) => {
     if (track !== "all" && demo.track !== track) return false;
-    // Duration logic would go here
+    if (searchQuery && !demo.title.toLowerCase().includes(searchQuery.toLowerCase()) && !demo.summary.toLowerCase().includes(searchQuery.toLowerCase())) return false;
     return true;
   });
 
@@ -110,7 +114,10 @@ export function DemosTab() {
         </div>
       ) : (
         <div className="py-24 text-center bg-slate-50 rounded-xl border border-dashed border-border">
-          <p className="text-muted-foreground">No demos match your filters.</p>
+          <Filter className="w-8 h-8 text-muted-foreground/30 mx-auto mb-4" />
+          <p className="text-muted-foreground">
+            {searchQuery ? `No demos found for "${searchQuery}"` : "No demos match your filters."}
+          </p>
         </div>
       )}
 

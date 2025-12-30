@@ -11,7 +11,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function BlogsTab() {
+interface BlogsTabProps {
+  searchQuery?: string;
+}
+
+export function BlogsTab({ searchQuery = "" }: BlogsTabProps) {
   const [category, setCategory] = useState<string>("all");
   const [readTime, setReadTime] = useState<string>("all");
   const [sort, setSort] = useState<string>("newest");
@@ -19,6 +23,7 @@ export function BlogsTab() {
   const filteredBlogs = blogs.filter((blog) => {
     if (category !== "all" && blog.category !== category) return false;
     if (readTime !== "all" && blog.readTime !== readTime) return false;
+    if (searchQuery && !blog.title.toLowerCase().includes(searchQuery.toLowerCase()) && !blog.summary.toLowerCase().includes(searchQuery.toLowerCase())) return false;
     return true;
   });
 
@@ -113,7 +118,9 @@ export function BlogsTab() {
       ) : (
         <div className="py-24 text-center bg-slate-50 rounded-xl border border-dashed border-border">
           <Filter className="w-8 h-8 text-muted-foreground/30 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-muted-foreground">No blogs match your filters.</h3>
+          <h3 className="text-lg font-medium text-muted-foreground">
+            {searchQuery ? `No blogs found for "${searchQuery}"` : "No blogs match your filters."}
+          </h3>
           <Button variant="link" onClick={() => { setCategory("all"); setReadTime("all"); }}>
             Clear filters
           </Button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { placeholderEvents, Event } from "@/data/resources";
 import { Button } from "@/components/ui/button";
-import { Calendar, Search, Filter } from "lucide-react";
+import { Calendar, Filter } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -9,11 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
 import { format } from "date-fns";
 import { EventDrawer } from "./EventDrawer";
 
-export function EventsTab() {
+interface EventsTabProps {
+  searchQuery?: string;
+}
+
+export function EventsTab({ searchQuery = "" }: EventsTabProps) {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
@@ -23,7 +26,6 @@ export function EventsTab() {
   const [type, setType] = useState("all");
   const [timezone, setTimezone] = useState("local");
   const [dateRange, setDateRange] = useState("all");
-  const [search, setSearch] = useState("");
 
   // Simulate API fetch
   useEffect(() => {
@@ -45,8 +47,7 @@ export function EventsTab() {
 
   const filteredEvents = events.filter((event) => {
     if (type !== "all" && event.type !== type) return false;
-    if (search && !event.name.toLowerCase().includes(search.toLowerCase()) && !event.description.toLowerCase().includes(search.toLowerCase())) return false;
-    // Date range filter logic would go here
+    if (searchQuery && !event.name.toLowerCase().includes(searchQuery.toLowerCase()) && !event.description.toLowerCase().includes(searchQuery.toLowerCase())) return false;
     return true;
   });
 
@@ -84,16 +85,6 @@ export function EventsTab() {
               <SelectItem value="utc">UTC</SelectItem>
             </SelectContent>
           </Select>
-          
-          <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input 
-              className="pl-9 bg-white w-[200px]" 
-              placeholder="Search events..." 
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
         </div>
       </div>
 
@@ -162,7 +153,7 @@ export function EventsTab() {
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
                     <Filter className="w-8 h-8 mx-auto mb-3 opacity-20" />
-                    No events match your filters.
+                    {searchQuery ? `No events found for "${searchQuery}"` : "No events match your filters."}
                   </td>
                 </tr>
               )}

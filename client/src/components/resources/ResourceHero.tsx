@@ -3,7 +3,12 @@ import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-export function ResourceHero() {
+interface ResourceHeroProps {
+  searchValue: string;
+  onSearchChange: (value: string) => void;
+}
+
+export function ResourceHero({ searchValue, onSearchChange }: ResourceHeroProps) {
   return (
     <div className="bg-slate-50 border-b border-border py-24 relative overflow-hidden">
       <div className="container-width relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -20,7 +25,10 @@ export function ResourceHero() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input 
                 className="pl-10 h-12 bg-white rounded-lg border-border" 
-                placeholder="Search blogs, events, and demos" 
+                placeholder="Search blogs, events, and demos"
+                value={searchValue}
+                onChange={(e) => onSearchChange(e.target.value)}
+                data-testid="input-global-search"
               />
             </div>
             <div className="flex gap-4 text-sm text-muted-foreground font-medium">
