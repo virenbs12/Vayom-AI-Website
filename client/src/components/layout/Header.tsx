@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/Full_logo_side_text_without_bg_(4000px)_1766964703537.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -68,10 +68,16 @@ export function Header() {
         isScrolled ? "bg-white/80 backdrop-blur-md border-transparent py-2 shadow-sm" : "bg-transparent py-4 border-[#dedede]"
       )}
     >
-      <div className="container-width flex items-center justify-between">
+      <div className="container-width flex items-center justify-between h-[50px]">
         <Link href="/">
           <a className="cursor-pointer block">
-            <Logo className="h-24 md:h-32" />
+            <div className="flex items-center">
+              <img 
+                src={logoImage} 
+                alt="Vayom AI" 
+                className="h-40 absolute w-auto object-contain"
+              />
+            </div>
           </a>
         </Link>
 
