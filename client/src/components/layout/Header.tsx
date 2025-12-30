@@ -145,7 +145,7 @@ export function Header() {
                   Business Functions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid grid-cols-4 gap-1 p-4 bg-white">
+                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
                     <ListItem 
                       href="/business-functions#finance" 
                       title="Finance" 
@@ -219,7 +219,7 @@ export function Header() {
                   Partners
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid grid-cols-4 gap-1 p-4 bg-white">
+                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
                     <ListItem 
                       href="/partners#why" 
                       title="Why Partner" 
