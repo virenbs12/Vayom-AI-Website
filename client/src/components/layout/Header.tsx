@@ -64,13 +64,13 @@ export function Header() {
                 <NavigationMenuTrigger className="bg-transparent font-medium">Solutions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-                    <ListItem href="/markets#b2c" title="B2C">
+                    <ListItem href="/markets#b2c" title="B2C" target="_blank" rel="noopener noreferrer">
                       Protect margin across promos, returns, and shipping.
                     </ListItem>
-                    <ListItem href="/markets#b2b" title="B2B">
+                    <ListItem href="/markets#b2b" title="B2B" target="_blank" rel="noopener noreferrer">
                       Keep contracts, pricing, and credits aligned.
                     </ListItem>
-                    <ListItem href="/markets#riaa" title="RIAA">
+                    <ListItem href="/markets#riaa" title="RIAA" target="_blank" rel="noopener noreferrer">
                       Evidence-first answer system.
                     </ListItem>
                   </ul>
@@ -94,11 +94,11 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/partners">
+                <a href="/partners" target="_blank" rel="noopener noreferrer">
                   <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
                     Partners
                   </NavigationMenuLink>
-                </Link>
+                </a>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -156,9 +156,15 @@ export function Header() {
             <Link href="/pricing">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             </Link>
-            <Link href="/partners">
-              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Partners</a>
-            </Link>
+            <a 
+              href="/partners" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-lg font-medium p-2 hover:bg-muted rounded-md" 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Partners
+            </a>
             <Link href="/resources">
               <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Resources</a>
             </Link>
@@ -185,23 +191,32 @@ export function Header() {
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, target, ...props }, ref) => {
+  const linkContent = (
+    <a
+      ref={ref}
+      className={cn(
+        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+        className
+      )}
+      target={target}
+      {...props}
+    >
+      <div className="text-sm font-medium leading-none">{title}</div>
+      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        {children}
+      </p>
+    </a>
+  );
+
+  if (target === "_blank") {
+    return <li>{linkContent}</li>;
+  }
+
   return (
     <li>
       <Link href={props.href as string}>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
+        {linkContent}
       </Link>
     </li>
   );

@@ -18,9 +18,9 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Solutions</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/markets#b2c"><a className="hover:text-primary transition-colors">B2C Workflows</a></Link></li>
-              <li><Link href="/markets#b2b"><a className="hover:text-primary transition-colors">B2B Workflows</a></Link></li>
-              <li><Link href="/markets#riaa"><a className="hover:text-primary transition-colors">RIAA Solution</a></Link></li>
+              <li><a href="/markets#b2c" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">B2C Workflows</a></li>
+              <li><a href="/markets#b2b" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">B2B Workflows</a></li>
+              <li><a href="/markets#riaa" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">RIAA Solution</a></li>
               <li><Link href="/business-functions"><a className="hover:text-primary transition-colors">Business Functions</a></Link></li>
             </ul>
           </div>
@@ -31,7 +31,7 @@ export function Footer() {
               <li><Link href="/company"><a className="hover:text-primary transition-colors">About Us</a></Link></li>
               <li><Link href="/company#careers"><a className="hover:text-primary transition-colors">Careers</a></Link></li>
               <li><Link href="/pricing"><a className="hover:text-primary transition-colors">Pricing</a></Link></li>
-              <li><Link href="/partners"><a className="hover:text-primary transition-colors">Partners</a></Link></li>
+              <li><a href="/partners" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Partners</a></li>
               <li><Link href="/resources"><a className="hover:text-primary transition-colors">Resources</a></Link></li>
               <li><Link href="/#contact"><a className="hover:text-primary transition-colors">Contact</a></Link></li>
               <li><a href="mailto:sales@vayomai.com" className="hover:text-primary transition-colors pt-2 block">sales@vayomai.com</a></li>
