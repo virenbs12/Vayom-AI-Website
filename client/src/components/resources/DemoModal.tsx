@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Demo } from "@/data/resources";
 import { scrollToDemo } from "@/lib/utils";
+import { X } from "lucide-react";
 
 interface DemoModalProps {
   demo: Demo | null;
@@ -20,7 +21,7 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none text-white">
+      <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none text-white [&>button]:text-white [&>button]:hover:text-white [&>button]:hover:bg-white/20">
         <div className="aspect-video bg-slate-900 w-full flex items-center justify-center relative group">
           {demo.gifUrl ? (
             <img 
