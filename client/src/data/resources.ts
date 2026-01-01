@@ -33,6 +33,7 @@ export interface Demo {
   duration: string;
   track: string;
   videoPlaceholder: string;
+  gifUrl?: string;
 }
 
 export const blogs: Blog[] = [
@@ -165,7 +166,8 @@ export const demos: Demo[] = [
     summary: 'A solution walk-through showing how systems, documents, and feeds become evidence-linked outputs.',
     duration: '6:20',
     track: 'RIAA',
-    videoPlaceholder: 'RIAA_DEMO_VIDEO'
+    videoPlaceholder: 'RIAA_DEMO_VIDEO',
+    gifUrl: '/demos/riaa-demo.gif'
   },
   {
     id: 'd2',
@@ -173,14 +175,25 @@ export const demos: Demo[] = [
     summary: 'See RIAA inside a Salesforce-led workflow, tying account context to verified outputs and next actions.',
     duration: '4:45',
     track: 'RIAA',
-    videoPlaceholder: 'RIAA_SALESFORCE_VIDEO'
+    videoPlaceholder: 'RIAA_SALESFORCE_VIDEO',
+    gifUrl: '/demos/salesforce-demo.gif'
   },
   {
     id: 'd3',
-    title: 'RIAA for collaboration',
+    title: 'RIAA on M365',
     summary: 'How teams review the same evidence, assign owners, and move from question to verified action without handoffs.',
     duration: '5:10',
     track: 'RIAA',
-    videoPlaceholder: 'RIAA_COLLAB_VIDEO'
+    videoPlaceholder: 'RIAA_M365_VIDEO',
+    gifUrl: '/demos/m365-demo.gif'
+  },
+  {
+    id: 'd4',
+    title: 'RIAA on D365',
+    summary: 'See RIAA integrated with Dynamics 365, connecting business processes with evidence-linked revenue intelligence.',
+    duration: '4:30',
+    track: 'RIAA',
+    videoPlaceholder: 'RIAA_D365_VIDEO',
+    gifUrl: '/demos/d365-demo.gif'
   }
 ];

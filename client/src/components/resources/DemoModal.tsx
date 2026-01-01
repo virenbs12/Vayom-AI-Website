@@ -22,12 +22,19 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none text-white">
         <div className="aspect-video bg-slate-900 w-full flex items-center justify-center relative group">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-slate-500 font-mono text-lg opacity-50">
-              [{demo.videoPlaceholder}]
-            </span>
-          </div>
-          {/* Placeholder for actual video player */}
+          {demo.gifUrl ? (
+            <img 
+              src={demo.gifUrl} 
+              alt={demo.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-slate-500 font-mono text-lg opacity-50">
+                [{demo.videoPlaceholder}]
+              </span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         </div>
         
