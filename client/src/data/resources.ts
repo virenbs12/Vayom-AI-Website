@@ -168,7 +168,7 @@ export const demos: Demo[] = [
     duration: '6:20',
     track: 'RIAA',
     videoPlaceholder: 'RIAA_DEMO_VIDEO',
-    gifUrl: '/demos/riaa-demo.gif'
+    videoUrl: '/demos/riaa-demo.mp4'
   },
   {
     id: 'd2',
