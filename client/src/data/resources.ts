@@ -186,7 +186,7 @@ export const demos: Demo[] = [
     duration: '5:10',
     track: 'RIAA',
     videoPlaceholder: 'RIAA_M365_VIDEO',
-    gifUrl: '/demos/m365-demo.gif'
+    videoUrl: '/demos/m365-demo.mp4'
   },
   {
     id: 'd4',
