@@ -28,7 +28,7 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
               src={demo.videoUrl} 
               controls
               autoPlay
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
           ) : demo.gifUrl ? (
             <img 
