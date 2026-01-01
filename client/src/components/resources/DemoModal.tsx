@@ -23,7 +23,14 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none text-white [&>button]:bg-red-500 [&>button]:text-white [&>button]:hover:bg-red-600 [&>button]:hover:text-white [&>button]:rounded-full [&>button]:p-1">
         <div className="aspect-video bg-slate-900 w-full flex items-center justify-center relative group">
-          {demo.gifUrl ? (
+          {demo.videoUrl ? (
+            <video 
+              src={demo.videoUrl} 
+              controls
+              autoPlay
+              className="w-full h-full object-cover"
+            />
+          ) : demo.gifUrl ? (
             <img 
               src={demo.gifUrl} 
               alt={demo.title}
@@ -36,7 +43,9 @@ export function DemoModal({ demo, open, onOpenChange }: DemoModalProps) {
               </span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          {!demo.videoUrl && (
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          )}
         </div>
         
         <div className="p-8 bg-background text-foreground">

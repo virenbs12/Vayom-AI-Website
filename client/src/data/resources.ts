@@ -34,6 +34,7 @@ export interface Demo {
   track: string;
   videoPlaceholder: string;
   gifUrl?: string;
+  videoUrl?: string;
 }
 
 export const blogs: Blog[] = [
@@ -194,6 +195,6 @@ export const demos: Demo[] = [
     duration: '4:30',
     track: 'RIAA',
     videoPlaceholder: 'RIAA_D365_VIDEO',
-    gifUrl: '/demos/d365-demo.gif'
+    videoUrl: '/demos/d365-demo.mp4'
   }
 ];

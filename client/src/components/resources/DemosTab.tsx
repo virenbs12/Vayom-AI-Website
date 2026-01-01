@@ -76,7 +76,14 @@ export function DemosTab({ searchQuery = "" }: DemosTabProps) {
             <div key={demo.id} className="group cursor-pointer" onClick={() => handleWatch(demo)}>
               {/* Thumbnail */}
               <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-border shadow-sm mb-4 group-hover:shadow-md transition-shadow">
-                {demo.gifUrl ? (
+                {demo.videoUrl ? (
+                  <video 
+                    src={demo.videoUrl} 
+                    className="w-full h-full object-cover"
+                    muted
+                    preload="metadata"
+                  />
+                ) : demo.gifUrl ? (
                   <img 
                     src={demo.gifUrl} 
                     alt={demo.title}
@@ -92,6 +99,13 @@ export function DemosTab({ searchQuery = "" }: DemosTabProps) {
                     <div className="absolute top-0 w-full h-2 bg-white/10" />
                     <div className="absolute left-0 h-full w-16 bg-white/5" />
                   </>
+                )}
+                {demo.videoUrl && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-5 h-5 text-white ml-0.5 fill-current" />
+                    </div>
+                  </div>
                 )}
                 
                 <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/60 text-[10px] font-medium text-white flex items-center gap-1">
