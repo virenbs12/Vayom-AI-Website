@@ -177,7 +177,7 @@ export const demos: Demo[] = [
     duration: '4:45',
     track: 'RIAA',
     videoPlaceholder: 'RIAA_SALESFORCE_VIDEO',
-    gifUrl: '/demos/salesforce-demo.gif'
+    videoUrl: '/demos/salesforce-demo.mp4'
   },
   {
     id: 'd3',
