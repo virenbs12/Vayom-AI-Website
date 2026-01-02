@@ -145,56 +145,70 @@ export function Header() {
                   Business Functions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                     <ListItem 
                       href="/business-functions#finance" 
                       title="Finance" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#finance"}
-                    />
+                    >
+                      Close faster with verified revenue data.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#revops" 
                       title="RevOps & Deal Desk" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#revops"}
-                    />
+                    >
+                      Align pricing, approvals, and deal terms.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#sales" 
                       title="Sales" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#sales"}
-                    />
+                    >
+                      Quote with confidence, renew without leakage.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#marketing" 
                       title="Marketing" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#marketing"}
-                    />
+                    >
+                      Track promo ROI and campaign attribution.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#operations" 
                       title="Operations" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#operations"}
-                    />
+                    >
+                      Optimize fulfillment and reduce cost leaks.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#leadership" 
                       title="Leadership" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#leadership"}
-                    />
+                    >
+                      Get board-ready revenue insights.
+                    </ListItem>
                     <ListItem 
                       href="/business-functions#it-security" 
                       title="IT & Security" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isBusinessFunctionsActive && currentHash === "#it-security"}
-                    />
+                    >
+                      Deploy securely in SaaS or VPC.
+                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -219,56 +233,70 @@ export function Header() {
                   Partners
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[600px] gap-1 p-4 md:grid-cols-4 lg:w-[750px] bg-white">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                     <ListItem 
                       href="/partners#why" 
                       title="Why Partner" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#why"}
-                    />
+                    >
+                      Grow your practice with revenue intelligence.
+                    </ListItem>
                     <ListItem 
                       href="/partners#types" 
                       title="Partner Types" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#types"}
-                    />
+                    >
+                      GSI, regional SI, and boutique options.
+                    </ListItem>
                     <ListItem 
                       href="/partners#deliver" 
                       title="What You Deliver" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#deliver"}
-                    />
+                    >
+                      Scoping, integration, and ongoing support.
+                    </ListItem>
                     <ListItem 
                       href="/partners#enablement" 
                       title="Enablement" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#enablement"}
-                    />
+                    >
+                      Certification, sandboxes, and sales tools.
+                    </ListItem>
                     <ListItem 
                       href="/partners#security" 
                       title="Security" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#security"}
-                    />
+                    >
+                      Enterprise-grade compliance and access.
+                    </ListItem>
                     <ListItem 
                       href="/partners#model" 
                       title="Commercial Model" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#model"}
-                    />
+                    >
+                      Transparent margins and deal registration.
+                    </ListItem>
                     <ListItem 
                       href="/partners#apply" 
                       title="Apply" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       isActive={isPartnersActive && currentHash === "#apply"}
-                    />
+                    >
+                      Start your partnership journey today.
+                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
