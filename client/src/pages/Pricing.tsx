@@ -676,53 +676,6 @@ export default function Pricing() {
             selectedPlan={selectedPlan}
             country={activeCountry}
           />
-
-          {/* ROI Section */}
-          <div className="mt-32 p-12 bg-slate-50 rounded-3xl border border-border">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-display font-bold mb-6">Designed for Enterprise ROI</h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Vayom AI typically identifies 2-5% in recovered revenue within the first 30 days of deployment. Our pricing is designed to scale with your recovery impact.
-                </p>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="flex gap-4 items-start">
-                    <Zap className="w-6 h-6 text-primary shrink-0" />
-                    <div>
-                      <div className="font-bold">Fast Setup</div>
-                      <div className="text-sm text-muted-foreground">Deploy in days, not months.</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 items-start">
-                    <Shield className="w-6 h-6 text-primary shrink-0" />
-                    <div>
-                      <div className="font-bold">Secure</div>
-                      <div className="text-sm text-muted-foreground">Enterprise-grade security.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-border">
-                <div className="text-sm font-bold text-slate-400 uppercase mb-6">Typical Recovery Path</div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-sm">
-                    <span>Revenue Scanned</span>
-                    <span className="font-bold">$10.0M</span>
-                  </div>
-                  <div className="h-2 bg-slate-100 rounded-full">
-                    <div className="h-full bg-primary rounded-full w-full" />
-                  </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-red-600 font-bold">Leakage Identified</span>
-                    <span className="text-red-600 font-bold">$420k</span>
-                  </div>
-                  <div className="h-2 bg-slate-100 rounded-full">
-                    <div className="h-full bg-red-500 rounded-full w-[42%]" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
       <Footer />
