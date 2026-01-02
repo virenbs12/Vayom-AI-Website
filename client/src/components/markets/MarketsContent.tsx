@@ -767,11 +767,11 @@ export function MarketsContent() {
                   key={i} 
                   className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center hover:bg-slate-800 transition-colors cursor-default border border-slate-700 flex flex-col items-center gap-2"
                 >
-                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                  <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center">
                     {system.isBrand ? (
-                      <system.Icon size={20} color="default" />
+                      <system.Icon size={32} color="default" />
                     ) : (
-                      <system.Icon className="w-5 h-5 text-slate-700" />
+                      <system.Icon className="w-8 h-8 text-slate-700" />
                     )}
                   </div>
                   <span className="text-xs font-medium">{system.name}</span>
