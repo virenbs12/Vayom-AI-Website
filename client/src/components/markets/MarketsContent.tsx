@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
+import {
+  SiSalesforce,
+  SiMysql,
+  SiPostgresql,
+  SiMongodb,
+  SiDatabricks,
+  SiSnowflake,
+  SiSap,
+  SiSlack,
+  SiJira,
+  SiZoho,
+  SiFacebook,
+  SiGoogleads,
+  SiShopify,
+  SiZendesk,
+  SiZoom,
+  SiHubspot
+} from "@icons-pack/react-simple-icons";
 import { 
   ArrowRight, 
   Check, 
@@ -721,37 +739,40 @@ export function MarketsContent() {
             <p className="text-muted-foreground mb-8 max-w-2xl">Pre-built connectors for the systems your teams already use. No rip-and-replace required.</p>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
               {[
-                { name: "Salesforce", logo: "SF" },
-                { name: "MySQL", logo: "My" },
-                { name: "PostgreSQL", logo: "PG" },
-                { name: "MongoDB", logo: "MD" },
-                { name: "Databricks", logo: "DB" },
-                { name: "Snowflake", logo: "SF" },
-                { name: "Azure Blob Storage", logo: "Az" },
-                { name: "Amazon S3", logo: "S3" },
-                { name: "SAP", logo: "SAP" },
-                { name: "Trino", logo: "Tr" },
-                { name: "Microsoft Dynamics 365", logo: "D365" },
-                { name: "Microsoft 365", logo: "M365" },
-                { name: "Slack", logo: "Sl" },
-                { name: "Jira", logo: "Ji" },
-                { name: "Azure DevOps", logo: "ADO" },
-                { name: "Tally", logo: "Ta" },
-                { name: "Zoho CRM", logo: "Zo" },
-                { name: "Facebook Ads", logo: "FB" },
-                { name: "Google Ads", logo: "GA" },
-                { name: "Shopify", logo: "Sh" },
-                { name: "FreshDesk", logo: "FD" },
-                { name: "ZenDesk", logo: "ZD" },
-                { name: "Zoom", logo: "Zm" },
-                { name: "HubSpot", logo: "HS" }
+                { name: "Salesforce", Icon: SiSalesforce, isBrand: true },
+                { name: "MySQL", Icon: SiMysql, isBrand: true },
+                { name: "PostgreSQL", Icon: SiPostgresql, isBrand: true },
+                { name: "MongoDB", Icon: SiMongodb, isBrand: true },
+                { name: "Databricks", Icon: SiDatabricks, isBrand: true },
+                { name: "Snowflake", Icon: SiSnowflake, isBrand: true },
+                { name: "Azure Blob Storage", Icon: Database, isBrand: false },
+                { name: "Amazon S3", Icon: Database, isBrand: false },
+                { name: "SAP", Icon: SiSap, isBrand: true },
+                { name: "Trino", Icon: Database, isBrand: false },
+                { name: "Dynamics 365", Icon: LayoutGrid, isBrand: false },
+                { name: "Microsoft 365", Icon: LayoutGrid, isBrand: false },
+                { name: "Slack", Icon: SiSlack, isBrand: true },
+                { name: "Jira", Icon: SiJira, isBrand: true },
+                { name: "Azure DevOps", Icon: Globe, isBrand: false },
+                { name: "Zoho CRM", Icon: SiZoho, isBrand: true },
+                { name: "Facebook Ads", Icon: SiFacebook, isBrand: true },
+                { name: "Google Ads", Icon: SiGoogleads, isBrand: true },
+                { name: "Shopify", Icon: SiShopify, isBrand: true },
+                { name: "FreshDesk", Icon: SiZendesk, isBrand: true },
+                { name: "ZenDesk", Icon: SiZendesk, isBrand: true },
+                { name: "Zoom", Icon: SiZoom, isBrand: true },
+                { name: "HubSpot", Icon: SiHubspot, isBrand: true }
               ].map((system, i) => (
                 <div 
                   key={i} 
                   className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center hover:bg-slate-800 transition-colors cursor-default border border-slate-700 flex flex-col items-center gap-2"
                 >
-                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-sm font-bold text-primary">
-                    {system.logo}
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    {system.isBrand ? (
+                      <system.Icon size={24} color="default" />
+                    ) : (
+                      <system.Icon className="w-6 h-6 text-primary" />
+                    )}
                   </div>
                   <span className="text-xs font-medium">{system.name}</span>
                 </div>
