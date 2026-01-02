@@ -721,16 +721,39 @@ export function MarketsContent() {
             <p className="text-muted-foreground mb-8 max-w-2xl">Pre-built connectors for the systems your teams already use. No rip-and-replace required.</p>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
               {[
-                "Salesforce", "MySQL", "PostgreSQL", "MongoDB", "Databricks", "Snowflake",
-                "Azure Blob Storage", "Amazon S3", "SAP", "Trino", "Microsoft Dynamics 365", "Microsoft 365",
-                "Slack", "Jira", "Azure DevOps", "Tally", "Zoho CRM", "Facebook Ads",
-                "Google Ads", "Shopify", "FreshDesk", "ZenDesk", "Zoom", "HubSpot"
+                { name: "Salesforce", logo: "SF" },
+                { name: "MySQL", logo: "My" },
+                { name: "PostgreSQL", logo: "PG" },
+                { name: "MongoDB", logo: "MD" },
+                { name: "Databricks", logo: "DB" },
+                { name: "Snowflake", logo: "SF" },
+                { name: "Azure Blob Storage", logo: "Az" },
+                { name: "Amazon S3", logo: "S3" },
+                { name: "SAP", logo: "SAP" },
+                { name: "Trino", logo: "Tr" },
+                { name: "Microsoft Dynamics 365", logo: "D365" },
+                { name: "Microsoft 365", logo: "M365" },
+                { name: "Slack", logo: "Sl" },
+                { name: "Jira", logo: "Ji" },
+                { name: "Azure DevOps", logo: "ADO" },
+                { name: "Tally", logo: "Ta" },
+                { name: "Zoho CRM", logo: "Zo" },
+                { name: "Facebook Ads", logo: "FB" },
+                { name: "Google Ads", logo: "GA" },
+                { name: "Shopify", logo: "Sh" },
+                { name: "FreshDesk", logo: "FD" },
+                { name: "ZenDesk", logo: "ZD" },
+                { name: "Zoom", logo: "Zm" },
+                { name: "HubSpot", logo: "HS" }
               ].map((system, i) => (
                 <div 
                   key={i} 
-                  className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center text-xs font-medium hover:bg-slate-800 transition-colors cursor-default border border-slate-700"
+                  className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center hover:bg-slate-800 transition-colors cursor-default border border-slate-700 flex flex-col items-center gap-2"
                 >
-                  {system}
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-sm font-bold text-primary">
+                    {system.logo}
+                  </div>
+                  <span className="text-xs font-medium">{system.name}</span>
                 </div>
               ))}
             </div>
