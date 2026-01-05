@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
 import {
@@ -66,54 +65,30 @@ export function MarketsContent() {
   const [activeSection, setActiveSection] = useState("b2c");
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
+    const hash = window.location.hash;
     if (hash) {
-      setActiveSection(hash);
       setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY - 140;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     }
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["b2c", "b2b", "riaa", "business-functions"];
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top >= 0 && rect.top < 300) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleTabClick = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveSection(id);
-    window.history.pushState(null, '', `/markets#${id}`);
-    const el = document.getElementById(id);
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 140; 
-      window.scrollTo({ top: y, behavior: 'smooth' });
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 140;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   return (
     <>
       {/* Sticky Sub-Nav */}
-      <div className="sticky top-[72px] z-40 bg-white/95 backdrop-blur border-b border-border shadow-sm">
-        <div className="container-width flex gap-1 overflow-x-auto py-2 scrollbar-hide">
+      <div className="sticky top-[72px] z-40 bg-white/95 backdrop-blur border-b border-border shadow-sm overflow-x-auto">
+        <div className="container-width flex gap-2 py-3">
           {[
             { id: "b2c", label: "B2C" },
             { id: "b2b", label: "B2B" },
@@ -122,14 +97,8 @@ export function MarketsContent() {
           ].map((item) => (
             <button
               key={item.id}
-              type="button"
-              onClick={(e) => handleTabClick(e, item.id)}
-              className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
-                activeSection === item.id 
-                  ? "bg-primary text-primary-foreground" 
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              )}
+              onClick={() => scrollToSection(item.id)}
+              className="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
             >
               {item.label}
             </button>

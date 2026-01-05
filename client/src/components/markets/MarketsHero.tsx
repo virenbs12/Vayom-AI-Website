@@ -5,12 +5,11 @@ import { Link } from "wouter";
 import { scrollToDemo } from "@/lib/utils";
 
 export function MarketsHero() {
-  const scrollTo = (id: string) => {
-    window.history.pushState(null, '', `/markets#${id}`);
-    const el = document.getElementById(id);
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 140;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 140;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
@@ -43,19 +42,19 @@ export function MarketsHero() {
         {/* 4-Tile Market Selector Visual */}
         <div className="bg-white rounded-2xl shadow-xl p-6 border border-border">
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <button onClick={() => scrollTo('b2c')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
+            <button onClick={() => scrollToSection('b2c')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">B2C</span>
               <span className="text-xs text-muted-foreground">High-volume commerce</span>
             </button>
-            <button onClick={() => scrollTo('b2b')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
+            <button onClick={() => scrollToSection('b2b')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">B2B</span>
               <span className="text-xs text-muted-foreground">Contract alignment</span>
             </button>
-            <button onClick={() => scrollTo('riaa')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
+            <button onClick={() => scrollToSection('riaa')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">RIAA</span>
               <span className="text-xs text-muted-foreground">Evidence engine</span>
             </button>
-            <button onClick={() => scrollTo('business-functions')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
+            <button onClick={() => scrollToSection('business-functions')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">Functions</span>
               <span className="text-xs text-muted-foreground">Finance & Ops</span>
             </button>
