@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -15,9 +15,14 @@ import Company from "@/pages/Company";
 
 function ScrollToTop() {
   const [location] = useLocation();
+  const prevLocation = useRef(location);
   
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Only scroll to top when navigating to a different page
+    if (prevLocation.current !== location) {
+      window.scrollTo(0, 0);
+      prevLocation.current = location;
+    }
   }, [location]);
   
   return null;
