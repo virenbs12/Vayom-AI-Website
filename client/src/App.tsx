@@ -37,7 +37,6 @@ function Router() {
       <Route path="/partners" component={Partners} />
       <Route path="/resources" component={Resources} />
       <Route path="/company" component={Company} />
-      <Route path="/functions" component={BusinessFunctions} />
       <Route path="/business-functions" component={BusinessFunctions} />
       <Route component={NotFound} />
     </Switch>

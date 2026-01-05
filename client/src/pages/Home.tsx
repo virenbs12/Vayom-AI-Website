@@ -10,6 +10,7 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { MarketsPreview } from "@/components/home/MarketsPreview";
 import { ComparisonSection } from "@/components/home/ComparisonSection";
 import { ContactForm } from "@/components/home/ContactForm";
+import { SEO } from "@/components/SEO";
 
 export default function Home() {
   useEffect(() => {
@@ -25,6 +26,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <SEO
+        title="Vayom AI | Revenue Intelligence Platform - Stop Revenue Leakage"
+        description="Discover revenue leakage across ERP, CRM & contracts with evidence-linked answers. AI-powered revenue intelligence for Finance, RevOps & Operations teams."
+        keywords="revenue leakage, revenue intelligence, RIAA, B2B revenue, B2C commerce, billing errors, contract compliance"
+        canonicalUrl="https://vayomai.com/"
+      />
       <Header />
       <main>
         <HeroCarousel />

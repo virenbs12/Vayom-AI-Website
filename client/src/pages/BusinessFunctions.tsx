@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/home/ContactForm";
 import { cn, scrollToDemo } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 import { 
   Search, 
   Database, 
@@ -69,6 +70,12 @@ export default function BusinessFunctions() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Revenue Intelligence for Finance, Sales & Operations | Vayom AI"
+        description="Role-specific revenue intelligence for Finance, RevOps, Sales, Marketing, Operations & Leadership. Get actionable insights with linked evidence."
+        keywords="finance revenue intelligence, sales operations, RevOps, marketing analytics, operations optimization, leadership insights"
+        canonicalUrl="https://vayomai.com/business-functions"
+      />
       <Header />
       
       <main>

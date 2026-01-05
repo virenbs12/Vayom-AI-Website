@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PartnerApplicationModal } from "@/components/partners/PartnerApplicationModal";
+import { SEO } from "@/components/SEO";
 
 export default function Partners() {
   const [activeTab, setActiveTab] = React.useState("advisory");
@@ -49,6 +50,12 @@ export default function Partners() {
 
   return (
     <div className="min-h-screen bg-[#FBFAF7] text-foreground">
+      <SEO
+        title="Partner Program - Consulting & Technology Partners | Vayom AI"
+        description="Join the Vayom AI partner ecosystem. Technology integrations, consulting partnerships, and reseller opportunities for revenue intelligence solutions."
+        keywords="revenue intelligence partner, consulting partner, technology partner, reseller program, integration partner"
+        canonicalUrl="https://vayomai.com/partners"
+      />
       <Header />
       
       <main>

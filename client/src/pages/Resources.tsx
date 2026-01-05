@@ -9,12 +9,19 @@ import { DemosTab } from "@/components/resources/DemosTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { scrollToDemo } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 
 export default function Resources() {
   const [globalSearch, setGlobalSearch] = useState("");
 
   return (
     <div className="min-h-screen bg-background font-sans">
+      <SEO
+        title="Resources - Blogs, Events & Demos | Vayom AI"
+        description="Explore revenue intelligence insights, upcoming events, and product demos. Learn how to detect and prevent revenue leakage in your business."
+        keywords="revenue intelligence blog, revenue leakage demos, finance events, RevOps resources"
+        canonicalUrl="https://vayomai.com/resources"
+      />
       <Header />
       
       <main className="pt-20">

@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { scrollToDemo } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -189,6 +190,12 @@ export default function Company() {
 
   return (
     <div className="min-h-screen bg-[#FBFAF7] text-foreground">
+      <SEO
+        title="About Vayom AI - Revenue Intelligence Company | Edison, NJ"
+        description="Learn about Vayom AI's mission to help enterprises find revenue leakage. Based in Edison, NJ. Explore our story, team, and career opportunities."
+        keywords="Vayom AI company, revenue intelligence company, Edison NJ, about us, careers"
+        canonicalUrl="https://vayomai.com/company"
+      />
       <Header />
       
       <main>

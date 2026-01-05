@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Check, Zap, Shield, BarChart3, Globe, Database, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OnboardingModal } from "@/components/pricing/OnboardingModal";
+import { SEO } from "@/components/SEO";
 
 const pricingData = [
   {
@@ -520,6 +521,12 @@ export default function Pricing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Pricing Plans - Enterprise Revenue Intelligence | Vayom AI"
+        description="Flexible pricing for SaaS and VPC deployment. Start with one scoped workflow and prove value in 6-12 weeks. Multi-region pricing available."
+        keywords="revenue intelligence pricing, SaaS pricing, VPC deployment, enterprise software pricing"
+        canonicalUrl="https://vayomai.com/pricing"
+      />
       <Header />
       <main className="pt-32 pb-20">
         <div className="container-width">
