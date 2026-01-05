@@ -206,6 +206,98 @@ Submitted: ${new Date().toLocaleString()}
     }
   });
 
+  // Pricing plan selection endpoint
+  const pricingChoosePlanSchema = z.object({
+    fullName: z.string().min(1),
+    email: z.string().email(),
+    companyName: z.string().min(1),
+    website: z.string().min(1),
+    estimatedUsers: z.number().int().min(1),
+    departments: z.array(z.string()).min(1),
+    otherDepartment: z.string().optional(),
+    cloudProviders: z.array(z.string()).min(1),
+    otherCloud: z.string().optional(),
+    dataLake: z.string().min(1),
+    dataWarehouse: z.string().min(1),
+    vertical: z.string().min(1),
+    otherVertical: z.string().optional(),
+    systemsDescription: z.string().min(1),
+    selectedPlan: z.string().min(1),
+    country: z.string().min(1),
+  });
+
+  app.post("/api/pricing/choose-plan", async (req, res) => {
+    try {
+      const data = pricingChoosePlanSchema.parse(req.body);
+
+      // Check for public email providers
+      const emailDomain = data.email.split("@")[1]?.toLowerCase();
+      if (emailDomain && PUBLIC_EMAIL_PROVIDERS.includes(emailDomain)) {
+        return res.status(400).json({
+          success: false,
+          message: "Please use a company email address",
+        });
+      }
+
+      // Format email content
+      const emailContent = `
+New Pricing Plan Selection from Vayom AI Website
+=================================================
+
+Selected Plan: ${data.selectedPlan}
+Country/Region: ${data.country}
+
+Contact Information:
+- Full Name: ${data.fullName}
+- Work Email: ${data.email}
+- Company: ${data.companyName}
+- Website: ${data.website}
+
+Team Details:
+- Estimated Users: ${data.estimatedUsers}
+- Departments: ${data.departments.join(", ")}${data.otherDepartment ? ` (Other: ${data.otherDepartment})` : ""}
+
+Environment:
+- Cloud Providers: ${data.cloudProviders.join(", ")}${data.otherCloud ? ` (Other: ${data.otherCloud})` : ""}
+- Data Lake: ${data.dataLake}
+- Data Warehouse: ${data.dataWarehouse}
+
+Business Context:
+- Vertical: ${data.vertical}${data.otherVertical ? ` (${data.otherVertical})` : ""}
+- Systems Description: ${data.systemsDescription}
+
+----------------------------------------
+Submitted: ${new Date().toLocaleString()}
+`;
+
+      // Log the submission
+      console.log("=== PRICING PLAN SELECTION ===");
+      console.log(emailContent);
+      console.log("==============================");
+
+      // TODO: In production, integrate with email service
+
+      res.json({
+        success: true,
+        message: "Plan selection received successfully",
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({
+          success: false,
+          message: "Invalid form data",
+          errors: error.errors,
+        });
+      } else {
+        console.error("Pricing plan error:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to process request",
+        });
+      }
+    }
+  });
+
   // Careers resume submission endpoint
   app.post("/api/careers", upload.single("resume"), async (req, res) => {
     try {

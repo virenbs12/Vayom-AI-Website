@@ -100,12 +100,33 @@ export function OnboardingModal({ open, onOpenChange, selectedPlan, country }: O
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    toast.success("Received. Someone will contact you within 24 business hours.");
-    onOpenChange(false);
-    form.reset();
+    try {
+      const response = await fetch("/api/pricing/choose-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          selectedPlan,
+          country,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to submit");
+      }
+
+      toast.success("Received. Someone will contact you within 24 business hours.");
+      onOpenChange(false);
+      form.reset();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCancel = () => {
