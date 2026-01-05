@@ -69,16 +69,14 @@ export function Header() {
       )}
     >
       <div className="container-width flex items-center justify-between h-[50px]">
-        <Link href="/">
-          <a className="cursor-pointer block">
-            <div className="flex items-center">
-              <img 
-                src={logoImage} 
-                alt="Vayom AI" 
-                className="h-40 absolute w-auto object-contain"
-              />
-            </div>
-          </a>
+        <Link href="/" className="cursor-pointer block">
+          <div className="flex items-center">
+            <img 
+              src={logoImage} 
+              alt="Vayom AI" 
+              className="h-40 absolute w-auto object-contain"
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -352,83 +350,77 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-background border-b border-border p-4 md:hidden shadow-lg animate-in slide-in-from-top-5">
           <div className="flex flex-col gap-4">
-            <Link href="/">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isHomeActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home
-              </a>
+            <Link 
+              href="/"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isHomeActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
             </Link>
-            <Link href="/markets">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isSolutionsActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Solutions
-              </a>
+            <Link 
+              href="/markets"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isSolutionsActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Solutions
             </Link>
-            <Link href="/business-functions">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isBusinessFunctionsActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Business Functions
-              </a>
+            <Link 
+              href="/business-functions"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isBusinessFunctionsActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Business Functions
             </Link>
-            <Link href="/pricing">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isPricingActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Pricing
-              </a>
+            <Link 
+              href="/pricing"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isPricingActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pricing
             </Link>
             <a 
               href="/partners" 
               target="_blank" 
               rel="noopener noreferrer"
               className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md",
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
                 isPartnersActive && "bg-muted"
               )} 
               onClick={() => setMobileMenuOpen(false)}
             >
               Partners
             </a>
-            <Link href="/resources">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isResourcesActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Resources
-              </a>
+            <Link 
+              href="/resources"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isResourcesActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Resources
             </Link>
-            <Link href="/company">
-              <a 
-                className={cn(
-                  "text-lg font-medium p-2 hover:bg-muted rounded-md",
-                  isCompanyActive && "bg-muted"
-                )} 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Company
-              </a>
+            <Link 
+              href="/company"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isCompanyActive && "bg-muted"
+              )} 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Company
             </Link>
             <Button 
               className="w-full mt-2" 
@@ -453,35 +445,44 @@ interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
 }
 
 const ListItem = React.forwardRef<React.ElementRef<"a">, ListItemProps>(
-  ({ className, title, children, target, isActive, ...props }, ref) => {
-    const linkContent = (
-      <a
-        ref={ref}
-        className={cn(
-          "group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-          isActive && "bg-accent text-accent-foreground",
-          className
-        )}
-        target={target}
-        {...props}
-      >
+  ({ className, title, children, target, isActive, href, ...props }, ref) => {
+    const baseClassName = cn(
+      "group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+      isActive && "bg-accent text-accent-foreground",
+      className
+    );
+
+    const content = (
+      <>
         <div className="text-sm font-medium leading-none">{title}</div>
         {children && (
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-white transition-colors">
             {children}
           </p>
         )}
-      </a>
+      </>
     );
 
     if (target === "_blank") {
-      return <li>{linkContent}</li>;
+      return (
+        <li>
+          <a
+            ref={ref}
+            className={baseClassName}
+            target={target}
+            href={href}
+            {...props}
+          >
+            {content}
+          </a>
+        </li>
+      );
     }
 
     return (
       <li>
-        <Link href={props.href as string}>
-          {linkContent}
+        <Link href={href as string} className={baseClassName}>
+          {content}
         </Link>
       </li>
     );
