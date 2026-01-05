@@ -12,38 +12,87 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
 
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222 47% 11%);
+  /* Venus/Taurus (Vrishabha) · Rohini Palette */
+  --color-background: #FBFAF7;
+  --color-foreground: #2F3A3D;
 
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222 47% 11%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(222 47% 11%);
+  --color-card: #FAF5EF;
+  --color-card-foreground: #2F3A3D;
+  --color-popover: #FAF5EF;
+  --color-popover-foreground: #2F3A3D;
 
-  --color-primary: hsl(215 90% 45%);
-  --color-primary-foreground: hsl(210 40% 98%);
+  /* Primary Greens */
+  --color-primary: #0E7C6B; /* Vayom Green 700 */
+  --color-primary-foreground: #FFFFFF;
+  --vayom-green-900: #0A3F38;
+  --vayom-green-800: #0C544A;
+  --vayom-green-600: #1F8E76;
+  --vayom-green-500: #2DAA7B;
+  --vayom-green-300: #6EC3A9;
+  --vayom-mint-200: #A8E6CF;
+  --vayom-mint-100: #E6F2EE;
 
-  --color-secondary: hsl(210 40% 96.1%);
-  --color-secondary-foreground: hsl(222 47% 11%);
+  /* Accent Metals */
+  --color-accent: #B46A1F; /* Copper 700 */
+  --color-accent-foreground: #FFFFFF;
+  --copper-900: #7A3F16;
+  --copper-600: #C07A3A;
+  --rose-gold: #C68642;
+  --moon-silver: #D9DEE3;
+  --soft-silver: #C7CED6;
+  --pearl-white: #F6F5F2;
 
-  --color-muted: hsl(210 40% 96.1%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-secondary: #FAF5EF;
+  --color-secondary-foreground: #0E7C6B;
 
-  --color-accent: hsl(210 40% 96.1%);
-  --color-accent-foreground: hsl(222 47% 11%);
+  --color-muted: #E6F2EE; /* Vayom Mint 100 */
+  --color-muted-foreground: #5E6A6F; /* Muted Text */
 
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: #C7CED6; /* Soft Silver 200 */
+  --color-input: #C7CED6;
+  --color-ring: #1F8E76; /* Vayom Green 600 */
 
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(215 90% 45%);
+  /* Charts & Status */
+  --color-chart-1: #289E61;
+  --color-chart-2: #B46A1F;
+  --color-chart-3: #0E7C6B;
+  --color-chart-4: #2DAA7B;
+  --color-chart-5: #239E8A;
 
-  --color-chart-1: hsl(12 76% 61%);
-  --color-chart-2: hsl(173 58% 39%);
-  --color-chart-3: hsl(197 37% 24%);
-  --color-chart-4: hsl(43 74% 66%);
-  --color-chart-5: hsl(27 87% 67%);
+  --success: #2B8A57;
+  --success-bg: #E6F4EC;
+  --info: #2F6FA5;
+  --info-bg: #E6EFF8;
+  --warning: #A5671E;
+  --warning-bg: #F8EFE3;
+  --error: #B6453C;
+  --error-bg: #F8E8E6;
+}
+
+.dark {
+  --color-background: #0D1B1E;
+  --color-foreground: #C9D0D3;
+
+  --color-card: #162226;
+  --color-card-foreground: #C9D0D3;
+  --color-popover: #162226;
+  --color-popover-foreground: #C9D0D3;
+
+  --color-primary: #48BA9A;
+  --color-primary-foreground: #0D1B1E;
+
+  --color-secondary: #162226;
+  --color-secondary-foreground: #48BA9A;
+
+  --color-muted: #2A3A3F;
+  --color-muted-foreground: #94A0A5;
+
+  --color-accent: #CE8343;
+  --color-accent-foreground: #0D1B1E;
+
+  --color-border: #2A3A3F;
+  --color-input: #2A3A3F;
+  --color-ring: #4AC1AD;
 }
 
 @layer base {
@@ -54,18 +103,24 @@
     @apply font-sans antialiased bg-background text-foreground selection:bg-primary/10 selection:text-primary;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-foreground;
+    @apply font-display tracking-tight text-[#0D1B1E] dark:text-[#F1F4F5];
   }
 }
 
 @layer utilities {
   .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-card/70 backdrop-blur-md border border-border/20 shadow-xl;
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-blue-600;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-accent;
   }
   .container-width {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .cta-link {
+    @apply text-[#2DAA7B] hover:text-[#239E8A] transition-colors font-semibold;
+  }
+  .cta-link-dark {
+    @apply dark:text-[#4AC1AD] dark:hover:text-[#5AD3BE];
   }
 }

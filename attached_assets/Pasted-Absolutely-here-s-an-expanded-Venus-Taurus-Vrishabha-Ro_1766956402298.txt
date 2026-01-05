@@ -1,0 +1,79 @@
+Absolutely—here’s an expanded **Venus/Taurus (Vrishabha) · Rohini** palette tailored for websites, with clean HEX codes and where to use them. Everything harmonizes with your existing green–copper brand.
+
+# Primary Greens (brand)
+
+* **Vayom Green 900:** `#0A3F38` (deep headers on dark, buttons pressed)
+* **Vayom Green 800:** `#0C544A` (hover/active)
+* **Vayom Green 700 (Primary):** `#0E7C6B` (logo, primary buttons)
+* **Vayom Green 600:** `#1F8E76` (alt brand, focus ring)
+* **Vayom Green 500 (Link/CTA):** `#2DAA7B` (links, secondary buttons)
+* **Vayom Green 300:** `#6EC3A9` (charts, badges text)
+* **Vayom Mint 200:** `#A8E6CF` (gradient start, success bg)
+* **Vayom Mint 100 (Wash):** `#E6F2EE` (cards, subtle highlights)
+
+# Accent Metals (earth + Venus)
+
+* **Copper 900:** `#7A3F16` (tiny icons/lines on light)
+* **Copper 700 (Primary):** `#B46A1F` (accent words, small icons, dividers)
+* **Copper 600:** `#C07A3A` (softer accent)
+* **Rose-Gold Alt 500:** `#C68642` (UI accents where gold feel is wanted)
+* **Moon-Silver 300:** `#D9DEE3` (neutral strokes, secondary buttons)
+* **Soft Silver 200 (Divider):** `#C7CED6` (rules/borders)
+* **Pearl White:** `#F6F5F2` (alt background strips)
+
+# Neutrals (readability & surfaces)
+
+* **Title Charcoal:** `#0D1B1E` (H1–H2 on light)
+* **Body Slate:** `#2F3A3D` (paragraphs/UI text)
+* **Muted Text:** `#5E6A6F` (captions/meta)
+* **Mist:** `#9FA9AF` (disabled text/icons)
+* **Background (Page):** `#FBFAF7`
+* **Panel (Cards):** `#FAF5EF`
+
+# Supporting Greens (Rohini growth tones)
+
+* **Sage 600:** `#6D8B6F` (subheads, tags)
+* **Olive 500:** `#8FA78C` (pills/badges)
+* **Seafoam 200:** `#CFEDE2` (info panels)
+* **Celadon 150:** `#DDEFE8` (subtle fills)
+
+# Status (web UI)
+
+* **Success:** `#2B8A57` · **Success-bg:** `#E6F4EC`
+* **Info:** `#2F6FA5` · **Info-bg:** `#E6EFF8`
+* **Warning (earthy amber):** `#A5671E` · **Warning-bg:** `#F8EFE3`
+* **Error (muted rose):** `#B6453C` · **Error-bg:** `#F8E8E6`
+
+# Interactive tokens (ready to use)
+
+* **Button Primary bg:** `#0E7C6B`
+  **Hover:** `#0C6F60` · **Pressed:** `#0A6053` · **Text on btn:** `#FFFFFF`
+* **Button Secondary (outline):** border/text `#0E7C6B`, bg `#FBFAF7`; **Hover bg:** `#E6F2EE`
+* **Links:** `#2DAA7B` · **Hover:** `#239E8A` · **Visited:** `#1F8E76`
+* **Focus Ring:** `#1F8E76` (or `#7AD0B9` for a lighter glow)
+* **Dividers/Borders:** `#C7CED6`
+* **Code/Tag Chips:** text `#0D1B1E` on bg `#E6F2EE` or `#FAF5EF`
+
+# Gradients (hero/section backgrounds)
+
+* **Venus Field (soft):** `linear-gradient(180deg, #A8E6CF 0%, #DCEDC1 100%)`
+* **Mint Ivory:** `linear-gradient(180deg, #E6F2EE 0%, #FBFAF7 100%)`
+* **Copper Veil (very subtle):** `linear-gradient(180deg, #FAF5EF 0%, #F6F5F2 100%)`
+
+# Dark Mode counterparts (if you add one)
+
+* **Background:** `#0D1B1E` · **Panel:** `#162226`
+* **Title:** `#F1F4F5` · **Body:** `#C9D0D3` · **Muted:** `#94A0A5`
+* **Primary Green (on dark):** `#48BA9A`
+* **Link/CTA (on dark):** `#4AC1AD` · **Hover:** `#5AD3BE`
+* **Copper (on dark):** `#CE8343`
+* **Dividers:** `#2A3A3F`
+
+## Quick pairing tips (accessible & on-brand)
+
+* **Text on light:** `#0D1B1E` / `#2F3A3D` on `#FBFAF7`
+* **Text on green:** `#FFFFFF` on `#0E7C6B`
+* **Links:** `#2DAA7B` on `#FBFAF7` (underline on long paragraphs)
+* **Badges:** text `#2B8A57` on bg `#E6F4EC`; text `#A5671E` on bg `#F8EFE3`
+
+If you want, I can bundle these into a **copy-paste `:root { --tokens }` CSS block** for your codebase next.
