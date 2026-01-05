@@ -105,6 +105,7 @@ export function Header() {
                     <ListItem 
                       href="/markets#b2c" 
                       title="B2C" 
+                      target="_blank"
                       isActive={isSolutionsActive && currentHash === "#b2c"}
                     >
                       Protect margin across promos, returns, and shipping.
@@ -112,6 +113,7 @@ export function Header() {
                     <ListItem 
                       href="/markets#b2b" 
                       title="B2B" 
+                      target="_blank"
                       isActive={isSolutionsActive && currentHash === "#b2b"}
                     >
                       Keep contracts, pricing, and credits aligned.
@@ -119,6 +121,7 @@ export function Header() {
                     <ListItem 
                       href="/markets#riaa" 
                       title="RIAA" 
+                      target="_blank"
                       isActive={isSolutionsActive && currentHash === "#riaa"}
                     >
                       Evidence-first answer system.
@@ -139,6 +142,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#finance" 
                       title="Finance" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#finance"}
                     >
                       Close faster with verified revenue data.
@@ -146,6 +150,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#revops" 
                       title="RevOps & Deal Desk" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#revops"}
                     >
                       Align pricing, approvals, and deal terms.
@@ -153,6 +158,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#sales" 
                       title="Sales" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#sales"}
                     >
                       Quote with confidence, renew without leakage.
@@ -160,6 +166,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#marketing" 
                       title="Marketing" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#marketing"}
                     >
                       Track promo ROI and campaign attribution.
@@ -167,6 +174,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#operations" 
                       title="Operations" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#operations"}
                     >
                       Optimize fulfillment and reduce cost leaks.
@@ -174,6 +182,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#leadership" 
                       title="Leadership" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#leadership"}
                     >
                       Get board-ready revenue insights.
@@ -181,6 +190,7 @@ export function Header() {
                     <ListItem 
                       href="/business-functions#it-security" 
                       title="IT & Security" 
+                      target="_blank"
                       isActive={isBusinessFunctionsActive && currentHash === "#it-security"}
                     >
                       Deploy securely in SaaS or VPC.
@@ -211,6 +221,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#why" 
                       title="Why Partner" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#why"}
                     >
                       Grow your practice with revenue intelligence.
@@ -218,6 +229,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#types" 
                       title="Partner Types" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#types"}
                     >
                       GSI, regional SI, and boutique options.
@@ -225,6 +237,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#deliver" 
                       title="What You Deliver" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#deliver"}
                     >
                       Scoping, integration, and ongoing support.
@@ -232,6 +245,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#enablement" 
                       title="Enablement" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#enablement"}
                     >
                       Certification, sandboxes, and sales tools.
@@ -239,6 +253,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#security" 
                       title="Security" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#security"}
                     >
                       Enterprise-grade compliance and access.
@@ -246,6 +261,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#model" 
                       title="Commercial Model" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#model"}
                     >
                       Transparent margins and deal registration.
@@ -253,6 +269,7 @@ export function Header() {
                     <ListItem 
                       href="/partners#apply" 
                       title="Apply" 
+                      target="_blank"
                       isActive={isPartnersActive && currentHash === "#apply"}
                     >
                       Start your partnership journey today.
