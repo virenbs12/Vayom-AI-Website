@@ -54,7 +54,7 @@ export default function Partners() {
         title="Partner Program - Consulting & Technology Partners | Vayom AI"
         description="Join the Vayom AI partner ecosystem. Technology integrations, consulting partnerships, and reseller opportunities for revenue intelligence solutions."
         keywords="revenue intelligence partner, consulting partner, technology partner, reseller program, integration partner"
-        canonicalUrl="https://vayomai.com/partners"
+        canonicalUrl="https://vayomai.org/partners"
       />
       <Header />
       

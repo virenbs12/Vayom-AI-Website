@@ -525,7 +525,7 @@ export default function Pricing() {
         title="Pricing Plans - Enterprise Revenue Intelligence | Vayom AI"
         description="Flexible pricing for SaaS and VPC deployment. Start with one scoped workflow and prove value in 6-12 weeks. Multi-region pricing available."
         keywords="revenue intelligence pricing, SaaS pricing, VPC deployment, enterprise software pricing"
-        canonicalUrl="https://vayomai.com/pricing"
+        canonicalUrl="https://vayomai.org/pricing"
       />
       <Header />
       <main className="pt-32 pb-20">

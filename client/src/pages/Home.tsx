@@ -30,7 +30,7 @@ export default function Home() {
         title="Vayom AI | Revenue Intelligence Platform - Stop Revenue Leakage"
         description="Discover revenue leakage across ERP, CRM & contracts with evidence-linked answers. AI-powered revenue intelligence for Finance, RevOps & Operations teams."
         keywords="revenue leakage, revenue intelligence, RIAA, B2B revenue, B2C commerce, billing errors, contract compliance"
-        canonicalUrl="https://vayomai.com/"
+        canonicalUrl="https://vayomai.org/"
       />
       <Header />
       <main>

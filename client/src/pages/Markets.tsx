@@ -14,7 +14,7 @@ export default function Markets() {
         title="Revenue Leakage Solutions for B2B & B2C | Vayom AI"
         description="Detect revenue leakage in B2C commerce (promos, returns, subscriptions) and B2B contracts (pricing, billing, credits). Powered by RIAA technology."
         keywords="B2B revenue leakage, B2C revenue leakage, promo stacking, contract compliance, billing errors, subscription leakage"
-        canonicalUrl="https://vayomai.com/markets"
+        canonicalUrl="https://vayomai.org/markets"
       />
       <Header />
       <main>

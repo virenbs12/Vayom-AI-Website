@@ -14,7 +14,7 @@ export function SEO({
   description,
   keywords,
   canonicalUrl,
-  ogImage = "https://vayomai.com/og-image.png",
+  ogImage = "https://vayomai.org/og-image.png",
   ogType = "website",
 }: SEOProps) {
   useEffect(() => {

@@ -74,7 +74,7 @@ export default function BusinessFunctions() {
         title="Revenue Intelligence for Finance, Sales & Operations | Vayom AI"
         description="Role-specific revenue intelligence for Finance, RevOps, Sales, Marketing, Operations & Leadership. Get actionable insights with linked evidence."
         keywords="finance revenue intelligence, sales operations, RevOps, marketing analytics, operations optimization, leadership insights"
-        canonicalUrl="https://vayomai.com/business-functions"
+        canonicalUrl="https://vayomai.org/business-functions"
       />
       <Header />
       

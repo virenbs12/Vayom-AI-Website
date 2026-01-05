@@ -1,11 +1,11 @@
 # Vayom AI - Revenue Intelligence Platform
-# https://vayomai.com
+# https://vayomai.org
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://vayomai.com/sitemap.xml
+Sitemap: https://vayomai.org/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

@@ -20,7 +20,7 @@ export default function Resources() {
         title="Resources - Blogs, Events & Demos | Vayom AI"
         description="Explore revenue intelligence insights, upcoming events, and product demos. Learn how to detect and prevent revenue leakage in your business."
         keywords="revenue intelligence blog, revenue leakage demos, finance events, RevOps resources"
-        canonicalUrl="https://vayomai.com/resources"
+        canonicalUrl="https://vayomai.org/resources"
       />
       <Header />
       

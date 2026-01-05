@@ -194,7 +194,7 @@ export default function Company() {
         title="About Vayom AI - Revenue Intelligence Company | Edison, NJ"
         description="Learn about Vayom AI's mission to help enterprises find revenue leakage. Based in Edison, NJ. Explore our story, team, and career opportunities."
         keywords="Vayom AI company, revenue intelligence company, Edison NJ, about us, careers"
-        canonicalUrl="https://vayomai.com/company"
+        canonicalUrl="https://vayomai.org/company"
       />
       <Header />
       
