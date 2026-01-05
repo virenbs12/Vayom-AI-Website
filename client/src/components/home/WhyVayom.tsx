@@ -1,5 +1,6 @@
 import React from "react";
-import logoImage from "@assets/generated_images/vayom_ai_unified_output_flow_diagram.png";
+import { Logo } from "@/components/layout/Logo";
+import skyTexture from "@assets/generated_images/subtle_boundless_sky_gradient_texture_for_background.png";
 
 export function WhyVayom() {
   return (
@@ -22,7 +23,7 @@ export function WhyVayom() {
               {[
                 "Enterprise-grade intelligence at middle-market pricing",
                 "Cross-functional workflows with minimal data engineering",
-                "Built for both B2B and B2C operations on one solution",
+                "Built for both B2B and B2C operations on one platform",
                 "Evidence-linked outputs so teams can verify and act quickly",
                 "SaaS or VPC deployment for control and scale"
               ].map((item, i) => (
@@ -40,16 +41,17 @@ export function WhyVayom() {
         </div>
 
         {/* Right Column: Brand Panel */}
-        <div className="relative h-[600px] w-full rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white group">
+        <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-slate-100">
            <img 
-            src={logoImage} 
-            alt="Vayom AI Identity" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src={skyTexture} 
+            alt="Boundless Sky Background" 
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
           />
-          <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent" />
           
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-vayom-mint-100 rounded-full blur-3xl opacity-40 pointer-events-none" />
-          <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/5 rounded-full blur-3xl opacity-40 pointer-events-none" />
+          <div className="relative z-10 bg-white/10 backdrop-blur-xl p-16 rounded-[2rem] border border-white/40 shadow-xl">
+            <Logo className="text-white scale-[2] h-32" />
+          </div>
         </div>
       </div>
     </section>

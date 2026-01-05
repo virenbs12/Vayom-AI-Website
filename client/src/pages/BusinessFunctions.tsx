@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/home/ContactForm";
-import { cn, scrollToDemo } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { 
   Search, 
   Database, 
@@ -28,18 +28,6 @@ import { Link } from "wouter";
 
 export default function BusinessFunctions() {
   const [activeSection, setActiveSection] = useState("finance");
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,13 +75,8 @@ export default function BusinessFunctions() {
               </p>
               
               <div className="flex gap-4 pt-4">
-                <Button 
-                  size="lg" 
-                  className="rounded-full px-8" 
-                  onClick={scrollToDemo}
-                  data-testid="button-request-demo-functions-hero"
-                >
-                  Request a Demo
+                <Button size="lg" className="rounded-full px-8" onClick={() => window.location.href='/#contact'}>
+                  Request a workflow demo
                 </Button>
                 <Link href="/markets#riaa">
                   <Button size="lg" variant="outline" className="rounded-full px-8">
@@ -227,13 +210,7 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button 
-                     className="rounded-full px-8 mt-4" 
-                     onClick={scrollToDemo}
-                     data-testid="button-request-demo-finance"
-                   >
-                     Request a Demo
-                   </Button>
+                   <Button className="rounded-full px-8 mt-4" onClick={() => window.location.href='/#contact'}>Request a workflow demo</Button>
                 </div>
                 
                 {/* Finance Visual */}
@@ -381,13 +358,7 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button 
-                     className="rounded-full px-8 mt-4" 
-                     onClick={scrollToDemo}
-                     data-testid="button-request-demo-sales"
-                   >
-                     Request a Demo
-                   </Button>
+                   <Button className="rounded-full px-8 mt-4" onClick={() => window.location.href='/#contact'}>Request a workflow demo</Button>
                 </div>
                 
                 {/* Sales Visual: Shareable Account Brief */}
@@ -520,13 +491,7 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button 
-                     className="rounded-full px-8 mt-4" 
-                     onClick={scrollToDemo}
-                     data-testid="button-request-demo-operations"
-                   >
-                     Request a Demo
-                   </Button>
+                   <Button className="rounded-full px-8 mt-4" onClick={() => window.location.href='/#contact'}>Request a workflow demo</Button>
                 </div>
                 
                 {/* Operations Visual: Issue-to-Impact Map */}
@@ -647,13 +612,7 @@ export default function BusinessFunctions() {
                          </ul>
                       </div>
                    </div>
-                   <Button 
-                     className="rounded-full px-8 mt-4" 
-                     onClick={scrollToDemo}
-                     data-testid="button-request-demo-it-security"
-                   >
-                     Request a Demo
-                   </Button>
+                   <Button className="rounded-full px-8 mt-4" onClick={() => window.location.href='/#contact'}>Request a workflow demo</Button>
                 </div>
                 
                 {/* IT Visual: Permissions + Sources Console */}

@@ -1,25 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
-import {
-  SiSalesforce,
-  SiMysql,
-  SiPostgresql,
-  SiMongodb,
-  SiDatabricks,
-  SiSnowflake,
-  SiSap,
-  SiSlack,
-  SiJira,
-  SiZoho,
-  SiFacebook,
-  SiGoogleads,
-  SiShopify,
-  SiZendesk,
-  SiZoom,
-  SiHubspot
-} from "@icons-pack/react-simple-icons";
 import { 
   ArrowRight, 
   Check, 
@@ -55,9 +36,7 @@ import {
   Truck,
   RefreshCcw,
   MessageSquare,
-  BarChart,
-  ListFilter,
-  Target
+  BarChart
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -66,22 +45,8 @@ export function MarketsContent() {
   const [activeSection, setActiveSection] = useState("b2c");
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash) {
-      setActiveSection(hash);
-      setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY - 140;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
-      const sections = ["b2c", "b2b", "riaa", "business-functions"];
+      const sections = ["b2c", "b2b", "riaa"];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -97,11 +62,7 @@ export function MarketsContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleTabClick = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveSection(id);
-    window.history.pushState(null, '', `/markets#${id}`);
+  const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 140; 
@@ -118,12 +79,10 @@ export function MarketsContent() {
             { id: "b2c", label: "B2C" },
             { id: "b2b", label: "B2B" },
             { id: "riaa", label: "RIAA" },
-            { id: "business-functions", label: "Business Functions" },
           ].map((item) => (
             <button
               key={item.id}
-              type="button"
-              onClick={(e) => handleTabClick(e, item.id)}
+              onClick={() => scrollTo(item.id)}
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                 activeSection === item.id 
@@ -358,63 +317,6 @@ export function MarketsContent() {
                       <div className="flex-1 space-y-2">
                          <div className="p-2 bg-red-50 rounded border border-red-100 text-[9px] font-bold text-red-600">82 Refunds</div>
                          <div className="p-2 bg-amber-50 rounded border border-amber-100 text-[9px] font-bold text-amber-600">14 Cancellations</div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-
-             {/* B2C Function 7 */}
-             <div className="lg:col-span-2 bg-slate-50 p-8 rounded-2xl border border-border flex flex-col">
-                <span className="text-[10px] font-bold uppercase text-primary mb-2">B2C workflows (overview)</span>
-                <h3 className="text-xl font-bold mb-4">Customer Service Data Signals</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Turn support conversations into early-warning signals for churn, refunds, and reputation.
-                </p>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Traditional reporting tracks handle time and SLAs, but misses what customers actually experienced. This converts calls, tickets, and chats into structured signals that downstream teams can act on.
-                </p>
-                
-                <div className="mb-6">
-                   <div className="text-[11px] font-bold text-slate-600 mb-4">What Vayom AI flags:</div>
-                   <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <h4 className="font-bold text-sm mb-2">Experience risk signals</h4>
-                         <p className="text-[11px] text-muted-foreground">from transcripts and text artifacts across channels (voice, tickets, messaging, chatbots).</p>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <h4 className="font-bold text-sm mb-2">Consistency, not anecdotes</h4>
-                         <p className="text-[11px] text-muted-foreground">a fixed set of metrics per interaction, including agent tactics tied to outcomes.</p>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <h4 className="font-bold text-sm mb-2">Actionable patterns</h4>
-                         <p className="text-[11px] text-muted-foreground">like confusion, escalation intent, empathy, clarity, and de-escalation signals.</p>
-                      </div>
-                   </div>
-                </div>
-
-                <div>
-                   <div className="text-[11px] font-bold text-slate-600 mb-4">What teams do next:</div>
-                   <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                            <ListFilter className="w-4 h-4 text-primary" />
-                         </div>
-                         <h4 className="font-bold text-sm mb-2">Prioritize fixes</h4>
-                         <p className="text-[11px] text-muted-foreground">by theme, product, policy, or segment using the structured interaction signals.</p>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                            <Users className="w-4 h-4 text-primary" />
-                         </div>
-                         <h4 className="font-bold text-sm mb-2">Route at-risk customers</h4>
-                         <p className="text-[11px] text-muted-foreground">and high-friction issues to the right owner before they cascade.</p>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl border border-border">
-                         <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                            <Target className="w-4 h-4 text-primary" />
-                         </div>
-                         <h4 className="font-bold text-sm mb-2">Coach and standardize</h4>
-                         <p className="text-[11px] text-muted-foreground">service motion using tactic effectiveness outcomes (what worked, what did not).</p>
                       </div>
                    </div>
                 </div>
@@ -720,7 +622,7 @@ export function MarketsContent() {
         <section id="riaa" className="scroll-mt-40 border-t border-border pt-20">
           <div className="mb-16">
             <span className="text-primary font-bold tracking-wide uppercase text-sm">Solutions Page: RIAA</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">RIAA: Revenue Intelligence Agentic Atlas (the core solution)</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">RIAA: Revenue Intelligence Agentic Atlas (the core platform)</h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
               RIAA is the system that makes multi-source answers usable in real operations. It coordinates retrieval across databases, documents, and feeds, then returns results with proof attached. Teams can validate fast, act fast, and stop sending cash out the door due to slow verification and execution drift.
             </p>
@@ -751,56 +653,6 @@ export function MarketsContent() {
                  </div>
               </div>
             </div>
-          </div>
-
-          {/* Out of the Box Integrations */}
-          <div className="mb-24">
-            <h3 className="text-2xl font-display font-bold mb-4">Out of the Box Integrations</h3>
-            <p className="text-muted-foreground mb-8 max-w-2xl">Pre-built connectors for the systems your teams already use. No rip-and-replace required.</p>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
-              {[
-                { name: "Salesforce", Icon: SiSalesforce, isBrand: true },
-                { name: "MySQL", Icon: SiMysql, isBrand: true },
-                { name: "PostgreSQL", Icon: SiPostgresql, isBrand: true },
-                { name: "MongoDB", Icon: SiMongodb, isBrand: true },
-                { name: "Databricks", Icon: SiDatabricks, isBrand: true },
-                { name: "Snowflake", Icon: SiSnowflake, isBrand: true },
-                { name: "Azure Blob Storage", Icon: Database, isBrand: false },
-                { name: "Amazon S3", Icon: Database, isBrand: false },
-                { name: "SAP", Icon: SiSap, isBrand: true },
-                { name: "Trino", Icon: Database, isBrand: false },
-                { name: "Dynamics 365", Icon: LayoutGrid, isBrand: false },
-                { name: "Microsoft 365", Icon: LayoutGrid, isBrand: false },
-                { name: "Slack", Icon: SiSlack, isBrand: true },
-                { name: "Jira", Icon: SiJira, isBrand: true },
-                { name: "Azure DevOps", Icon: Globe, isBrand: false },
-                { name: "Zoho CRM", Icon: SiZoho, isBrand: true },
-                { name: "Facebook Ads", Icon: SiFacebook, isBrand: true },
-                { name: "Google Ads", Icon: SiGoogleads, isBrand: true },
-                { name: "Shopify", Icon: SiShopify, isBrand: true },
-                { name: "FreshDesk", Icon: SiZendesk, isBrand: true },
-                { name: "ZenDesk", Icon: SiZendesk, isBrand: true },
-                { name: "Zoom", Icon: SiZoom, isBrand: true },
-                { name: "HubSpot", Icon: SiHubspot, isBrand: true }
-              ].map((system, i) => (
-                <div 
-                  key={i} 
-                  className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center hover:bg-slate-800 transition-colors cursor-default border border-slate-700 flex flex-col items-center gap-2"
-                >
-                  <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center">
-                    {system.isBrand ? (
-                      <system.Icon size={32} color="default" />
-                    ) : (
-                      <system.Icon className="w-8 h-8 text-slate-700" />
-                    )}
-                  </div>
-                  <span className="text-xs font-medium">{system.name}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground mt-6 text-center">
-              Additional connectors available on request. Custom integrations supported.
-            </p>
           </div>
 
           {/* Provenance-first outputs */}
@@ -872,60 +724,6 @@ export function MarketsContent() {
                     <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
                  </div>
                ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Business Functions Preview */}
-        <section id="business-functions" className="scroll-mt-40 border-t border-border pt-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-display font-bold">One truth across teams, with proof attached</h2>
-              <p className="text-lg text-muted-foreground">
-                Revenue Intelligence is not just for Finance. RIAA unifies the evidence layer across the entire business, so every function moves from question to action with the same trusted foundation.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Finance", desc: "Close-ready answers" },
-                  { label: "RevOps", desc: "Governance at scale" },
-                  { label: "Sales", desc: "Account-level truth" },
-                  { label: "Leadership", desc: "Clear impact view" }
-                ].map((f, i) => (
-                  <div key={i} className="p-4 bg-white border border-border rounded-xl">
-                    <div className="font-bold text-sm">{f.label}</div>
-                    <div className="text-xs text-muted-foreground">{f.desc}</div>
-                  </div>
-                ))}
-              </div>
-              <Button size="lg" className="rounded-full px-8" onClick={() => window.location.href='/business-functions'}>
-                Explore Business Functions <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
-            <div className="bg-slate-50 border border-border rounded-3xl p-8 relative overflow-hidden">
-               <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
-               <div className="relative space-y-4">
-                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center animate-in slide-in-from-left-4 duration-500">
-                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"><Users className="w-5 h-5" /></div>
-                     <div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Cross-team Signal</div>
-                        <div className="text-xs font-bold">Pricing drift detected in Region B</div>
-                     </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center translate-x-8 animate-in slide-in-from-left-8 duration-700">
-                     <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600"><ClipboardCheck className="w-5 h-5" /></div>
-                     <div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Evidence Check</div>
-                        <div className="text-xs font-bold">Contract #992 vs NetSuite Invoice</div>
-                     </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-xl shadow-lg border border-border flex gap-4 items-center translate-x-4 animate-in slide-in-from-left-6 duration-1000">
-                     <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600"><CheckCircle2 className="w-5 h-5" /></div>
-                     <div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Actioned</div>
-                        <div className="text-xs font-bold">$42k leakage prevented this cycle</div>
-                     </div>
-                  </div>
-               </div>
             </div>
           </div>
         </section>

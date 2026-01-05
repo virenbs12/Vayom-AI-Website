@@ -6,7 +6,6 @@ import { MarketsContent } from "@/components/markets/MarketsContent";
 import { ContactForm } from "@/components/home/ContactForm";
 
 export default function Markets() {
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />

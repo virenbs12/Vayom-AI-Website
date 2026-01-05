@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/Full_logo_side_text_without_bg_(4000px)_1766964703537.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,14 +11,13 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn, scrollToDemo } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const [currentHash, setCurrentHash] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,32 +26,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    setCurrentHash(window.location.hash);
-    
-    const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
-    };
-    
-    window.addEventListener("hashchange", handleHashChange);
-    window.addEventListener("popstate", handleHashChange);
-    
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-      window.removeEventListener("popstate", handleHashChange);
-    };
-  }, [location]);
-
-  const isHomeActive = location === "/";
-  const isSolutionsActive = location === "/markets";
-  const isBusinessFunctionsActive = location === "/business-functions";
-  const isPricingActive = location === "/pricing";
-  const isPartnersActive = location === "/partners";
-  const isResourcesActive = location === "/resources";
-  const isCompanyActive = location === "/company";
-
-  const activeStyle = "bg-accent text-accent-foreground";
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -64,63 +37,40 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
-        isScrolled ? "bg-white/80 backdrop-blur-md border-transparent py-2 shadow-sm" : "bg-transparent py-4 border-[#dedede]"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
+        isScrolled ? "bg-white/80 backdrop-blur-md border-border py-2 shadow-sm" : "bg-transparent py-4"
       )}
     >
-      <div className="container-width flex items-center justify-between h-[50px]">
-        <Link href="/" className="cursor-pointer block">
-          <div className="flex items-center">
-            <img 
-              src={logoImage} 
-              alt="Vayom AI" 
-              className="h-40 absolute w-auto object-contain"
-            />
-          </div>
+      <div className="container-width flex items-center justify-between">
+        <Link href="/">
+          <a className="cursor-pointer block">
+            <Logo className="h-10 md:h-12" />
+          </a>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:block ml-25">
+        <div className="hidden md:block">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink asChild className={cn(
-                  navigationMenuTriggerStyle(), 
-                  "bg-transparent font-medium",
-                  isHomeActive && activeStyle
-                )}>
-                  <Link href="/">Home</Link>
-                </NavigationMenuLink>
+                <Link href="/">
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
+                    Home
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(
-                  "bg-transparent font-medium",
-                  isSolutionsActive && activeStyle
-                )}>
-                  Solutions
-                </NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent font-medium">Solutions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-                    <ListItem 
-                      href="/markets#b2c" 
-                      title="B2C" 
-                      isActive={isSolutionsActive && currentHash === "#b2c"}
-                    >
+                    <ListItem href="/markets#b2c" title="B2C">
                       Protect margin across promos, returns, and shipping.
                     </ListItem>
-                    <ListItem 
-                      href="/markets#b2b" 
-                      title="B2B" 
-                      isActive={isSolutionsActive && currentHash === "#b2b"}
-                    >
+                    <ListItem href="/markets#b2b" title="B2B">
                       Keep contracts, pricing, and credits aligned.
                     </ListItem>
-                    <ListItem 
-                      href="/markets#riaa" 
-                      title="RIAA" 
-                      isActive={isSolutionsActive && currentHash === "#riaa"}
-                    >
+                    <ListItem href="/markets#riaa" title="RIAA">
                       Evidence-first answer system.
                     </ListItem>
                   </ul>
@@ -128,159 +78,44 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(
-                  "bg-transparent font-medium",
-                  isBusinessFunctionsActive && activeStyle
-                )}>
-                  Business Functions
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-                    <ListItem 
-                      href="/business-functions#finance" 
-                      title="Finance" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#finance"}
-                    >
-                      Close faster with verified revenue data.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#revops" 
-                      title="RevOps & Deal Desk" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#revops"}
-                    >
-                      Align pricing, approvals, and deal terms.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#sales" 
-                      title="Sales" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#sales"}
-                    >
-                      Quote with confidence, renew without leakage.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#marketing" 
-                      title="Marketing" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#marketing"}
-                    >
-                      Track promo ROI and campaign attribution.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#operations" 
-                      title="Operations" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#operations"}
-                    >
-                      Optimize fulfillment and reduce cost leaks.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#leadership" 
-                      title="Leadership" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#leadership"}
-                    >
-                      Get board-ready revenue insights.
-                    </ListItem>
-                    <ListItem 
-                      href="/business-functions#it-security" 
-                      title="IT & Security" 
-                      isActive={isBusinessFunctionsActive && currentHash === "#it-security"}
-                    >
-                      Deploy securely in SaaS or VPC.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
+                <Link href="/pricing">
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent font-medium")}>
+                    Pricing
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink asChild className={cn(
-                  navigationMenuTriggerStyle(), 
-                  "bg-transparent font-medium",
-                  isPricingActive && activeStyle
-                )}>
-                  <Link href="/pricing">Pricing</Link>
-                </NavigationMenuLink>
+                <Link href="/#how-it-works">
+                  <NavigationMenuLink 
+                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
+                    onClick={(e) => {
+                      if (location === '/') {
+                        e.preventDefault();
+                        scrollToSection('how-it-works');
+                      }
+                    }}
+                  >
+                    How it works
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(
-                  "bg-transparent font-medium",
-                  isPartnersActive && activeStyle
-                )}>
-                  Partners
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-                    <ListItem 
-                      href="/partners#why" 
-                      title="Why Partner" 
-                      isActive={isPartnersActive && currentHash === "#why"}
-                    >
-                      Grow your practice with revenue intelligence.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#types" 
-                      title="Partner Types" 
-                      isActive={isPartnersActive && currentHash === "#types"}
-                    >
-                      GSI, regional SI, and boutique options.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#deliver" 
-                      title="What You Deliver" 
-                      isActive={isPartnersActive && currentHash === "#deliver"}
-                    >
-                      Scoping, integration, and ongoing support.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#enablement" 
-                      title="Enablement" 
-                      isActive={isPartnersActive && currentHash === "#enablement"}
-                    >
-                      Certification, sandboxes, and sales tools.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#security" 
-                      title="Security" 
-                      isActive={isPartnersActive && currentHash === "#security"}
-                    >
-                      Enterprise-grade compliance and access.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#model" 
-                      title="Commercial Model" 
-                      isActive={isPartnersActive && currentHash === "#model"}
-                    >
-                      Transparent margins and deal registration.
-                    </ListItem>
-                    <ListItem 
-                      href="/partners#apply" 
-                      title="Apply" 
-                      isActive={isPartnersActive && currentHash === "#apply"}
-                    >
-                      Start your partnership journey today.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
+                <Link href="/#contact">
+                  <NavigationMenuLink 
+                    className={cn(navigationMenuTriggerStyle(), "bg-transparent cursor-pointer font-medium")}
+                    onClick={(e) => {
+                      if (location === '/') {
+                        e.preventDefault();
+                        scrollToSection('contact');
+                      }
+                    }}
+                  >
+                    Contact
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild className={cn(
-                  navigationMenuTriggerStyle(), 
-                  "bg-transparent font-medium",
-                  isResourcesActive && activeStyle
-                )}>
-                  <Link href="/resources">Resources</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild className={cn(
-                  navigationMenuTriggerStyle(), 
-                  "bg-transparent font-medium",
-                  isCompanyActive && activeStyle
-                )}>
-                  <Link href="/company">Company</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -288,10 +123,12 @@ export function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Button 
             className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white font-medium"
-            onClick={scrollToDemo}
-            data-testid="button-request-demo-header"
+            onClick={() => {
+              if (location === '/') scrollToSection('contact');
+              else window.location.href = '/#contact';
+            }}
           >
-            Request a Demo
+            Request a workflow demo
           </Button>
         </div>
 
@@ -308,86 +145,18 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-background border-b border-border p-4 md:hidden shadow-lg animate-in slide-in-from-top-5">
           <div className="flex flex-col gap-4">
-            <Link 
-              href="/"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isHomeActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
+            <Link href="/">
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Home</a>
             </Link>
-            <Link 
-              href="/markets"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isSolutionsActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Solutions
+            <Link href="/markets">
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             </Link>
-            <Link 
-              href="/business-functions"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isBusinessFunctionsActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Business Functions
+            <Link href="/pricing">
+              <a className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             </Link>
-            <Link 
-              href="/pricing"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isPricingActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Pricing
-            </Link>
-            <Link 
-              href="/partners"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isPartnersActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Partners
-            </Link>
-            <Link 
-              href="/resources"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isResourcesActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Resources
-            </Link>
-            <Link 
-              href="/company"
-              className={cn(
-                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
-                isCompanyActive && "bg-muted"
-              )} 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Company
-            </Link>
-            <Button 
-              className="w-full mt-2" 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                scrollToDemo();
-              }}
-              data-testid="button-request-demo-mobile"
-            >
-              Request a Demo
-            </Button>
+            <a href="/#how-it-works" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>How it works</a>
+            <a href="/#contact" className="text-lg font-medium p-2 hover:bg-muted rounded-md" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <Button className="w-full mt-2" onClick={() => setMobileMenuOpen(false)}>Request a workflow demo</Button>
           </div>
         </div>
       )}
@@ -395,53 +164,28 @@ export function Header() {
   );
 }
 
-interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
-  title: string;
-  isActive?: boolean;
-}
-
-const ListItem = React.forwardRef<React.ElementRef<"a">, ListItemProps>(
-  ({ className, title, children, target, isActive, href, ...props }, ref) => {
-    const baseClassName = cn(
-      "group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-      isActive && "bg-accent text-accent-foreground",
-      className
-    );
-
-    const content = (
-      <>
-        <div className="text-sm font-medium leading-none">{title}</div>
-        {children && (
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-white transition-colors">
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <Link href={props.href as string}>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        )}
-      </>
-    );
-
-    if (target === "_blank") {
-      return (
-        <li>
-          <a
-            ref={ref}
-            className={baseClassName}
-            target={target}
-            href={href}
-            {...props}
-          >
-            {content}
-          </a>
-        </li>
-      );
-    }
-
-    return (
-      <li>
-        <Link href={href as string} className={baseClassName}>
-          {content}
-        </Link>
-      </li>
-    );
-  }
-);
+        </a>
+      </Link>
+    </li>
+  );
+});
 ListItem.displayName = "ListItem";

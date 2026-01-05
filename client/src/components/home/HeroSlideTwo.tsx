@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { Logo } from "@/components/layout/Logo";
 import skyTexture from "@assets/generated_images/subtle_boundless_sky_gradient_texture_for_background.png";
 import { motion } from "framer-motion";
-import { scrollToDemo } from "@/lib/utils";
 
 export function HeroSlideTwo() {
   return (
@@ -25,17 +24,12 @@ export function HeroSlideTwo() {
           </motion.div>
           
           <div className="flex flex-wrap gap-4">
-            <Button 
-              size="lg" 
-              className="rounded-full px-8 text-lg h-12"
-              onClick={scrollToDemo}
-              data-testid="button-request-demo-hero-two"
-            >
-              Request a Demo
+            <Button size="lg" className="rounded-full px-8 text-lg h-12">
+              Request a workflow demo
             </Button>
             <Link href="/markets">
               <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2">
-                Explore Solutions
+                Explore markets
               </Button>
             </Link>
           </div>

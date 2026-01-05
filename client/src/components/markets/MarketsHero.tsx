@@ -2,16 +2,11 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, User, AlertCircle, Search } from "lucide-react";
 import { Link } from "wouter";
-import { scrollToDemo } from "@/lib/utils";
 
 export function MarketsHero() {
   const scrollTo = (id: string) => {
-    window.history.pushState(null, '', `/markets#${id}`);
     const el = document.getElementById(id);
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 140;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -29,13 +24,8 @@ export function MarketsHero() {
           </p>
           
           <div className="flex gap-4 pt-4">
-            <Button 
-              size="lg" 
-              className="rounded-full px-8" 
-              onClick={scrollToDemo}
-              data-testid="button-request-demo-markets"
-            >
-              Request a Demo
+            <Button size="lg" className="rounded-full px-8" onClick={() => window.location.href='/#contact'}>
+              Request a workflow demo
             </Button>
           </div>
         </div>

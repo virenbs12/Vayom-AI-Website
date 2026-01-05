@@ -1,14 +1,9 @@
 import React from "react";
-import logoImage from "@assets/Full_logo_side_text_without_bg_(4000px)_1766964703537.png";
+import logoImage from "@assets/Full_logo_side_text_without_bg_(2000px)_1766952657667.png";
 
-interface LogoProps {
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-export function Logo({ className, style }: LogoProps) {
+export function Logo({ className }: { className?: string }) {
   return (
-    <div className={`flex items-center ${className || "h-12"}`} style={style}>
+    <div className={`flex items-center ${className || "h-12"}`}>
       <img 
         src={logoImage} 
         alt="Vayom AI" 
