@@ -44,10 +44,8 @@ export function HowItWorks() {
       </div>
 
       <div className="text-center mt-12">
-        <Link href="/markets">
-          <a className="inline-flex items-center text-primary font-semibold hover:underline text-lg">
-            See markets <ArrowRight className="ml-2 w-4 h-4" />
-          </a>
+        <Link href="/markets" className="inline-flex items-center text-primary font-semibold hover:underline text-lg">
+          See markets <ArrowRight className="ml-2 w-4 h-4" />
         </Link>
       </div>
     </section>

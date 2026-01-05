@@ -62,22 +62,20 @@ export function MarketsPreview() {
                 </Card>
               </a>
             ) : (
-              <Link key={i} href={item.link}>
-                <a className="block h-full group">
-                  <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer flex flex-col">
-                    <CardHeader>
-                      <CardTitle className="text-2xl group-hover:text-primary transition-colors">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow">
-                      <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </CardContent>
-                    <CardFooter>
-                      <span className="text-sm font-semibold text-primary flex items-center group-hover:underline">
-                        Learn more <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </CardFooter>
-                  </Card>
-                </a>
+              <Link key={i} href={item.link} className="block h-full group">
+                <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-2xl group-hover:text-primary transition-colors">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                  <CardFooter>
+                    <span className="text-sm font-semibold text-primary flex items-center group-hover:underline">
+                      Learn more <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </CardFooter>
+                </Card>
               </Link>
             )
           ))}

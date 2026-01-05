@@ -33,7 +33,7 @@ export function HeroSlideTwo() {
             >
               Request a Demo
             </Button>
-            <Link href="/markets">
+            <Link href="/markets" asChild>
               <Button size="lg" variant="outline" className="rounded-full px-8 text-lg h-12 border-2">
                 Explore Solutions
               </Button>

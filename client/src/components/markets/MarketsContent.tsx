@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
 import {
@@ -62,8 +62,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function MarketsContent() {
-  const [activeSection, setActiveSection] = useState("b2c");
-
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -97,6 +95,7 @@ export function MarketsContent() {
           ].map((item) => (
             <button
               key={item.id}
+              type="button"
               onClick={() => scrollToSection(item.id)}
               className="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
             >
