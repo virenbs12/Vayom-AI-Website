@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
 import {
@@ -62,9 +62,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function MarketsContent() {
+  const [activeSection, setActiveSection] = useState("b2c");
+
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
+      const sectionId = hash.replace("#", "");
+      setActiveSection(sectionId);
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -74,9 +78,32 @@ export function MarketsContent() {
     }
   }, []);
 
+  useEffect(() => {
+    const sections = ["b2c", "b2b", "riaa", "business-functions"];
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     e.stopPropagation();
+    setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
       const y = element.getBoundingClientRect().top + window.scrollY - 140;
@@ -99,7 +126,12 @@ export function MarketsContent() {
               key={item.id}
               type="button"
               onClick={(e) => scrollToSection(e, item.id)}
-              className="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              className={cn(
+                "px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
+                activeSection === item.id
+                  ? "bg-primary text-white"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
             >
               {item.label}
             </button>
