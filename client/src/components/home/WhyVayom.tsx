@@ -43,7 +43,7 @@ export function WhyVayom() {
         <div className="relative h-[600px] w-full rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white group">
            <img 
             src={logoImage} 
-            alt="Vayom AI Identity" 
+            alt="Vayom AI unified data flow diagram showing how revenue intelligence connects multiple systems" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent pointer-events-none" />

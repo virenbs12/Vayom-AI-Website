@@ -11,7 +11,7 @@ export function Logo({ className, style }: LogoProps) {
     <div className={`flex items-center ${className || "h-12"}`} style={style}>
       <img 
         src={logoImage} 
-        alt="Vayom AI" 
+        alt="Vayom AI - Revenue Intelligence Platform Logo" 
         className="h-full w-auto object-contain"
       />
     </div>

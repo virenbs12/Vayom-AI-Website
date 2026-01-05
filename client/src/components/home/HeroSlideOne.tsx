@@ -53,7 +53,7 @@ export function HeroSlideOne() {
         >
           <img 
             src={heroImage} 
-            alt="Vayom Boundless Sky" 
+            alt="Revenue intelligence dashboard showing evidence-linked answers across ERP, CRM and contract systems" 
             className="w-full h-full object-cover"
           />
         </motion.div>

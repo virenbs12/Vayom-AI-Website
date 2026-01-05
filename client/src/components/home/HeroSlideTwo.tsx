@@ -54,7 +54,7 @@ export function HeroSlideTwo() {
         >
           <img 
             src={skyTexture} 
-            alt="Vayom Boundless Sky" 
+            alt="Vayom AI boundless sky visual representing infinite decision-making possibilities" 
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-primary/10 backdrop-blur-[2px]" />
