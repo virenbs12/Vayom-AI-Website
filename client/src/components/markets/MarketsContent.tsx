@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import leakageMap from "@assets/generated_images/b2c_revenue_leakage_map_diagram.png";
 import {
@@ -65,6 +66,20 @@ export function MarketsContent() {
   const [activeSection, setActiveSection] = useState("b2c");
 
   useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setActiveSection(hash);
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 140;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ["b2c", "b2b", "riaa", "business-functions"];
       for (const section of sections) {
@@ -82,9 +97,11 @@ export function MarketsContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (e: React.MouseEvent, id: string) => {
+  const handleTabClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     e.stopPropagation();
+    setActiveSection(id);
+    window.history.pushState(null, '', `/markets#${id}`);
     const el = document.getElementById(id);
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 140; 
@@ -106,7 +123,7 @@ export function MarketsContent() {
             <button
               key={item.id}
               type="button"
-              onClick={(e) => scrollTo(e, item.id)}
+              onClick={(e) => handleTabClick(e, item.id)}
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                 activeSection === item.id 

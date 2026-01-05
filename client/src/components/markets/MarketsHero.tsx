@@ -6,8 +6,12 @@ import { scrollToDemo } from "@/lib/utils";
 
 export function MarketsHero() {
   const scrollTo = (id: string) => {
+    window.history.pushState(null, '', `/markets#${id}`);
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 140;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
