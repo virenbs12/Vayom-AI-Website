@@ -74,7 +74,9 @@ export function MarketsContent() {
     }
   }, []);
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     const element = document.getElementById(id);
     if (element) {
       const y = element.getBoundingClientRect().top + window.scrollY - 140;
@@ -96,7 +98,7 @@ export function MarketsContent() {
             <button
               key={item.id}
               type="button"
-              onClick={() => scrollToSection(item.id)}
+              onClick={(e) => scrollToSection(e, item.id)}
               className="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
             >
               {item.label}
