@@ -82,7 +82,9 @@ export function MarketsContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     const el = document.getElementById(id);
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 140; 
@@ -103,7 +105,8 @@ export function MarketsContent() {
           ].map((item) => (
             <button
               key={item.id}
-              onClick={() => scrollTo(item.id)}
+              type="button"
+              onClick={(e) => scrollTo(e, item.id)}
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
                 activeSection === item.id 
