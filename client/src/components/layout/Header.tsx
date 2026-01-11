@@ -69,16 +69,14 @@ export function Header() {
       )}
     >
       <div className="container-width flex items-center justify-between h-[50px]">
-        <Link href="/">
-          <a className="cursor-pointer block">
-            <div className="flex items-center">
-              <img 
-                src={logoImage} 
-                alt="Vayom AI" 
-                className="h-40 absolute w-auto object-contain"
-              />
-            </div>
-          </a>
+        <Link href="/" className="cursor-pointer block">
+          <div className="flex items-center">
+            <img 
+              src={logoImage} 
+              alt="Vayom AI" 
+              className="h-40 absolute w-auto object-contain"
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}

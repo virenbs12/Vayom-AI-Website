@@ -14,6 +14,8 @@ import Partners from "@/pages/Partners";
 import Resources from "@/pages/Resources";
 import Company from "@/pages/Company";
 import SMSNotificationsConsent from "@/pages/SMSNotificationsConsent";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import Terms from "@/pages/Terms";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -41,6 +43,8 @@ function Router() {
       <Route path="/company" component={Company} />
       <Route path="/business-functions" component={BusinessFunctions} />
       <Route path="/sms-notifications-consent" component={SMSNotificationsConsent} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
     </Switch>
   );

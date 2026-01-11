@@ -42,8 +42,8 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Vayom AI. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground">Terms of Service</a>
+            <Link href="/privacy" className="hover:text-foreground" data-testid="link-footer-privacy">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-foreground" data-testid="link-footer-terms">Terms and Conditions</Link>
             <Link href="/sms-notifications-consent" className="hover:text-foreground" data-testid="link-footer-sms-consent">SMS Notifications Consent</Link>
           </div>
         </div>

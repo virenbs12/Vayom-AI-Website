@@ -94,7 +94,7 @@ export default function SMSNotificationsConsent() {
             <ul className="list-disc pl-6 space-y-2 text-foreground">
               <li>
                 <a 
-                  href="/privacy-policy" 
+                  href="/privacy" 
                   className="text-primary hover:underline"
                   data-testid="link-privacy-policy"
                 >
@@ -103,7 +103,7 @@ export default function SMSNotificationsConsent() {
               </li>
               <li>
                 <a 
-                  href="/terms-of-service" 
+                  href="/terms" 
                   className="text-primary hover:underline"
                   data-testid="link-terms"
                 >
