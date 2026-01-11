@@ -1,0 +1,156 @@
+CONTEXT
+You are working on an existing production website (not related to any prior project). The business needs a new public web page specifically to support US/Canada toll‑free SMS verification for Azure Communication Services. The page must be accessible publicly via a stable URL, but it must NOT appear in the top navigation/header. It must appear ONLY in the website footer (bottom menu).
+
+GOAL
+Implement a new “SMS Notifications Consent” page and link it ONLY from the footer. The page content must clearly describe transactional-only SMS usage (job/file status notifications), consent/opt-in method, message frequency, STOP/HELP handling, and links to Privacy Policy and Terms. This page will be used as evidence in a carrier verification workflow, so it must be easy to read, unambiguous, and publicly accessible.
+
+NON-NEGOTIABLE REQUIREMENTS
+
+1. No header/top-nav link. The new page must be reachable via:
+
+   * Direct URL (copy/paste)
+   * Footer link only
+2. The footer link label must be “SMS Notifications Consent”.
+3. The page must be indexable and publicly accessible (no auth, no geo restrictions).
+4. The page must be mobile-friendly and match existing site styling.
+5. The page must be added without breaking existing routes, build, deploy, or SEO.
+6. No placeholders in final content other than clearly marked tokens Replit must replace (e.g., {COMPANY_NAME}).
+
+DELIVERABLES
+A) New web route/page
+B) Footer-only link insertion
+C) QA checklist and acceptance criteria
+D) Minimal tests (or route checks) appropriate to the stack
+
+STACK DISCOVERY (DO FIRST)
+
+1. Identify the website framework and routing system by inspecting repository:
+
+   * If Next.js: app router vs pages router
+   * If React Router SPA: routes config
+   * If static site generator (Gatsby, Astro, Hugo, etc.): page creation pattern
+   * If server-rendered (Express/EJS, Django templates, etc.): template/page pattern
+2. Locate the footer component/template and confirm how footer links are defined (hard-coded vs CMS-driven config).
+3. Locate existing Privacy Policy and Terms links to reuse their URLs.
+
+IMPLEMENTATION PLAN (FILE-BY-FILE, NO ASSUMPTIONS)
+
+1. Add the new page/route
+
+* Create a new page at EXACT URL path:
+  /sms-notifications-consent
+* Page title (browser tab):
+  “SMS Notifications Consent”
+* H1 on the page:
+  “SMS Notifications Consent”
+* Add meta description for SEO:
+  “Learn how {COMPANY_NAME} uses transactional SMS for job and file status notifications and how to opt in or opt out.”
+* Ensure the page renders using the site’s standard layout but does not add any new header links.
+
+2. Add footer-only link
+
+* Find the footer implementation and add ONE link:
+  Label: “SMS Notifications Consent”
+  Href: /sms-notifications-consent
+* Place it in the bottom menu/footer links section alongside other legal/support links.
+* Confirm it does not appear in:
+
+  * header navigation
+  * hamburger menu (mobile top nav)
+  * sitemap pages list (unless your site automatically includes all pages; that is acceptable as long as it is not in the header nav)
+
+3. Content to include on the page (must be exact, approval-ready)
+   Replit must insert the following content verbatim, replacing only the bracketed tokens:
+
+PAGE CONTENT (VERBATIM)
+
+Effective Date: {EFFECTIVE_DATE}
+
+{COMPANY_NAME} (“we,” “us,” “our”) may send transactional SMS messages to users who choose to enable SMS notifications.
+
+1. What messages you will receive
+   If you opt in, you may receive transactional SMS messages related to system activity you initiate, including:
+
+* Job execution status (for example: job started, job running, job completed, job failed)
+* File processing status (for example: file uploaded, file validated, file processing completed, file processing failed)
+
+We do not send marketing or promotional SMS messages.
+
+2. How you opt in
+   You opt in by providing your mobile number in the {COMPANY_NAME} application and enabling SMS notifications for transactional status updates.
+
+3. Message frequency
+   Message frequency varies based on your usage and the number of jobs/files you run. You will only receive messages triggered by your activity and system status updates.
+
+4. Opting out
+   You can opt out at any time by replying STOP to any message. After opting out, you will no longer receive SMS notifications unless you opt in again.
+
+5. Help
+   For help, reply HELP or contact us at {SUPPORT_EMAIL}.
+
+6. Message and data rates
+   Message and data rates may apply depending on your mobile carrier and plan.
+
+7. Privacy and Terms
+   For more information, please review:
+
+* Privacy Policy: {PRIVACY_POLICY_URL}
+* Terms and Conditions: {TERMS_URL}
+
+END PAGE CONTENT
+
+Tokens Replit must replace with real values:
+
+* {COMPANY_NAME}
+* {EFFECTIVE_DATE} (format: Month DD, YYYY)
+* {SUPPORT_EMAIL}
+* {PRIVACY_POLICY_URL}
+* {TERMS_URL}
+
+4. Accessibility + UX requirements
+
+* Use semantic headings and readable typography.
+* Ensure strong contrast and mobile responsiveness.
+* The page must render correctly on common widths (320px, 768px, 1024px).
+
+5. Analytics (lightweight)
+
+* If the site uses analytics, add a single page-view event (or rely on existing global tracking). Do not add new trackers.
+
+6. Tests / Verification
+
+* Add a minimal route test appropriate to the stack:
+
+  * If Next.js: ensure route builds and returns 200 in a basic integration test (or Playwright smoke).
+  * If SPA: ensure route exists and renders without console errors.
+* Add a simple footer link presence check in an existing UI test suite if present.
+
+7. QA Checklist (Replit must execute and report)
+
+* Confirm /sms-notifications-consent loads in an incognito window.
+* Confirm the footer shows “SMS Notifications Consent” and link navigates to the page.
+* Confirm the link is NOT present in top navigation/header.
+* Confirm Privacy Policy and Terms links on the new page point to valid existing pages.
+* Confirm mobile layout is readable and not broken.
+* Confirm no build errors and no broken links.
+
+ACCEPTANCE CRITERIA
+
+1. Visiting /sms-notifications-consent renders the exact required content and correct title/H1.
+2. The footer contains exactly one link labeled “SMS Notifications Consent” pointing to /sms-notifications-consent.
+3. The link is absent from the header/top nav in desktop and mobile.
+4. The page is publicly accessible (no auth) and loads quickly.
+5. Build and deployment succeed with no regressions.
+
+IMPLEMENTATION NOTES
+
+* This page is intended for carrier verification evidence. Prioritize clarity, specificity, and stable URL over design embellishments.
+* Do not reference any other application or internal system names beyond {COMPANY_NAME}.
+
+FINAL OUTPUT REQUIRED FROM REPLIT
+After implementation, provide:
+
+* The exact URL path implemented
+* The exact file(s) modified to add the footer link
+* A screenshot of the page and the footer showing the link
+* Confirmation of acceptance criteria pass/fail

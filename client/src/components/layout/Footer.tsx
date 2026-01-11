@@ -44,6 +44,7 @@ export function Footer() {
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-foreground">Privacy Policy</a>
             <a href="#" className="hover:text-foreground">Terms of Service</a>
+            <Link href="/sms-notifications-consent" className="hover:text-foreground" data-testid="link-footer-sms-consent">SMS Notifications Consent</Link>
           </div>
         </div>
       </div>
