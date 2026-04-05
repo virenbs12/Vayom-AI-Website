@@ -1,0 +1,28 @@
+On the /riaa page, the "How Chat Works" column (left side) has text and then empty whitespace below it. Add a visual graphic below the text to balance against the trifecta on the right. Do NOT reuse the node-and-line diagram style from the trifecta. Use a completely different visualization approach.
+
+Create a mini chat mockup - a small, stylized representation of an actual RIAA Chat conversation. This should look like a simplified chat interface rendered as an SVG or styled HTML, not a screenshot. It should feel like an elegant product illustration.
+
+The mockup should contain:
+
+Top area: A thin header bar with a small teal (#0E7C6B) circle and the text "RIAA Chat" in slate-600, suggesting the chat window chrome.
+
+Message 1 (user, right-aligned): A teal bubble with white text reading "What are the rebate terms for our Optum contract?" - styled as a user chat message with rounded corners.
+
+Message 2 (assistant, left-aligned): A light gray (#f3f4f6) bubble with dark text showing a condensed answer. The answer text should read: "Based on the Pharmacy Benefit Management Rebate Agreement, the key terms include:" followed by 3 short bold items on separate lines: "Tier 2 formulary placement", "Quarterly rebate at 18.5% of WAC", "Minimum 65% market share threshold". Below the items, show a small citation badge - a pill-shaped element in teal (#0E7C6B) with white text reading "Source: PBM Agreement p.4" - this is the grounding indicator.
+
+Animated element: The citation badge should have a subtle pulse animation (a soft glow that fades in and out every 2 seconds) to draw attention to the grounding concept. This is the key differentiator - the answer is cited, not invented.
+
+Below the mockup: A single line of text in slate-400 italic reading "Every answer is grounded in your actual documents" - centered under the mockup.
+
+Styling requirements:
+- The entire mockup should be contained in a rounded container with a very subtle border (1px solid #e5e7eb) and a light shadow
+- Match the same height as the trifecta graphic so both columns are balanced
+- Use the same responsive scaling approach (aspect-ratio padding, clamp for text sizes)
+- On mobile when columns stack, this graphic should be full-width
+- The chat bubbles should have the same rounded corner style as a real chat interface
+- Font should be DM Sans to match the site
+- Keep it clean and minimal - this is an illustration, not a real functional component
+
+Do not change the trifecta graphic, the text content of either column, or any other part of the page. Only add this new graphic below the "How Chat Works" text.
+
+Proceed without asking for permission. Make all changes automatically.

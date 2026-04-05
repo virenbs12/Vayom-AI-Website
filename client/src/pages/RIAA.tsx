@@ -239,6 +239,115 @@ function getTooltipStyle(side: "below" | "left" | "right"): React.CSSProperties 
   };
 }
 
+/* ─── Chat Mockup ───────────────────────────────────────────────────────── */
+function ChatMockup() {
+  return (
+    <div className="rounded-2xl border border-[#e5e7eb] shadow-sm bg-white overflow-hidden select-none">
+      {/* Window chrome */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-white border-b border-[#e5e7eb]">
+        <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: "#0E7C6B" }} />
+        <span
+          className="font-semibold text-slate-600"
+          style={{ fontSize: "clamp(11px, 1.1vw, 14px)" }}
+        >
+          RIAA Chat
+        </span>
+      </div>
+
+      {/* Messages */}
+      <div
+        className="flex flex-col gap-4 bg-[#f9fafb] p-4"
+        style={{ minHeight: "clamp(260px, 28vw, 460px)" }}
+      >
+        {/* User message – right aligned */}
+        <div className="flex justify-end">
+          <div
+            className="text-white rounded-2xl rounded-tr-sm px-4 py-3"
+            style={{
+              background: "#0E7C6B",
+              maxWidth: "82%",
+              fontSize: "clamp(10px, 1.1vw, 13px)",
+              lineHeight: 1.5,
+            }}
+          >
+            What are the rebate terms for our Optum contract?
+          </div>
+        </div>
+
+        {/* Assistant message – left aligned */}
+        <div className="flex justify-start">
+          <div
+            className="rounded-2xl rounded-tl-sm px-4 py-3"
+            style={{
+              background: "#f3f4f6",
+              maxWidth: "92%",
+            }}
+          >
+            <p
+              className="text-slate-600 mb-3 leading-relaxed"
+              style={{ fontSize: "clamp(10px, 1.05vw, 13px)" }}
+            >
+              Based on the Pharmacy Benefit Management Rebate Agreement, the key terms include:
+            </p>
+            <ul className="space-y-1.5 mb-4">
+              {[
+                "Tier 2 formulary placement",
+                "Quarterly rebate at 18.5% of WAC",
+                "Minimum 65% market share threshold",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="font-bold text-slate-800 flex items-start gap-2"
+                  style={{ fontSize: "clamp(10px, 1.05vw, 13px)" }}
+                >
+                  <span
+                    className="mt-0.5 flex-shrink-0 rounded-full"
+                    style={{
+                      width: "clamp(5px, 0.6vw, 7px)",
+                      height: "clamp(5px, 0.6vw, 7px)",
+                      background: "#0E7C6B",
+                      display: "inline-block",
+                      marginTop: "0.35em",
+                    }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            {/* Citation badge with pulse glow */}
+            <motion.div
+              className="inline-flex items-center gap-1.5 text-white font-semibold rounded-full"
+              style={{
+                background: "#0E7C6B",
+                fontSize: "clamp(8px, 0.85vw, 11px)",
+                padding: "clamp(3px, 0.4vw, 5px) clamp(8px, 1vw, 14px)",
+              }}
+              animate={{
+                boxShadow: [
+                  "0 0 0 0px rgba(14,124,107,0.0)",
+                  "0 0 0 5px rgba(14,124,107,0.18)",
+                  "0 0 0 0px rgba(14,124,107,0.0)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <FileCheck2
+                style={{
+                  width: "clamp(9px, 1vw, 12px)",
+                  height: "clamp(9px, 1vw, 12px)",
+                  flexShrink: 0,
+                }}
+              />
+              Source: PBM_Rebate_Agreement_2024.pdf
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Page ──────────────────────────────────────────────────────────────── */
 export default function RIAA() {
   const scrollToChat = (e: React.MouseEvent) => {
@@ -389,9 +498,9 @@ export default function RIAA() {
             {/* ── How Chat Works ── */}
             <div
               id="how-chat-works"
-              className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+              className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 flex flex-col"
             >
-              <motion.div className="space-y-6" {...fadeUp}>
+              <motion.div className="space-y-6 mb-12" {...fadeUp}>
                 <h2
                   className="font-display font-bold text-foreground"
                   style={{ fontSize: "clamp(1.6rem, 3vw, 2.6rem)" }}
@@ -403,6 +512,26 @@ export default function RIAA() {
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   It is built for real operational questions, not generic AI conversations. Teams can use it to understand what happened, why it happened, what needs attention, and what action should come next.
+                </p>
+              </motion.div>
+
+              {/* Chat mockup illustration */}
+              <motion.div
+                className="mt-auto"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <p
+                  className="font-semibold text-foreground uppercase tracking-widest mb-6"
+                  style={{ fontSize: "clamp(10px, 1.1vw, 13px)" }}
+                >
+                  In practice:
+                </p>
+                <ChatMockup />
+                <p className="text-center text-xs text-slate-400 italic mt-4">
+                  Every answer is grounded in your actual documents
                 </p>
               </motion.div>
             </div>
