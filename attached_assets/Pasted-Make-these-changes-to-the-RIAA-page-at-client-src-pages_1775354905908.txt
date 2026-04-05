@@ -1,0 +1,36 @@
+Make these changes to the RIAA page at `client/src/pages/RIAA.tsx`:
+
+## 1. Remove all "What that means for the business" blocks
+
+Delete both "WHAT THAT MEANS FOR THE BUSINESS" sections: the one under How Chat Works (Faster answers, Clearer explanations, Simpler path) and the one under How Agents Work (Less manual follow-up, More consistent execution, Better control). Remove the subheadings and all three cards in each. Keep everything else in those sections as-is.
+
+## 2. Replace the word "platform" everywhere on this page
+
+Go through all text on the RIAA page and replace every instance of "platform" with a natural alternative that fits the sentence. Do not use the word "platform" anywhere on this page.
+
+## 3. Replace the three separate component cards with a Trifecta graphic
+
+In the How Agents Work section, remove the current three separate cards for Business Agents, Human Digital Twins, and Policy Controls. Replace them with a single integrated visual graphic that shows all three as a connected trifecta. The concept is that these three components are not separate features sitting next to each other. They are interlocked and work as one system.
+
+Design the trifecta as a triangular or circular arrangement where the three nodes are visually connected with lines, arcs, or a shared boundary. Each node should have its icon and label. In the center or alongside the graphic, include a label like "The Trifecta" or simply let the visual speak for itself.
+
+Keep the "WHAT POWERS THEM" subheading above the trifecta graphic.
+
+## 4. Add hover tooltips to each trifecta node
+
+When a user hovers over each node in the trifecta graphic, show a tooltip or an expanded card with a short explanation:
+
+- **Business Agents** hover text: "Specialized workers that run inside your workflows. Each one handles a focused operational task: checking transactions against rules, detecting duplicates, scoring anomalies, routing items for review, triggering outreach, or computing metrics."
+- **Human Digital Twins** hover text: "A structured capture of how your best expert thinks, explains, escalates, and makes decisions. Not a bio. The system records their cognitive approach, communication style, domain vocabulary, boundaries, and escalation patterns, then applies that judgment at runtime."
+- **Policy Controls** hover text: "The governance layer that defines what the AI can access, how it should respond, what safety boundaries are always on, and what cost controls apply. Policies are enforced at runtime across every interaction, not treated as suggestions."
+
+Use a clean tooltip, popover, or hover-card pattern that fits the site's existing design system (Radix UI tooltip or hover-card components are already available in the project). Make the hover interaction feel smooth, not jarring.
+
+## Do not change
+
+- The Hero section
+- The How Chat Works paragraphs (only remove the business impact cards)
+- The How Agents Work paragraphs (only remove the business impact cards and replace the three separate component cards with the trifecta)
+- The Why It Matters section
+- The Bottom CTA section
+- Any other page on the site

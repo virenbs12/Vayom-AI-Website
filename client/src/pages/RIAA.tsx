@@ -1,6 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "wouter";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SEO } from "@/components/SEO";
@@ -13,11 +12,6 @@ import {
   Briefcase,
   User,
   ShieldCheck,
-  Zap,
-  FileText,
-  Target,
-  CheckCircle,
-  ArrowRight,
   Brain,
 } from "lucide-react";
 
@@ -34,6 +28,167 @@ const fadeUpDelay = (delay: number) => ({
   viewport: { once: true },
   transition: { duration: 0.5, delay },
 });
+
+const TRIFECTA_NODES = [
+  {
+    id: "agents",
+    icon: Briefcase,
+    label: "Business Agents",
+    tooltip:
+      "Specialized workers that run inside your workflows. Each one handles a focused operational task: checking transactions against rules, detecting duplicates, scoring anomalies, routing items for review, triggering outreach, or computing metrics.",
+    // top-center
+    cx: 200,
+    cy: 60,
+    anchor: "bottom" as const,
+  },
+  {
+    id: "twins",
+    icon: User,
+    label: "Human Digital Twins",
+    tooltip:
+      "A structured capture of how your best expert thinks, explains, escalates, and makes decisions. Not a bio. The system records their cognitive approach, communication style, domain vocabulary, boundaries, and escalation patterns, then applies that judgment at runtime.",
+    // bottom-left
+    cx: 60,
+    cy: 260,
+    anchor: "right" as const,
+  },
+  {
+    id: "policy",
+    icon: ShieldCheck,
+    label: "Policy Controls",
+    tooltip:
+      "The governance layer that defines what the AI can access, how it should respond, what safety boundaries are always on, and what cost controls apply. Policies are enforced at runtime across every interaction, not treated as suggestions.",
+    // bottom-right
+    cx: 340,
+    cy: 260,
+    anchor: "left" as const,
+  },
+];
+
+function TrifectaGraphic() {
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  const NODE_R = 38;
+
+  const getTooltipPos = (anchor: "bottom" | "left" | "right", cx: number, cy: number) => {
+    if (anchor === "bottom") return { left: "50%", top: `${cy + NODE_R + 8}px`, transform: "translateX(-50%)" };
+    if (anchor === "right") return { left: `${cx + NODE_R + 12}px`, top: `${cy - 60}px` };
+    return { right: `${400 - cx + NODE_R + 12}px`, top: `${cy - 60}px` };
+  };
+
+  return (
+    <div className="relative w-full flex justify-center">
+      <div className="relative" style={{ width: 400, height: 340 }}>
+        {/* SVG triangle + center */}
+        <svg
+          viewBox="0 0 400 340"
+          width={400}
+          height={340}
+          className="absolute inset-0"
+          fill="none"
+        >
+          {/* Triangle edges */}
+          <line x1="200" y1="60" x2="60" y2="260" stroke="#1d4ed820" strokeWidth="2" strokeDasharray="6 4" />
+          <line x1="200" y1="60" x2="340" y2="260" stroke="#1d4ed820" strokeWidth="2" strokeDasharray="6 4" />
+          <line x1="60" y1="260" x2="340" y2="260" stroke="#1d4ed820" strokeWidth="2" strokeDasharray="6 4" />
+
+          {/* Animated flow dots */}
+          <circle r="4" fill="#1d4ed8" opacity="0.6">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 200 60 L 60 260 L 340 260 Z" />
+          </circle>
+          <circle r="3" fill="#3b82f6" opacity="0.4">
+            <animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M 200 60 L 60 260 L 340 260 Z" />
+          </circle>
+
+          {/* Center label */}
+          <text
+            x="200"
+            y="172"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="fill-muted-foreground"
+            style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", fill: "#94a3b8" }}
+          >
+            THE TRIFECTA
+          </text>
+        </svg>
+
+        {/* Nodes */}
+        {TRIFECTA_NODES.map((node) => {
+          const Icon = node.icon;
+          const isHovered = hovered === node.id;
+          return (
+            <div key={node.id}>
+              {/* Node circle */}
+              <motion.button
+                className="absolute flex flex-col items-center gap-1.5 focus:outline-none"
+                style={{
+                  left: node.cx - NODE_R,
+                  top: node.cy - NODE_R,
+                  width: NODE_R * 2,
+                  height: NODE_R * 2,
+                }}
+                onMouseEnter={() => setHovered(node.id)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(node.id)}
+                onBlur={() => setHovered(null)}
+                animate={{ scale: isHovered ? 1.08 : 1 }}
+                transition={{ duration: 0.2 }}
+                aria-label={node.label}
+              >
+                <div
+                  className={`w-full h-full rounded-full border-2 flex items-center justify-center transition-all duration-200 shadow-md ${
+                    isHovered
+                      ? "bg-primary border-primary text-white shadow-primary/30 shadow-lg"
+                      : "bg-white border-border text-primary"
+                  }`}
+                >
+                  <Icon className="w-6 h-6" />
+                </div>
+              </motion.button>
+
+              {/* Label below/beside node */}
+              <div
+                className="absolute text-center pointer-events-none"
+                style={{
+                  left: node.cx - 56,
+                  top: node.cy + NODE_R + 6,
+                  width: 112,
+                }}
+              >
+                <span className="text-[11px] font-semibold text-foreground leading-tight block">
+                  {node.label}
+                </span>
+              </div>
+
+              {/* Tooltip */}
+              <AnimatePresence>
+                {isHovered && (
+                  <motion.div
+                    className="absolute z-30 bg-white border border-border rounded-2xl shadow-2xl p-4 w-64 text-left pointer-events-none"
+                    style={getTooltipPos(node.anchor, node.cx, node.cy)}
+                    initial={{ opacity: 0, scale: 0.95, y: 4 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 4 }}
+                    transition={{ duration: 0.18 }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-sm font-bold text-foreground">{node.label}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{node.tooltip}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function RIAA() {
   const scrollToChat = (e: React.MouseEvent) => {
@@ -60,11 +215,7 @@ export default function RIAA() {
         <div className="container-width grid lg:grid-cols-2 gap-14 items-center">
           {/* Left */}
           <motion.div className="space-y-8" {...fadeUp}>
-            <img
-              src={riaaLogo}
-              alt="RIAA"
-              className="h-20 w-auto object-contain"
-            />
+            <img src={riaaLogo} alt="RIAA" className="h-20 w-auto object-contain" />
             <div>
               <h1 className="text-5xl md:text-6xl font-display font-bold leading-[1.1] text-foreground mb-6">
                 RIAA turns enterprise expertise into action.
@@ -102,7 +253,6 @@ export default function RIAA() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Subtle dot grid */}
             <div
               className="absolute inset-0 opacity-[0.04]"
               style={{
@@ -111,7 +261,6 @@ export default function RIAA() {
               }}
             />
 
-            {/* Layout: Chat node (left) -- RIAA center -- Agents node (right) */}
             <div className="relative flex items-center justify-center w-full px-8 z-10">
               {/* Chat node */}
               <motion.div
@@ -130,15 +279,11 @@ export default function RIAA() {
 
               {/* SVG connectors */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 420 280" fill="none">
-                {/* Left path: RIAA center to Chat */}
                 <path d="M 210 140 L 100 140" stroke="#1d4ed830" strokeWidth="2" strokeDasharray="5 4" />
-                {/* Right path: RIAA center to Agents */}
                 <path d="M 210 140 L 320 140" stroke="#1d4ed830" strokeWidth="2" strokeDasharray="5 4" />
-                {/* Animated dot left */}
                 <circle r="4" fill="#1d4ed8" opacity="0.7">
                   <animateMotion dur="2.5s" repeatCount="indefinite" path="M 210 140 L 100 140" />
                 </circle>
-                {/* Animated dot right */}
                 <circle r="4" fill="#1d4ed8" opacity="0.7">
                   <animateMotion dur="2.5s" begin="1.25s" repeatCount="indefinite" path="M 210 140 L 320 140" />
                 </circle>
@@ -172,10 +317,9 @@ export default function RIAA() {
               </motion.div>
             </div>
 
-            {/* Bottom label */}
             <div className="absolute bottom-4 left-0 right-0 flex justify-center">
               <span className="text-xs text-muted-foreground font-medium bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full border border-border">
-                One platform. Two modes.
+                One system. Two modes.
               </span>
             </div>
           </motion.div>
@@ -185,36 +329,14 @@ export default function RIAA() {
       {/* ── How Chat Works ── */}
       <section id="how-chat-works" className="py-20 bg-white">
         <div className="container-width max-w-4xl mx-auto">
-          <motion.div className="space-y-6 mb-12" {...fadeUp}>
+          <motion.div className="space-y-6" {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold">How Chat Works</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              RIAA Chat is the on-demand side of the platform. A user asks a question in plain English, and RIAA returns a grounded answer using the right business context, data, documents, and rules.
+              RIAA Chat is the on-demand side of the product. A user asks a question in plain English, and RIAA returns a grounded answer using the right business context, data, documents, and rules.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               It is built for real operational questions, not generic AI conversations. Teams can use it to understand what happened, why it happened, what needs attention, and what action should come next.
             </p>
-          </motion.div>
-
-          <motion.div {...fadeUpDelay(0.1)}>
-            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-6">What that means for the business:</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { icon: Zap, text: "Faster answers without waiting on analysts" },
-                { icon: FileText, text: "Clearer explanations with supporting evidence" },
-                { icon: Target, text: "A simpler path from question to decision" },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-slate-50 border border-border rounded-2xl p-6 flex flex-col gap-3"
-                  {...fadeUpDelay(0.15 + i * 0.08)}
-                >
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <p className="text-sm font-semibold text-foreground leading-snug">{item.text}</p>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -225,7 +347,7 @@ export default function RIAA() {
           <motion.div className="space-y-6 mb-12" {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold">How Agents Work</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              RIAA Agents are the operational side of the platform. Instead of waiting for someone to ask a question, they work inside business processes to identify issues, apply logic, surface risk, and route the right work to the right people.
+              RIAA Agents are the operational side of the system. Instead of waiting for someone to ask a question, they work inside business processes to identify issues, apply logic, surface risk, and route the right work to the right people.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               They can support workflows like exception review, duplicate detection, business-rule execution, outreach drafting, and metric generation.
@@ -235,64 +357,14 @@ export default function RIAA() {
             </p>
           </motion.div>
 
-          {/* What powers them */}
-          <motion.div className="mb-12" {...fadeUpDelay(0.1)}>
-            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-6">What powers them:</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                {
-                  icon: Briefcase,
-                  title: "Business Agents",
-                  desc: "Perform focused operational tasks",
-                },
-                {
-                  icon: User,
-                  title: "Human Digital Twins",
-                  desc: "Reflect expert judgment and decision style",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Policy Controls",
-                  desc: "Enforce boundaries, access, and behavior",
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-white border border-border rounded-2xl p-6 flex flex-col gap-4 shadow-sm group hover:border-primary transition-colors"
-                  {...fadeUpDelay(0.15 + i * 0.08)}
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <item.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-base mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-snug">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* What that means for the business */}
-          <motion.div {...fadeUpDelay(0.2)}>
-            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-6">What that means for the business:</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { icon: CheckCircle, text: "Less manual follow-up" },
-                { icon: ArrowRight, text: "More consistent execution" },
-                { icon: ShieldCheck, text: "Better control over how work gets done" },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-white border border-border rounded-2xl p-6 flex flex-col gap-3"
-                  {...fadeUpDelay(0.25 + i * 0.08)}
-                >
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <p className="text-sm font-semibold text-foreground leading-snug">{item.text}</p>
-                </motion.div>
-              ))}
+          {/* What powers them: Trifecta */}
+          <motion.div {...fadeUpDelay(0.1)}>
+            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-8">What powers them:</p>
+            <div className="bg-white rounded-3xl border border-border shadow-sm p-8 md:p-12 overflow-visible">
+              <TrifectaGraphic />
+              <p className="text-center text-xs text-muted-foreground mt-6">
+                Hover each node to learn how it works
+              </p>
             </div>
           </motion.div>
         </div>
@@ -305,7 +377,7 @@ export default function RIAA() {
             className="text-2xl md:text-3xl font-display font-semibold text-foreground leading-relaxed"
             {...fadeUp}
           >
-            RIAA is not a side tool. It is the intelligence layer across the platform, helping teams ask better questions, automate more of the right work, and keep decisions aligned with business rules and expert knowledge.
+            RIAA is not a side tool. It is the intelligence layer across the product, helping teams ask better questions, automate more of the right work, and keep decisions aligned with business rules and expert knowledge.
           </motion.p>
         </div>
       </section>
@@ -317,7 +389,6 @@ export default function RIAA() {
             className="bg-primary rounded-[40px] p-12 lg:p-20 text-white relative overflow-hidden"
             {...fadeUp}
           >
-            {/* Decorative background circles */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full" />
             <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/5 rounded-full" />
 
