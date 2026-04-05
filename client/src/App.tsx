@@ -7,6 +7,7 @@ import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import RIAA from "@/pages/RIAA";
 import Markets from "@/pages/Markets";
 import BusinessFunctions from "@/pages/BusinessFunctions";
 import Pricing from "@/pages/Pricing";
@@ -39,6 +40,7 @@ function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/riaa" component={RIAA} />
       <Route path="/markets" component={Markets} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/partners" component={Partners} />

@@ -1,0 +1,87 @@
+Create a new page at route `/riaa` for the RIAA product page. Follow the existing page patterns in the codebase (Header, Footer, SEO component, container-width class, Tailwind styling, Framer Motion animations, Lucide icons). Use the same design language as the rest of the site. Do not add or remove any copy from what is specified below. Here is exactly what to build:
+
+## 1. Create `client/src/pages/RIAA.tsx`
+
+The page has 5 sections in this order: Hero, How Chat Works, How Agents Work, Why It Matters, CTA.
+
+The RIAA logo is available in attached assets as `riaa_logo`. Import it using the project's asset alias pattern, for example: `import riaaLogo from "@assets/riaa_logo"` (match the actual file extension in the attached_assets folder). Display this logo prominently in the Hero section above or beside the headline, and optionally reuse it in the bottom CTA section for brand reinforcement.
+
+### Hero Section
+
+Background: use a subtle gradient or the primary brand color treatment similar to other hero sections on the site.
+
+Left column text:
+- RIAA logo displayed above the headline, sized appropriately (not too large, treat it like a product brand mark)
+- Headline: "RIAA turns enterprise expertise into action."
+- Subheadline paragraph: "RIAA brings together your data, business rules, and expert judgment so teams can get answers faster, make better decisions, and move work forward with confidence."
+- Two CTA buttons: "Request a Demo" (calls scrollToDemo from utils) and "See RIAA in Action" (anchor scrolls to the How Chat Works section below)
+
+Right column: Create a visual illustration using styled divs and Lucide icons (no external images needed). The concept should convey two paths branching from a central RIAA node: one path labeled "Chat" (representing on-demand questions) and one path labeled "Agents" (representing embedded process intelligence). Style it to match the site's design language.
+
+### How Chat Works Section
+
+- Section headline: "How Chat Works"
+- First paragraph: "RIAA Chat is the on-demand side of the platform. A user asks a question in plain English, and RIAA returns a grounded answer using the right business context, data, documents, and rules."
+- Second paragraph: "It is built for real operational questions, not generic AI conversations. Teams can use it to understand what happened, why it happened, what needs attention, and what action should come next."
+- Subheading: "What that means for the business:"
+- Three items (display as cards or styled list):
+  - "Faster answers without waiting on analysts"
+  - "Clearer explanations with supporting evidence"
+  - "A simpler path from question to decision"
+
+### How Agents Work Section
+
+Use a different background shade (like slate-50 or similar) to visually separate this from the Chat section.
+
+- Section headline: "How Agents Work"
+- First paragraph: "RIAA Agents are the operational side of the platform. Instead of waiting for someone to ask a question, they work inside business processes to identify issues, apply logic, surface risk, and route the right work to the right people."
+- Second paragraph: "They can support workflows like exception review, duplicate detection, business-rule execution, outreach drafting, and metric generation."
+- Third paragraph: "What makes them different is that they are not generic assistants. They operate within your data, your rules, and your governance model."
+- Subheading: "What powers them:"
+- Three items (display as visually prominent cards with icons, these are the three core components):
+  - "Business Agents to perform focused operational tasks"
+  - "Human Digital Twins to reflect expert judgment and decision style"
+  - "Policy Controls to enforce boundaries, access, and behavior"
+- Subheading: "What that means for the business:"
+- Three items (display as cards or styled list, same treatment as the Chat section):
+  - "Less manual follow-up"
+  - "More consistent execution"
+  - "Better control over how work gets done"
+
+### Why It Matters Section
+
+- Single paragraph, centered, given visual weight (larger text, breathing room): "RIAA is not a side tool. It is the intelligence layer across the platform, helping teams ask better questions, automate more of the right work, and keep decisions aligned with business rules and expert knowledge."
+
+### Bottom CTA Section
+
+Full-width section with the primary brand color background (same pattern as other CTA strips on the site like the one on the Resources page).
+
+- Headline: "See RIAA on your data."
+- Subheadline: "We will show you how RIAA helps your team get answers faster and put intelligence directly into day-to-day operations."
+- CTA button: "Request a Demo" (calls scrollToDemo)
+
+### SEO component at top of page:
+- title: "RIAA | Vayom AI Agentic Solution for Enterprise Intelligence"
+- description: "RIAA brings together your data, business rules, and expert judgment. Chat for on-demand answers. Agents for embedded process intelligence."
+- keywords: "RIAA, agentic AI, enterprise intelligence, human digital twins, business agents, AI governance"
+- canonicalUrl: "https://vayomai.org/riaa"
+
+## 2. Update `client/src/App.tsx`
+
+- Import the new RIAA page: `import RIAA from "@/pages/RIAA";`
+- Add a new route: `<Route path="/riaa" component={RIAA} />`
+- Place it after the Home route
+
+## 3. Update the Header navigation in `client/src/components/layout/Header.tsx`
+
+- Add a "RIAA" link in the desktop nav as a direct NavigationMenuLink (not a dropdown), placed between "Home" and "Solutions"
+- Add it to the mobile menu as well
+- Use the same active-state pattern as the other nav items
+- The link should point to `/riaa`
+
+## 4. Update the Footer in `client/src/components/layout/Footer.tsx`
+
+- Add a "RIAA" link under the Solutions column, before the B2C link
+- It should be a regular internal Link pointing to `/riaa`
+
+Do not change any existing page content or styles. Use Framer Motion fade-in animations on each section consistent with the rest of the site. Style everything to feel cohesive with the existing design system. Do not use em-dashes anywhere in the text.

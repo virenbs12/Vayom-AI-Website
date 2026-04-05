@@ -45,6 +45,7 @@ export function Header() {
   }, [location]);
 
   const isHomeActive = location === "/";
+  const isRIAAActive = location === "/riaa";
   const isSolutionsActive = location === "/markets";
   const isBusinessFunctionsActive = location === "/business-functions";
   const isPricingActive = location === "/pricing";
@@ -90,6 +91,16 @@ export function Header() {
                   isHomeActive && activeStyle
                 )}>
                   <Link href="/">Home</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-transparent font-medium",
+                  isRIAAActive && activeStyle
+                )}>
+                  <Link href="/riaa">RIAA</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
@@ -326,6 +337,16 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
+            </Link>
+            <Link
+              href="/riaa"
+              className={cn(
+                "text-lg font-medium p-2 hover:bg-muted rounded-md block",
+                isRIAAActive && "bg-muted"
+              )}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              RIAA
             </Link>
             <Link 
               href="/markets"
