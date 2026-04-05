@@ -13,6 +13,8 @@ import {
   User,
   ShieldCheck,
   Brain,
+  Search,
+  FileCheck2,
 } from "lucide-react";
 
 /* ─── Responsive container used throughout this page ───────────────────── */

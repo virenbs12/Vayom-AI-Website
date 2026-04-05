@@ -1,0 +1,21 @@
+On the /riaa page, the "How Chat Works" column (left side) has text and then empty whitespace below it, while the "How Agents Work" column (right side) has text plus the trifecta graphic. Add a matching visual graphic to the "How Chat Works" column so both sides are balanced.
+
+Create an SVG graphic in the same visual style as the trifecta (same stroke colors, icon style, dashed connecting lines, animated flow dot, hover tooltips). The Chat graphic should illustrate the grounded answer pipeline with three nodes arranged in a horizontal flow (left to right):
+
+Node 1 (left): "Ask a Question" - use a chat bubble or message icon. Tooltip: "A user types a plain English question about their business - contracts, rebates, compliance, performance."
+
+Node 2 (center): "Ground in Context" - use a database/document stack icon or a magnifying glass over a document. Tooltip: "RIAA searches the knowledge base, business rules, and data to find real evidence before answering."
+
+Node 3 (right): "Get a Real Answer" - use a checkmark-in-document icon or a verified badge. Tooltip: "The response is grounded in actual source material - cited, traceable, and never hallucinated."
+
+Connect the three nodes with dashed lines and an animated flow dot moving left to right (same animation style as the trifecta). Center the label "THE PIPELINE" between the connecting lines, same typography as "THE TRIFECTA".
+
+Add a hint line below: "Hover each step to learn how it works" - same style as the trifecta hint.
+
+Place this graphic below the text in the "How Chat Works" column, vertically aligned so it sits at the same height as the trifecta graphic in the right column. Both graphics should be the same height and visual weight so the page looks balanced.
+
+Use the same responsive scaling as the trifecta - aspect-ratio padding, clamp() for node sizes and labels, tooltips that reposition intelligently. On mobile when the columns stack, both graphics should be full-width.
+
+Match the exact colors: teal (#0E7C6B) for the node circles on hover, slate-600 for labels, same dashed line stroke, same dot animation speed. Do not change anything about the trifecta graphic or any other part of the page.
+
+Proceed without asking for permission. Make all changes automatically.
