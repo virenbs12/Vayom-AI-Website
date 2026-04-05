@@ -569,12 +569,10 @@ export default function RIAA() {
                 >
                   What powers them:
                 </p>
-                <div className="bg-white rounded-3xl border border-border shadow-sm p-6 lg:p-8 overflow-visible">
-                  <TrifectaGraphic />
-                  <p className="text-center text-xs text-muted-foreground mt-4">
-                    Hover each node to learn how it works
-                  </p>
-                </div>
+                <TrifectaGraphic />
+                <p className="text-center text-xs text-muted-foreground mt-4">
+                  Hover each node to learn how it works
+                </p>
               </motion.div>
             </div>
 
