@@ -43,7 +43,7 @@ export function MarketsHero() {
 
         {/* 4-Tile Market Selector Visual */}
         <div className="bg-white rounded-2xl shadow-xl p-6 border border-border">
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-4 mb-6">
             <button type="button" onClick={(e) => scrollToSection(e, 'b2c')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">B2C</span>
               <span className="text-xs text-muted-foreground">High-volume commerce</span>
@@ -51,10 +51,6 @@ export function MarketsHero() {
             <button type="button" onClick={(e) => scrollToSection(e, 'b2b')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">B2B</span>
               <span className="text-xs text-muted-foreground">Contract alignment</span>
-            </button>
-            <button type="button" onClick={(e) => scrollToSection(e, 'riaa')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
-              <span className="font-bold text-lg group-hover:text-primary block mb-1">RIAA</span>
-              <span className="text-xs text-muted-foreground">Evidence engine</span>
             </button>
             <button type="button" onClick={(e) => scrollToSection(e, 'business-functions')} className="p-4 rounded-xl bg-slate-50 hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all text-left group">
               <span className="font-bold text-lg group-hover:text-primary block mb-1">Functions</span>

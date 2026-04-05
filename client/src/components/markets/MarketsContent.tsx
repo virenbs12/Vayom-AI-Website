@@ -79,7 +79,7 @@ export function MarketsContent() {
   }, []);
 
   useEffect(() => {
-    const sections = ["b2c", "b2b", "riaa", "business-functions"];
+    const sections = ["b2c", "b2b", "business-functions"];
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
@@ -119,7 +119,6 @@ export function MarketsContent() {
           {[
             { id: "b2c", label: "B2C" },
             { id: "b2b", label: "B2B" },
-            { id: "riaa", label: "RIAA" },
             { id: "business-functions", label: "Business Functions" },
           ].map((item) => (
             <button
@@ -698,7 +697,7 @@ export function MarketsContent() {
                    <div className="text-[9px] font-bold text-slate-400 uppercase mb-4">Evidence Timeline</div>
                    <div className="space-y-4">
                       {[
-                        { label: "Detected", sub: "RIAA Scan: Pricing Mismatch", icon: Search },
+                        { label: "Detected", sub: "Vayom AI Scan: Pricing Mismatch", icon: Search },
                         { label: "Reviewed", sub: "Finance Mgr: Confirmed deviation", icon: User },
                         { label: "Approved", sub: "Controller: Validated resolution", icon: CheckCircle2 }
                       ].map((ev, i) => (
@@ -718,173 +717,13 @@ export function MarketsContent() {
           </div>
         </section>
 
-        {/* RIAA Section */}
-        <section id="riaa" className="scroll-mt-40 border-t border-border pt-20">
-          <div className="mb-16">
-            <span className="text-primary font-bold tracking-wide uppercase text-sm">Solutions Page: RIAA</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6 text-foreground">RIAA: Revenue Intelligence Agentic Atlas (the core solution)</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl">
-              RIAA is the system that makes multi-source answers usable in real operations. It coordinates retrieval across databases, documents, and feeds, then returns results with proof attached. Teams can validate fast, act fast, and stop sending cash out the door due to slow verification and execution drift.
-            </p>
-          </div>
-
-          {/* Technology framework */}
-          <div className="mb-24">
-            <h3 className="text-2xl font-display font-bold mb-12">Technology framework</h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-              <div className="absolute top-1/2 left-0 w-full h-px bg-slate-100 -translate-y-1/2 z-0 hidden md:block" />
-              {[
-                { title: "Connect", icon: Network, desc: "Pre-built connectors for ERP/CRM, contract repositories, and recurring feeds. No rip-and-replace." },
-                { title: "Normalize", icon: Fingerprint, desc: "Align entities across sources (customers, products, subsidiaries, aliases) so cross-system linking stays reliable." },
-                { title: "Coordinate", icon: Briefcase, desc: "A web of specialized agents handles discrete work: domain checks, data extraction, governance, and orchestration." },
-                { title: "Prove + Act", icon: Zap, desc: "Every output includes evidence links, a clear rationale trail, and an action-ready queue (approve, flag, resolve)." }
-              ].map((layer, i) => (
-                <div key={i} className="relative z-10 bg-white p-6 rounded-2xl border border-border shadow-sm flex flex-col h-full group hover:border-primary transition-colors">
-                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                    <layer.icon className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-bold text-lg mb-3">{i + 1}. {layer.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{layer.desc}</p>
-                </div>
-              ))}
-              <div className="md:col-span-4 mt-8 flex justify-center">
-                 <div className="bg-slate-50 border border-slate-200 px-4 py-2 rounded-full text-[11px] font-medium text-slate-500">
-                   Patent-pending multi-modal architecture for coordinated extraction across databases, documents, and feeds.
-                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Out of the Box Integrations */}
-          <div className="mb-24">
-            <h3 className="text-2xl font-display font-bold mb-4">Out of the Box Integrations</h3>
-            <p className="text-muted-foreground mb-8 max-w-2xl">Pre-built connectors for the systems your teams already use. No rip-and-replace required.</p>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
-              {[
-                { name: "Salesforce", Icon: SiSalesforce, isBrand: true },
-                { name: "MySQL", Icon: SiMysql, isBrand: true },
-                { name: "PostgreSQL", Icon: SiPostgresql, isBrand: true },
-                { name: "MongoDB", Icon: SiMongodb, isBrand: true },
-                { name: "Databricks", Icon: SiDatabricks, isBrand: true },
-                { name: "Snowflake", Icon: SiSnowflake, isBrand: true },
-                { name: "Azure Blob Storage", Icon: Database, isBrand: false },
-                { name: "Amazon S3", Icon: Database, isBrand: false },
-                { name: "SAP", Icon: SiSap, isBrand: true },
-                { name: "Trino", Icon: Database, isBrand: false },
-                { name: "Dynamics 365", Icon: LayoutGrid, isBrand: false },
-                { name: "Microsoft 365", Icon: LayoutGrid, isBrand: false },
-                { name: "Slack", Icon: SiSlack, isBrand: true },
-                { name: "Jira", Icon: SiJira, isBrand: true },
-                { name: "Azure DevOps", Icon: Globe, isBrand: false },
-                { name: "Zoho CRM", Icon: SiZoho, isBrand: true },
-                { name: "Facebook Ads", Icon: SiFacebook, isBrand: true },
-                { name: "Google Ads", Icon: SiGoogleads, isBrand: true },
-                { name: "Shopify", Icon: SiShopify, isBrand: true },
-                { name: "FreshDesk", Icon: SiZendesk, isBrand: true },
-                { name: "ZenDesk", Icon: SiZendesk, isBrand: true },
-                { name: "Zoom", Icon: SiZoom, isBrand: true },
-                { name: "HubSpot", Icon: SiHubspot, isBrand: true }
-              ].map((system, i) => (
-                <div 
-                  key={i} 
-                  className="bg-slate-900 text-white px-3 py-4 rounded-xl text-center hover:bg-slate-800 transition-colors cursor-default border border-slate-700 flex flex-col items-center gap-2"
-                >
-                  <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center">
-                    {system.isBrand ? (
-                      <system.Icon size={32} color="default" />
-                    ) : (
-                      <system.Icon className="w-8 h-8 text-slate-700" />
-                    )}
-                  </div>
-                  <span className="text-xs font-medium">{system.name}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground mt-6 text-center">
-              Additional connectors available on request. Custom integrations supported.
-            </p>
-          </div>
-
-          {/* Provenance-first outputs */}
-          <div className="mb-24">
-            <h3 className="text-2xl font-display font-bold mb-8">Provenance-first outputs</h3>
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-               <div className="space-y-6 text-muted-foreground">
-                  <p className="text-lg">RIAA outputs are designed for reviewers, not just viewers:</p>
-                  <ul className="space-y-4">
-                     <li className="flex gap-3"><Check className="w-5 h-5 text-primary shrink-0" /> <div><strong>Evidence-linked by default:</strong> every result includes links back to the exact record or excerpt used</div></li>
-                     <li className="flex gap-3"><Check className="w-5 h-5 text-primary shrink-0" /> <div><strong>Cross-source context:</strong> results are not isolated; they are linked across systems and documents</div></li>
-                     <li className="flex gap-3"><Check className="w-5 h-5 text-primary shrink-0" /> <div><strong>Audit-ready trail:</strong> what was checked, what was flagged, and what was approved is preserved</div></li>
-                     <li className="flex gap-3"><Check className="w-5 h-5 text-primary shrink-0" /> <div><strong>Permission-aware:</strong> role-based access patterns for who can see what, aligned to enterprise expectations</div></li>
-                  </ul>
-               </div>
-
-               <div className="bg-white border border-border rounded-2xl p-6 shadow-xl relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-1 bg-primary h-full" />
-                  <div className="space-y-4">
-                     <div className="flex justify-between items-start mb-2">
-                        <div className="text-xs uppercase font-bold tracking-wider text-slate-400">Answer Summary</div>
-                        <Badge className="bg-amber-100 text-amber-700 hover:bg-amber-100 border-none">Flagged: Policy Deviation</Badge>
-                     </div>
-                     <p className="text-sm font-medium leading-relaxed">"The applied discount (25%) on Order #9921 exceeds the current policy maximum (15%) for the 'Winter Promo' period."</p>
-                     
-                     <div className="flex flex-wrap gap-2 pt-2 pb-4 border-b">
-                        <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 flex gap-1 items-center h-6"><Database className="w-3 h-3" /> ERP Record #9921</Badge>
-                        <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 flex gap-1 items-center h-6"><FileText className="w-3 h-3" /> Contract Pg 12</Badge>
-                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 flex gap-1 items-center h-6"><LinkIcon className="w-3 h-3" /> News Feed: Q1 Promo</Badge>
-                     </div>
-
-                     <div className="grid grid-cols-3 gap-4 pt-2">
-                        <div>
-                           <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Owner</div>
-                           <div className="flex items-center gap-1.5 text-xs font-semibold">
-                              <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px]"><User className="w-3 h-3" /></div>
-                              Finance Manager
-                           </div>
-                        </div>
-                        <div>
-                           <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Status</div>
-                           <div className="text-xs font-semibold text-amber-600">Pending Review</div>
-                        </div>
-                        <div>
-                           <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Next Step</div>
-                           <div className="text-xs font-bold text-primary cursor-pointer hover:underline">Bill Correction</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-          </div>
-
-          {/* Rapid deployment and continuous optimization */}
-          <div className="mb-24">
-            <h3 className="text-2xl font-display font-bold mb-8">Rapid deployment and continuous optimization</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-               {[
-                 { time: "~3 Days", title: "Structured data onboarding", desc: "Integrate a new structured source quickly." },
-                 { time: "~10 mins", title: "Document and news feed ingestion", desc: "Bring in new documents and updates rapidly." },
-                 { time: "~10 Days", title: "RIAA training on new sources", desc: "Tune RIAA to perform reliably on added sources." },
-                 { time: "~10 Days", title: "Agent build and training", desc: "Develop and train specialized agents for the workflow." },
-                 { time: "~6 Hours", title: "New user training and onboarding", desc: "Get teams productive quickly with guided onboarding." },
-                 { time: "~5–10 Days", title: "Quarterly refinement cycles", desc: "Regular improvement cycles to tighten outcomes." }
-               ].map((item, i) => (
-                 <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-border group hover:border-primary transition-colors">
-                    <div className="text-xs font-bold text-primary mb-2 flex items-center gap-2"><Clock className="w-3 h-3" /> {item.time}</div>
-                    <h4 className="font-bold text-sm mb-2">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </section>
-
         {/* Business Functions Preview */}
         <section id="business-functions" className="scroll-mt-40 border-t border-border pt-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl font-display font-bold">One truth across teams, with proof attached</h2>
               <p className="text-lg text-muted-foreground">
-                Revenue Intelligence is not just for Finance. RIAA unifies the evidence layer across the entire business, so every function moves from question to action with the same trusted foundation.
+                Revenue Intelligence is not just for Finance. Vayom AI unifies the evidence layer across the entire business, so every function moves from question to action with the same trusted foundation.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {[

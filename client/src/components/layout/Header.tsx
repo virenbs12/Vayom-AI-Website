@@ -118,14 +118,6 @@ export function Header() {
                     >
                       Keep contracts, pricing, and credits aligned.
                     </ListItem>
-                    <ListItem 
-                      href="/markets#riaa" 
-                      title="RIAA" 
-                      target="_blank"
-                      isActive={isSolutionsActive && currentHash === "#riaa"}
-                    >
-                      Evidence-first answer system.
-                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
