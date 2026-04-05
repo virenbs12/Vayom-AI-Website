@@ -383,5 +383,12 @@ Reply-To: careers@vayomai.com
     }
   });
 
+  app.get("/download-source", (req, res) => {
+    const filePath = path.join(process.cwd(), "client", "public", "vayomai-source.tar.gz");
+    res.setHeader("Content-Disposition", 'attachment; filename="vayomai-source.tar.gz"');
+    res.setHeader("Content-Type", "application/gzip");
+    res.sendFile(filePath);
+  });
+
   return httpServer;
 }
