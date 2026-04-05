@@ -15,10 +15,11 @@ const REASONING_SLIDES = [
 
 /* ─── Sample questions shown in the chat (greyed-out, coming soon) ─────── */
 const SAMPLE_QUESTIONS = [
-  "How does RIAA score answer confidence?",
-  "What are Business Agents and Human Digital Twins?",
-  "How does RIAA enforce policy controls?",
-  "Can RIAA explain its reasoning step by step?",
+  "How can RIAA solve our biggest revenue challenges?",
+  "What does implementation look like, and how long does it take?",
+  "What support and onboarding do you provide?",
+  "What does our team need to have in place before we start?",
+  "How does RIAA reason, score answers, and ensure trust?",
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -156,7 +157,7 @@ export function RIAAChatWidget() {
                   className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate-700 leading-relaxed max-w-[85%]"
                   style={{ background: "#f1fdf9", border: "1px solid #ccfbf1" }}
                 >
-                  Hi! I'm the <strong>RIAA Assistant</strong>. I can answer questions about how RIAA reasons, scores answers, and powers enterprise intelligence.
+                  Hi! I'm the <strong>RIAA Assistant</strong>. Ask me how RIAA can unlock revenue clarity for your business, what implementation looks like, what support you can expect, and exactly what you need to get started.
                 </div>
               </div>
 
