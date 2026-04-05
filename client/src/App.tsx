@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import RIAA from "@/pages/RIAA";
+import { RIAAReasoningWidget } from "@/components/RIAAReasoningWidget";
 import Markets from "@/pages/Markets";
 import BusinessFunctions from "@/pages/BusinessFunctions";
 import Pricing from "@/pages/Pricing";
@@ -77,6 +78,7 @@ function App({ ssrLocation }: AppProps = {}) {
           <SonnerToaster />
           <ScrollToTop />
           <Routes />
+          <RIAAReasoningWidget />
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
