@@ -1,0 +1,21 @@
+Add a third hero carousel slide: "Knowledge is the System"
+
+Create a new file `client/src/components/home/HeroSlideThree.tsx` that follows the same pattern as `HeroSlideOne.tsx` and `HeroSlideTwo.tsx`. Here are the specs:
+
+**Layout:** Same two-column grid layout (`grid lg:grid-cols-2`) with left side text and right side visual, same container, padding, and min-height as the existing slides.
+
+**Left column content:**
+- Headline: `Knowledge is the System.` on one line, then `System is the Knowledge.` on the next line. The second line should use the `text-primary` color span, same as the other slides.
+- Subtext paragraph: `"When your rules, expertise, and data live inside one governed platform, every answer already knows the business. No handoffs. No translation. No guesswork."`
+- Same two CTA buttons as the other slides: "Request a Demo" (calls `scrollToDemo`) and "Explore Solutions" (links to `/markets`).
+- Bottom tagline: `"Capture what your best people know. Apply it everywhere, every day."`
+- Use the same framer-motion fade-up animation as the existing slides.
+
+**Right column visual:** Do NOT use an external image. Instead, create a visually interesting illustration using styled divs, icons from `lucide-react`, and Tailwind. The concept should convey a feedback loop between knowledge and system. Think something like three interconnected nodes or cards (representing Rules, Expertise, Data) with visual connectors or a circular flow between them, using the existing color palette (primary, muted-foreground, etc.) and subtle backdrop-blur/shadow effects similar to HeroSlideTwo's brand panel. Use framer-motion for a subtle entrance animation. Style it however you think looks best.
+
+**Then update `HeroCarousel.tsx`:**
+1. Import `HeroSlideThree` from `./HeroSlideThree`.
+2. Add a third `<div className="flex-[0_0_100%] min-w-0">` block containing `<HeroSlideThree />` after the HeroSlideTwo block.
+3. Update the dot indicators array from `[0, 1]` to `[0, 1, 2]` so the third dot appears.
+
+Do not change any existing slide content or carousel behavior. The loop and autoplay should continue to work as-is with three slides.

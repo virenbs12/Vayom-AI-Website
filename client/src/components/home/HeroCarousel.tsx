@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { HeroSlideOne } from "./HeroSlideOne";
 import { HeroSlideTwo } from "./HeroSlideTwo";
+import { HeroSlideThree } from "./HeroSlideThree";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -54,13 +55,16 @@ export function HeroCarousel() {
           <div className="flex-[0_0_100%] min-w-0">
             <HeroSlideTwo />
           </div>
+          <div className="flex-[0_0_100%] min-w-0">
+            <HeroSlideThree />
+          </div>
         </div>
       </div>
 
       {/* Controls Overlay */}
       <div className="absolute bottom-8 left-0 right-0 container-width flex justify-between items-end pointer-events-none">
         <div className="flex gap-2 pointer-events-auto">
-          {[0, 1].map((idx) => (
+          {[0, 1, 2].map((idx) => (
             <button
               key={idx}
               className={cn(
