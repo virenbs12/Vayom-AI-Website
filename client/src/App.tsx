@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, useLocation, Router } from "wouter";
 import { useEffect, useRef } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -14,25 +14,28 @@ import Partners from "@/pages/Partners";
 import Resources from "@/pages/Resources";
 import Company from "@/pages/Company";
 import SMSNotificationsConsent from "@/pages/SMSNotificationsConsent";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Terms from "@/pages/Terms";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 
 function ScrollToTop() {
   const [location] = useLocation();
   const prevLocation = useRef(location);
-  
+
   useEffect(() => {
-    // Only scroll to top when navigating to a different page
-    if (prevLocation.current !== location) {
-      window.scrollTo(0, 0);
-      prevLocation.current = location;
+    // Only run on the client side
+    if (typeof window !== "undefined") {
+      // Only scroll to top when navigating to a different page
+      if (prevLocation.current !== location) {
+        window.scrollTo(0, 0);
+        prevLocation.current = location;
+      }
     }
   }, [location]);
-  
+
   return null;
 }
 
-function Router() {
+function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -42,7 +45,10 @@ function Router() {
       <Route path="/resources" component={Resources} />
       <Route path="/company" component={Company} />
       <Route path="/business-functions" component={BusinessFunctions} />
-      <Route path="/sms-notifications-consent" component={SMSNotificationsConsent} />
+      <Route
+        path="/sms-notifications-consent"
+        component={SMSNotificationsConsent}
+      />
       <Route path="/privacy" component={PrivacyPolicy} />
       <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
@@ -50,14 +56,26 @@ function Router() {
   );
 }
 
-function App() {
+interface AppProps {
+  ssrLocation?: string;
+}
+
+function App({ ssrLocation }: AppProps = {}) {
+  // Static location hook for SSR
+  const staticLocationHook = (): [string, (path: string) => void] => {
+    const path = ssrLocation || "/";
+    return [path, () => {}];
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <SonnerToaster />
-        <ScrollToTop />
-        <Router />
+        <Router hook={ssrLocation ? staticLocationHook : undefined}>
+          <Toaster />
+          <SonnerToaster />
+          <ScrollToTop />
+          <Routes />
+        </Router>
       </TooltipProvider>
     </QueryClientProvider>
   );
