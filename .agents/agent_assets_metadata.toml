@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "mD1Jk3VxFcOcZEw2-jKIH"
+uri = "file://vayomai-source.tar.gz"
+type = "unspecified"
+title = "vayomai-source.tar.gz"
