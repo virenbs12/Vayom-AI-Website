@@ -1,0 +1,23 @@
+Fix the /riaa page layout. This is the money slide - it must look polished and use the full viewport width at every resolution. Make these changes:
+
+1. FULL-WIDTH LAYOUT: The page currently has too much whitespace on left and right sides. Remove any max-width constraint on the main content container or increase it to at least 1400px for desktop and 100% for all breakpoints. The content should breathe and fill the screen, not sit in a narrow centered column. On 4K displays the content area should expand to at least 1600px. On 1080p it should fill nearly the full width with modest padding. On tablets and phones it should be edge-to-edge with appropriate padding.
+
+2. SIDE-BY-SIDE LAYOUT FOR "HOW CHAT WORKS" AND "HOW AGENTS WORK": These two sections are currently stacked vertically. Place them side by side in a two-column grid on desktop and tablet landscape. Each column gets 50% width with a subtle vertical divider or gap between them. On tablet portrait and mobile they should stack vertically. Use CSS grid or flexbox. The headings ("How Chat Works" and "How Agents Work") should be visually aligned at the same height so they read as a deliberate comparison.
+
+3. TRIFECTA GRAPHIC: The trifecta SVG (the triangular arrangement with Business Agents, Human Digital Twins, and Policy Controls) is far too small. Scale it up significantly - it should be a hero-sized visual element, at least 500px tall on desktop and at least 350px on tablet. The labels, connecting lines, animated flow dot, and "THE TRIFECTA" text must all scale proportionally. The tooltip cards should also be larger with readable text. This graphic is the centerpiece of the section - make it command attention.
+
+4. RESPONSIVE BREAKPOINTS: The page must render correctly and look intentional at these resolutions. Do not just shrink everything linearly - make layout decisions at each breakpoint:
+   - 4K (3840x2160): Content container up to 1600px, generous font sizes, trifecta graphic at full scale
+   - 1440p (2560x1440): Content container up to 1400px
+   - 1080p (1920x1080): Content container up to 1280px, side-by-side columns with comfortable reading width
+   - Laptop 15" (1536x864 or 1440x900): Content container up to 1200px
+   - Laptop 13" (1280x800 or 1366x768): Content container up to 1100px, reduce padding slightly
+   - Tablet landscape (1024x768): Side-by-side columns still work, trifecta at 400px height
+   - Tablet portrait (768x1024): Stack columns vertically, trifecta at 350px height
+   - Mobile (375-428px wide): Single column, trifecta at 280px height, full-width padding 16px
+
+5. TYPOGRAPHY SCALING: Section headings ("How Chat Works", "How Agents Work", "WHAT POWERS THEM") should be larger on wide screens and scale down gracefully. Use clamp() for fluid typography where appropriate.
+
+6. DO NOT change any text content, do not remove any sections, do not change the navigation or header, do not change colors or branding. Only fix layout, sizing, spacing, and responsiveness.
+
+Proceed without asking for permission. Make all changes automatically. Preview the result at multiple viewport widths to confirm it looks correct.
