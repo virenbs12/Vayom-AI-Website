@@ -115,7 +115,7 @@
     @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-accent;
   }
   .container-width {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-10;
   }
   .cta-link {
     @apply text-[#2DAA7B] hover:text-[#239E8A] transition-colors font-semibold;

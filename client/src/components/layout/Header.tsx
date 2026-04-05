@@ -69,8 +69,9 @@ export function Header() {
         isScrolled ? "bg-white/80 backdrop-blur-md border-transparent py-2 shadow-sm" : "bg-transparent py-4 border-[#dedede]"
       )}
     >
-      <div className="container-width flex items-center justify-between h-[50px]">
-        <Link href="/" className="cursor-pointer block">
+      <div className="container-width flex items-center h-[50px]">
+        {/* Logo — fixed left */}
+        <Link href="/" className="cursor-pointer block shrink-0">
           <div className="flex items-center">
             <img 
               src={logoImage} 
@@ -80,8 +81,8 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:block ml-25">
+        {/* Desktop Nav — centred between logo and CTA button */}
+        <div className="hidden md:flex flex-1 justify-center">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -305,7 +306,7 @@ export function Header() {
           </NavigationMenu>
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 shrink-0">
           <Button 
             className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white font-medium"
             onClick={scrollToDemo}
