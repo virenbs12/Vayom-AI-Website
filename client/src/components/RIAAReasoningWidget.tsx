@@ -5,6 +5,9 @@ import {
   ThumbsUp, ThumbsDown, Copy, Check, MapPin,
 } from "lucide-react";
 import riaaReasoningImg from "@assets/riaa_reasoning_annotated_1775422806764.png";
+import riaaHdtImg from "@assets/riaa-hdt-library-annotated_1775442899605.png";
+import riaaKnowledgeBaseImg from "@assets/riaa-knowledge-base-annotated_1775442899605.png";
+import riaaRuleChainImg from "@assets/riaa-rule-chain-annotated_1775442899606.png";
 import riaaLogo from "@assets/riaa_logo_1775352775021.png";
 
 /* ─── Reasoning slides ─────────────────────────────────────────────────── */
@@ -12,6 +15,18 @@ const REASONING_SLIDES = [
   {
     src: riaaReasoningImg,
     alt: "How RIAA Explains Every Answer — annotated reasoning panel showing Confidence Score, Safety Gate, Executive Overview, RICSA Scoring, Prompt Classification, Skill Activation, and Entity Detection",
+  },
+  {
+    src: riaaHdtImg,
+    alt: "HDT Library — Your Experts' Judgment, Captured and Ready for Runtime. Annotated view of Human Digital Twin profiles with governed lifecycle, domain tags, role-based expert profiles, and training completeness tracking.",
+  },
+  {
+    src: riaaKnowledgeBaseImg,
+    alt: "RIAA Knowledge Base — The Single Source of Truth Behind Every Answer. Annotated view showing one governed repository, controlled intake, lifecycle and index status, and tagged documents for precision retrieval.",
+  },
+  {
+    src: riaaRuleChainImg,
+    alt: "RIAA Business Rules Engine — Claim Normalization Rule Chain (Annotated). Shows Entry Gate, Dosage Validation, Normalization, Output to Dataset, and Data Prep Branch stages across 12 nodes and 13 edges.",
   },
 ];
 
