@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Brain, X, MessageCircle, Send,
   ThumbsUp, ThumbsDown, Copy, Check, MapPin,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Maximize2, Minimize2,
 } from "lucide-react";
 import riaaReasoningImg from "@assets/riaa_reasoning_annotated_1775422806764.png";
 import riaaHdtImg from "@assets/riaa-hdt-library-annotated_1775442899605.png";
@@ -440,6 +440,7 @@ export function RIAAChatWidget() {
 ═══════════════════════════════════════════════════════════════════════════ */
 export function RIAAReasoningWidget() {
   const [open, setOpen] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1); // +1 = forward, -1 = backward
   const total = REASONING_SLIDES.length;
@@ -451,8 +452,9 @@ export function RIAAReasoningWidget() {
   const prev = () => go((current - 1 + total) % total, -1);
   const next = () => go((current + 1) % total, 1);
 
-  /* reset to slide 0 whenever modal opens */
-  const handleOpen = () => { setCurrent(0); setDirection(1); setOpen(true); };
+  /* reset to slide 0 + exit fullscreen whenever modal opens */
+  const handleOpen = () => { setCurrent(0); setDirection(1); setFullscreen(false); setOpen(true); };
+  const handleClose = () => { setFullscreen(false); setOpen(false); };
 
   const slideVariants = {
     enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
@@ -484,16 +486,16 @@ export function RIAAReasoningWidget() {
         <span className="hidden sm:inline">How RIAA Works</span>
       </motion.button>
 
-      {/* ── Backdrop ── */}
+      {/* ── Backdrop (hidden in fullscreen) ── */}
       <AnimatePresence>
-        {open && (
+        {open && !fullscreen && (
           <motion.div
             className="fixed inset-0 z-40 bg-black/50 backdrop-blur-[3px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            onClick={() => setOpen(false)}
+            onClick={handleClose}
           />
         )}
       </AnimatePresence>
@@ -504,27 +506,32 @@ export function RIAAReasoningWidget() {
           <motion.div
             className={[
               "fixed z-50 flex pointer-events-none",
-              "items-end inset-x-0 bottom-0",
-              "sm:items-center sm:justify-center sm:inset-0 sm:p-4",
+              fullscreen
+                ? "inset-0"
+                : "items-end inset-x-0 bottom-0 sm:items-center sm:justify-center sm:inset-0 sm:p-4",
             ].join(" ")}
           >
             <motion.div
+              layout
               className={[
-                "relative bg-white shadow-2xl overflow-hidden pointer-events-auto flex flex-col w-full",
-                "rounded-t-2xl sm:rounded-2xl",
-                "sm:max-w-[700px] lg:max-w-[960px]",
+                "relative bg-white shadow-2xl overflow-hidden pointer-events-auto flex flex-col",
+                fullscreen
+                  ? "w-full h-full rounded-none"
+                  : "w-full rounded-t-2xl sm:rounded-2xl sm:max-w-[700px] lg:max-w-[960px]",
               ].join(" ")}
-              style={{ maxHeight: "92vh" }}
+              style={fullscreen ? {} : { maxHeight: "92vh" }}
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "100%", opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Drag handle — mobile only */}
-              <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
-                <div className="w-10 h-1 rounded-full bg-slate-200" />
-              </div>
+              {/* Drag handle — mobile only, hidden in fullscreen */}
+              {!fullscreen && (
+                <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
+                  <div className="w-10 h-1 rounded-full bg-slate-200" />
+                </div>
+              )}
 
               {/* ── Header ── */}
               <div className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3 border-b border-[#e5e7eb] bg-white gap-3">
@@ -536,13 +543,25 @@ export function RIAAReasoningWidget() {
                     {REASONING_SLIDES[current].title}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex items-center gap-1.5 shrink-0">
                   {/* Slide counter */}
-                  <span className="text-xs font-medium tabular-nums text-slate-400">
+                  <span className="text-xs font-medium tabular-nums text-slate-400 mr-1">
                     {current + 1} / {total}
                   </span>
+                  {/* Fullscreen toggle */}
                   <button
-                    onClick={() => setOpen(false)}
+                    onClick={() => setFullscreen((f) => !f)}
+                    className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
+                    aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                    data-testid="button-riaa-fullscreen"
+                  >
+                    {fullscreen
+                      ? <Minimize2 className="w-4 h-4" />
+                      : <Maximize2 className="w-4 h-4" />
+                    }
+                  </button>
+                  <button
+                    onClick={handleClose}
                     className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
                     aria-label="Close"
                   >
@@ -552,7 +571,10 @@ export function RIAAReasoningWidget() {
               </div>
 
               {/* ── Carousel image area ── */}
-              <div className="relative overflow-hidden bg-slate-50" style={{ height: "62vh", minHeight: 320 }}>
+              <div
+                className="relative overflow-hidden bg-slate-50"
+                style={fullscreen ? { flex: "1 1 0", minHeight: 0 } : { height: "62vh", minHeight: 320 }}
+              >
                 <AnimatePresence custom={direction} mode="popLayout">
                   <motion.div
                     key={current}
@@ -576,7 +598,7 @@ export function RIAAReasoningWidget() {
                 {/* Left arrow */}
                 <button
                   onClick={prev}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
                   aria-label="Previous slide"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -585,7 +607,7 @@ export function RIAAReasoningWidget() {
                 {/* Right arrow */}
                 <button
                   onClick={next}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
                   aria-label="Next slide"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -611,7 +633,7 @@ export function RIAAReasoningWidget() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setOpen(false)}
+                  onClick={handleClose}
                   className="shrink-0 text-xs font-semibold px-4 py-1.5 rounded-full"
                   style={{ background: "#0E7C6B", color: "white" }}
                 >
