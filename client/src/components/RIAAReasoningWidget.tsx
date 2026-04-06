@@ -552,7 +552,7 @@ export function RIAAReasoningWidget() {
               </div>
 
               {/* ── Carousel image area ── */}
-              <div className="relative flex-1 overflow-hidden bg-slate-50">
+              <div className="relative overflow-hidden bg-slate-50" style={{ height: "62vh", minHeight: 320 }}>
                 <AnimatePresence custom={direction} mode="popLayout">
                   <motion.div
                     key={current}
