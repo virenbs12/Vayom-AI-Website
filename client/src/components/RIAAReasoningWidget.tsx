@@ -3,30 +3,41 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Brain, X, MessageCircle, Send,
   ThumbsUp, ThumbsDown, Copy, Check, MapPin,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 import riaaReasoningImg from "@assets/riaa_reasoning_annotated_1775422806764.png";
 import riaaHdtImg from "@assets/riaa-hdt-library-annotated_1775442899605.png";
 import riaaKnowledgeBaseImg from "@assets/riaa-knowledge-base-annotated_1775442899605.png";
 import riaaRuleChainImg from "@assets/riaa-rule-chain-annotated_1775442899606.png";
+import riaaHdtDefImg from "@assets/riaa-hdt-definition-annotated_1775443273764.png";
 import riaaLogo from "@assets/riaa_logo_1775352775021.png";
 
 /* ─── Reasoning slides ─────────────────────────────────────────────────── */
 const REASONING_SLIDES = [
   {
+    title: "Reasoning & Confidence",
     src: riaaReasoningImg,
     alt: "How RIAA Explains Every Answer — annotated reasoning panel showing Confidence Score, Safety Gate, Executive Overview, RICSA Scoring, Prompt Classification, Skill Activation, and Entity Detection",
   },
   {
+    title: "HDT Library",
     src: riaaHdtImg,
     alt: "HDT Library — Your Experts' Judgment, Captured and Ready for Runtime. Annotated view of Human Digital Twin profiles with governed lifecycle, domain tags, role-based expert profiles, and training completeness tracking.",
   },
   {
-    src: riaaKnowledgeBaseImg,
-    alt: "RIAA Knowledge Base — The Single Source of Truth Behind Every Answer. Annotated view showing one governed repository, controlled intake, lifecycle and index status, and tagged documents for precision retrieval.",
+    title: "HDT Definition",
+    src: riaaHdtDefImg,
+    alt: "HDT Definition — How RIAA Captures the Way Your Best Expert Actually Thinks. Expert identity, professional identity, cognitive approach, communication style, selection tags, governed metadata, and version history.",
   },
   {
+    title: "Knowledge Base",
+    src: riaaKnowledgeBaseImg,
+    alt: "RIAA Knowledge Base — The Single Source of Truth Behind Every Answer. One governed repository with controlled intake, lifecycle and index status, and tagged documents for precision retrieval.",
+  },
+  {
+    title: "Business Rules Engine",
     src: riaaRuleChainImg,
-    alt: "RIAA Business Rules Engine — Claim Normalization Rule Chain (Annotated). Shows Entry Gate, Dosage Validation, Normalization, Output to Dataset, and Data Prep Branch stages across 12 nodes and 13 edges.",
+    alt: "RIAA Business Rules Engine — Claim Normalization Rule Chain (Annotated). Entry Gate, Dosage Validation, Normalization, Output to Dataset, and Data Prep Branch across 12 nodes and 13 edges.",
   },
 ];
 
@@ -425,17 +436,37 @@ export function RIAAChatWidget() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   RIAA Reasoning Widget (annotated image viewer)
+   RIAA Reasoning Widget — carousel image viewer
 ═══════════════════════════════════════════════════════════════════════════ */
 export function RIAAReasoningWidget() {
   const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1); // +1 = forward, -1 = backward
+  const total = REASONING_SLIDES.length;
+
+  const go = (next: number, dir: number) => {
+    setDirection(dir);
+    setCurrent(next);
+  };
+  const prev = () => go((current - 1 + total) % total, -1);
+  const next = () => go((current + 1) % total, 1);
+
+  /* reset to slide 0 whenever modal opens */
+  const handleOpen = () => { setCurrent(0); setDirection(1); setOpen(true); };
+
+  const slideVariants = {
+    enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
 
   return (
     <>
+      {/* ── Floating trigger pill ── */}
       <motion.button
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 text-white font-semibold rounded-full shadow-xl select-none"
         style={{ background: "#0E7C6B", fontSize: 13, padding: "10px 14px" }}
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
         animate={{
@@ -453,6 +484,7 @@ export function RIAAReasoningWidget() {
         <span className="hidden sm:inline">How RIAA Works</span>
       </motion.button>
 
+      {/* ── Backdrop ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -466,6 +498,7 @@ export function RIAAReasoningWidget() {
         )}
       </AnimatePresence>
 
+      {/* ── Modal ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -479,7 +512,7 @@ export function RIAAReasoningWidget() {
               className={[
                 "relative bg-white shadow-2xl overflow-hidden pointer-events-auto flex flex-col w-full",
                 "rounded-t-2xl sm:rounded-2xl",
-                "sm:max-w-[700px] lg:max-w-[900px]",
+                "sm:max-w-[700px] lg:max-w-[960px]",
               ].join(" ")}
               style={{ maxHeight: "92vh" }}
               initial={{ y: "100%", opacity: 0 }}
@@ -488,48 +521,95 @@ export function RIAAReasoningWidget() {
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Drag handle — mobile only */}
               <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
                 <div className="w-10 h-1 rounded-full bg-slate-200" />
               </div>
 
-              <div className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3 border-b border-[#e5e7eb] bg-white">
-                <div>
+              {/* ── Header ── */}
+              <div className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3 border-b border-[#e5e7eb] bg-white gap-3">
+                <div className="min-w-0">
                   <h3 className="font-bold text-slate-800 text-sm sm:text-base leading-tight">
-                    How RIAA Explains Every Answer
+                    How RIAA Works
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 hidden sm:block">
-                    Transparency into what the system understood, how it scored, and what it did.
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 truncate">
+                    {REASONING_SLIDES[current].title}
                   </p>
                 </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  {/* Slide counter */}
+                  <span className="text-xs font-medium tabular-nums text-slate-400">
+                    {current + 1} / {total}
+                  </span>
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
+                    aria-label="Close"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* ── Carousel image area ── */}
+              <div className="relative flex-1 overflow-hidden bg-slate-50">
+                <AnimatePresence custom={direction} mode="popLayout">
+                  <motion.div
+                    key={current}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ type: "spring", damping: 32, stiffness: 280 }}
+                    className="absolute inset-0 overflow-y-auto overscroll-contain"
+                  >
+                    <img
+                      src={REASONING_SLIDES[current].src}
+                      alt={REASONING_SLIDES[current].alt}
+                      className="w-full h-auto block"
+                      draggable={false}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Left arrow */}
                 <button
-                  onClick={() => setOpen(false)}
-                  className="ml-3 sm:ml-4 p-1.5 sm:p-2 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors shrink-0"
-                  aria-label="Close"
+                  onClick={prev}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
+                  aria-label="Previous slide"
                 >
-                  <X className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Right arrow */}
+                <button
+                  onClick={next}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 shadow-md flex items-center justify-center text-slate-600 hover:bg-white hover:text-slate-900 transition-colors border border-slate-200"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="overflow-y-auto overscroll-contain flex-1">
-                {REASONING_SLIDES.map((slide, i) => (
-                  <div key={i} className={i > 0 ? "border-t border-[#e5e7eb]" : ""}>
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      className="w-full h-auto block"
-                      draggable={false}
-                      loading="lazy"
+              {/* ── Footer: dots + close ── */}
+              <div className="shrink-0 px-4 sm:px-5 py-3 border-t border-[#e5e7eb] bg-white flex items-center justify-between gap-4">
+                {/* Dot indicators */}
+                <div className="flex items-center gap-1.5">
+                  {REASONING_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => go(i, i > current ? 1 : -1)}
+                      className="rounded-full transition-all"
+                      style={{
+                        width: i === current ? 20 : 8,
+                        height: 8,
+                        background: i === current ? "#0E7C6B" : "#cbd5e1",
+                      }}
+                      aria-label={`Go to slide ${i + 1}`}
                     />
-                  </div>
-                ))}
-              </div>
-
-              <div className="shrink-0 px-4 sm:px-5 py-2.5 border-t border-[#e5e7eb] bg-slate-50 flex items-center justify-between gap-3">
-                <span className="text-[11px] sm:text-xs text-slate-400">
-                  {REASONING_SLIDES.length > 1
-                    ? `${REASONING_SLIDES.length} views — scroll to see all`
-                    : "Scroll to explore the full annotated view"}
-                </span>
+                  ))}
+                </div>
                 <button
                   onClick={() => setOpen(false)}
                   className="shrink-0 text-xs font-semibold px-4 py-1.5 rounded-full"
