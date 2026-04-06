@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Brain, X, MessageCircle, Send, Sparkles } from "lucide-react";
+import {
+  Brain, X, MessageCircle, Send,
+  ThumbsUp, ThumbsDown, Copy, Check, MapPin,
+} from "lucide-react";
 import riaaReasoningImg from "@assets/riaa_reasoning_annotated_1775422806764.png";
 import riaaLogo from "@assets/riaa_logo_1775352775021.png";
 
 /* ─── Reasoning slides ─────────────────────────────────────────────────── */
-// Add future annotated images here — the panel scrolls through them all.
 const REASONING_SLIDES = [
   {
     src: riaaReasoningImg,
@@ -13,31 +15,124 @@ const REASONING_SLIDES = [
   },
 ];
 
-/* ─── Sample questions shown in the chat (greyed-out, coming soon) ─────── */
-const SAMPLE_QUESTIONS = [
-  "How can RIAA solve our biggest revenue challenges?",
-  "What does implementation look like, and how long does it take?",
-  "What support and onboarding do you provide?",
-  "What does our team need to have in place before we start?",
-  "How does RIAA reason, score answers, and ensure trust?",
+/* ─── Q&A pairs ─────────────────────────────────────────────────────────── */
+const QA_PAIRS: { question: string; answer: string }[] = [
+  {
+    question: "How can RIAA solve our biggest revenue challenges?",
+    answer:
+      "RIAA brings intelligence directly to where revenue decisions are made. By connecting your contracts, pricing rules, data, and business policies, it delivers grounded, auditable answers — not guesses.\n\nWhether you're fighting margin leakage, contract non-compliance, or deal desk bottlenecks, RIAA pinpoints exactly where revenue is at risk and tells your team precisely what to do about it — backed by a full reasoning trace your CFO can trust.",
+  },
+  {
+    question: "What does implementation look like, and how long does it take?",
+    answer:
+      "Implementation is structured, low-friction, and designed around your existing systems. We begin with a focused discovery phase to map your data sources and revenue workflows, then move to integration, agent configuration, and policy setup.\n\nMost organizations are live and generating measurable value within 6–12 weeks. We handle the heavy lifting — your team stays focused on the business, not the build.",
+  },
+  {
+    question: "What support and onboarding do you provide?",
+    answer:
+      "You get a dedicated implementation partner from day one, structured onboarding for your core team, and ongoing success support that stays with you post-launch.\n\nThis includes training, full documentation, a sandbox environment, and a direct line to our technical team. Enterprise clients additionally receive priority SLA coverage, executive briefings, and quarterly business reviews.",
+  },
+  {
+    question: "What does our team need to have in place before we start?",
+    answer:
+      "Prerequisites are intentionally minimal. You'll need access to your core data sources — ERP, CRM, contracts, pricing — alignment on 2–3 high-priority use cases, and a cross-functional champion who can connect our team to the right stakeholders.\n\nNo data science team required. RIAA is built for business, finance, and operations leaders — not engineers.",
+  },
+  {
+    question: "How does RIAA reason, score answers, and ensure trust?",
+    answer:
+      "Every answer RIAA produces is backed by a full reasoning trace — a transparent record of how the system interpreted the question, which data it drew from, how it scored confidence, and which policies it applied.\n\nAnswers include source citations, a RICSA confidence score (Relevance, Integrity, Clarity, Specificity, Actionability), and a safety classification. Nothing is a black box. Every conclusion is explainable, auditable, and defensible.",
+  },
 ];
+
+/* ─── Types ─────────────────────────────────────────────────────────────── */
+interface Message {
+  id: string;
+  role: "user" | "assistant";
+  text: string;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RIAA Chat Widget
 ═══════════════════════════════════════════════════════════════════════════ */
 export function RIAAChatWidget() {
   const [open, setOpen] = useState(false);
+  const [locationBanner, setLocationBanner] = useState(true);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [charCount, setCharCount] = useState(0);
+  const [feedback, setFeedback] = useState<Record<string, "up" | "down" | null>>({});
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  /* auto-scroll to latest message */
+  useEffect(() => {
+    if (messages.length > 0) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
+  /* request actual geolocation silently */
+  const handleLocationAllow = () => {
+    setLocationBanner(false);
+    navigator.geolocation?.getCurrentPosition(
+      () => {},
+      () => {}
+    );
+  };
+
+  const sendMessage = (text: string) => {
+    if (!text.trim()) return;
+    const userMsg: Message = { id: `${Date.now()}-u`, role: "user", text: text.trim() };
+    const match = QA_PAIRS.find(
+      (qa) => qa.question.toLowerCase() === text.trim().toLowerCase()
+    );
+    const answerText =
+      match?.answer ??
+      "That's a great question. Our team is actively building out responses for every topic. In the meantime, please reach out to us at sales@vayomai.com and we'll respond within one business day.";
+    const assistantMsg: Message = { id: `${Date.now()}-a`, role: "assistant", text: answerText };
+    setMessages((prev) => [...prev, userMsg, assistantMsg]);
+    setInputValue("");
+    setCharCount(0);
+  };
+
+  const handleChipClick = (question: string) => {
+    sendMessage(question);
+  };
+
+  const handleSend = () => sendMessage(inputValue);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.slice(0, 15000);
+    setInputValue(val);
+    setCharCount(val.length);
+  };
+
+  const toggleFeedback = (id: string, type: "up" | "down") => {
+    setFeedback((prev) => ({ ...prev, [id]: prev[id] === type ? null : type }));
+  };
+
+  const handleCopy = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const isInitial = messages.length === 0;
 
   return (
     <>
-      {/* ── Trigger button — stacked above "How RIAA Works" pill ── */}
+      {/* ── Trigger button ── */}
       <motion.button
         className="fixed bottom-[3.75rem] right-4 sm:bottom-[4.25rem] sm:right-6 z-50 flex items-center justify-center rounded-full shadow-xl select-none"
-        style={{
-          background: "#0E7C6B",
-          width: 44,
-          height: 44,
-        }}
+        style={{ background: "#0E7C6B", width: 44, height: 44 }}
         onClick={() => setOpen(true)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.93 }}
@@ -53,21 +148,13 @@ export function RIAAChatWidget() {
         data-testid="button-riaa-chat-widget"
       >
         <MessageCircle className="w-5 h-5 text-white" />
-
-        {/* Coming Soon badge */}
-        <span
-          className="absolute -top-1.5 -right-1 text-[8px] font-bold uppercase tracking-tight px-1 py-0.5 rounded-full leading-none whitespace-nowrap"
-          style={{ background: "#F59E0B", color: "#fff" }}
-        >
-          Soon
-        </span>
       </motion.button>
 
       {/* ── Backdrop ── */}
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px]"
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,21 +164,21 @@ export function RIAAChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* ── Chat window ──
-           Mobile: bottom sheet
-           Tablet+: floating card anchored bottom-right             */}
+      {/* ── Chat window ── */}
       <AnimatePresence>
         {open && (
           <motion.div
             className={[
-              "fixed z-50 flex flex-col",
+              "fixed z-50 flex flex-col overflow-hidden",
+              /* mobile: bottom sheet */
               "inset-x-0 bottom-0 rounded-t-2xl",
-              "sm:inset-auto sm:bottom-[72px] sm:right-6 sm:rounded-2xl sm:w-[380px]",
+              /* tablet+: anchored floating card */
+              "sm:inset-auto sm:bottom-[72px] sm:right-6 sm:rounded-2xl sm:w-[420px]",
             ].join(" ")}
             style={{
               background: "white",
               boxShadow: "0 24px 64px rgba(0,0,0,0.18)",
-              maxHeight: "85vh",
+              maxHeight: "90vh",
             }}
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -104,127 +191,216 @@ export function RIAAChatWidget() {
               <div className="w-10 h-1 rounded-full bg-slate-200" />
             </div>
 
-            {/* Header */}
-            <div
-              className="shrink-0 flex items-center justify-between px-4 py-3 border-b border-[#e5e7eb]"
-              style={{ background: "#f8fffe" }}
-            >
-              <div className="flex items-center gap-2.5">
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden"
-                  style={{ background: "#0E7C6B" }}
+            {/* ── Location permission banner ── */}
+            <AnimatePresence>
+              {locationBanner && (
+                <motion.div
+                  className="shrink-0 flex flex-col gap-2 px-4 py-3 border-b border-[#d1fae5]"
+                  style={{ background: "#ecfdf5" }}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.22 }}
                 >
-                  <img
-                    src={riaaLogo}
-                    alt="RIAA"
-                    className="w-full h-full object-contain p-0.5"
-                  />
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-slate-800 leading-tight">
-                    RIAA Assistant
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-start gap-2 min-w-0">
+                      <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "#059669" }} />
+                      <div className="min-w-0">
+                        <p className="text-xs font-bold text-slate-800">Allow location access?</p>
+                        <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
+                          We log your approximate location to comply with local rules and regulations. You can decline and still use the chat freely.
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-[10px] text-slate-400 leading-tight">
-                    Revenue Intelligence · AI Agent
+                  <div className="flex gap-2 justify-end">
+                    <button
+                      onClick={handleLocationAllow}
+                      className="text-[11px] font-semibold px-3 py-1 rounded-full text-white"
+                      style={{ background: "#0E7C6B" }}
+                    >
+                      Allow
+                    </button>
+                    <button
+                      onClick={() => setLocationBanner(false)}
+                      className="text-[11px] font-medium px-3 py-1 rounded-full border border-slate-300 text-slate-600 hover:bg-slate-50"
+                    >
+                      No thanks
+                    </button>
                   </div>
-                </div>
-              </div>
-              <button
-                onClick={() => setOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
-                aria-label="Close chat"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-            {/* Body */}
-            <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4">
-
-              {/* RIAA avatar + greeting bubble */}
-              <div className="flex items-start gap-3">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 overflow-hidden mt-0.5"
-                  style={{ background: "#0E7C6B" }}
-                >
-                  <img
-                    src={riaaLogo}
-                    alt="RIAA"
-                    className="w-full h-full object-contain p-0.5"
-                  />
-                </div>
-                <div
-                  className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate-700 leading-relaxed max-w-[85%]"
-                  style={{ background: "#f1fdf9", border: "1px solid #ccfbf1" }}
-                >
-                  Hi! I'm the <strong>RIAA Assistant</strong>. Ask me how RIAA can unlock revenue clarity for your business, what implementation looks like, what support you can expect, and exactly what you need to get started.
-                </div>
-              </div>
-
-              {/* Coming Soon banner */}
-              <div
-                className="flex items-center gap-2.5 rounded-xl px-4 py-3"
-                style={{ background: "#fffbeb", border: "1px solid #fde68a" }}
-              >
-                <Sparkles className="w-4 h-4 shrink-0" style={{ color: "#d97706" }} />
-                <div>
-                  <div className="text-xs font-bold" style={{ color: "#92400e" }}>
-                    Coming Soon
-                  </div>
-                  <div className="text-[11px] text-slate-500 leading-snug mt-0.5">
-                    Interactive Q&amp;A powered by RIAA is in development. Be the first to know when it launches.
-                  </div>
-                </div>
-              </div>
-
-              {/* Sample question chips */}
-              <div className="space-y-2">
-                <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
-                  You'll be able to ask things like:
-                </p>
-                {SAMPLE_QUESTIONS.map((q) => (
+            {/* ── Scrollable body ── */}
+            <div className="flex-1 overflow-y-auto overscroll-contain">
+              {isInitial ? (
+                /* ── Initial / welcome state ── */
+                <div className="flex flex-col items-center px-5 pt-8 pb-4 text-center">
+                  {/* RIAA logo avatar */}
                   <div
-                    key={q}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-400 cursor-not-allowed"
-                    style={{
-                      background: "#f8fafc",
-                      border: "1px solid #e2e8f0",
-                    }}
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center mb-3 overflow-hidden shadow-md"
+                    style={{ background: "#0E7C6B" }}
                   >
-                    <MessageCircle className="w-3.5 h-3.5 shrink-0 text-slate-300" />
-                    {q}
+                    <img src={riaaLogo} alt="RIAA" className="w-full h-full object-contain p-2" />
                   </div>
-                ))}
-              </div>
+
+                  <h2 className="text-xl font-bold text-slate-800 mb-1">Ask RIAA</h2>
+                  <p className="text-sm text-slate-500 mb-1">Vayom AI's Revenue Intelligence Agent</p>
+                  <p className="text-xs text-slate-400 mb-1">
+                    Select a question below or type your own to learn about our solution, deployment, and support.
+                  </p>
+                  <p className="text-[10px] text-slate-300 mb-6">
+                    Chat inputs are logged to improve response quality. No personal data is shared with third parties.
+                  </p>
+
+                  {/* Question chips */}
+                  <div className="flex flex-wrap gap-2 justify-center w-full">
+                    {QA_PAIRS.map((qa) => (
+                      <button
+                        key={qa.question}
+                        onClick={() => handleChipClick(qa.question)}
+                        className="text-xs text-slate-700 font-medium px-3 py-1.5 rounded-full border border-slate-300 hover:border-[#0E7C6B] hover:text-[#0E7C6B] hover:bg-[#f0fdf9] transition-colors text-left"
+                      >
+                        {qa.question}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                /* ── Conversation view ── */
+                <div className="p-4 space-y-4">
+                  {messages.map((msg) =>
+                    msg.role === "user" ? (
+                      /* User bubble — right aligned */
+                      <div key={msg.id} className="flex justify-end">
+                        <div
+                          className="max-w-[80%] rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm text-white leading-relaxed"
+                          style={{ background: "#0E7C6B" }}
+                        >
+                          {msg.text}
+                        </div>
+                      </div>
+                    ) : (
+                      /* Assistant bubble — left aligned with avatar + actions */
+                      <div key={msg.id} className="flex items-start gap-2.5">
+                        <div
+                          className="w-8 h-8 rounded-full shrink-0 overflow-hidden mt-0.5 flex items-center justify-center"
+                          style={{ background: "#0E7C6B" }}
+                        >
+                          <img src={riaaLogo} alt="RIAA" className="w-full h-full object-contain p-0.5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div
+                            className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate-700 leading-relaxed"
+                            style={{ background: "#f1fdf9", border: "1px solid #d1fae5" }}
+                          >
+                            {/* Render newlines */}
+                            {msg.text.split("\n\n").map((para, i) => (
+                              <p key={i} className={i > 0 ? "mt-3" : ""}>
+                                {para}
+                              </p>
+                            ))}
+                          </div>
+                          {/* Feedback actions */}
+                          <div className="flex items-center gap-1 mt-1.5 ml-1">
+                            <button
+                              onClick={() => toggleFeedback(msg.id, "up")}
+                              className={[
+                                "p-1 rounded transition-colors",
+                                feedback[msg.id] === "up"
+                                  ? "text-[#0E7C6B]"
+                                  : "text-slate-300 hover:text-slate-500",
+                              ].join(" ")}
+                              aria-label="Thumbs up"
+                            >
+                              <ThumbsUp className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={() => toggleFeedback(msg.id, "down")}
+                              className={[
+                                "p-1 rounded transition-colors",
+                                feedback[msg.id] === "down"
+                                  ? "text-red-400"
+                                  : "text-slate-300 hover:text-slate-500",
+                              ].join(" ")}
+                              aria-label="Thumbs down"
+                            >
+                              <ThumbsDown className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={() => handleCopy(msg.id, msg.text)}
+                              className="p-1 rounded text-slate-300 hover:text-slate-500 transition-colors"
+                              aria-label="Copy answer"
+                            >
+                              {copiedId === msg.id ? (
+                                <Check className="w-3.5 h-3.5 text-[#0E7C6B]" />
+                              ) : (
+                                <Copy className="w-3.5 h-3.5" />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  )}
+
+                  {/* Follow-up chips after conversation starts */}
+                  <div className="pt-2">
+                    <p className="text-[10px] text-slate-300 mb-2 font-medium">Ask another question:</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {QA_PAIRS.map((qa) => (
+                        <button
+                          key={qa.question}
+                          onClick={() => handleChipClick(qa.question)}
+                          className="text-[11px] text-slate-500 px-2.5 py-1 rounded-full border border-slate-200 hover:border-[#0E7C6B] hover:text-[#0E7C6B] hover:bg-[#f0fdf9] transition-colors text-left"
+                        >
+                          {qa.question}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div ref={messagesEndRef} />
+                </div>
+              )}
             </div>
 
-            {/* Footer — disabled input */}
-            <div
-              className="shrink-0 px-3 py-3 border-t border-[#e5e7eb]"
-              style={{ background: "#f8fafc" }}
-            >
+            {/* ── Footer / input ── */}
+            <div className="shrink-0 border-t border-[#e5e7eb] px-3 pt-3 pb-2" style={{ background: "#f8fafc" }}>
               <div
-                className="flex items-center gap-2 rounded-xl px-3 py-2"
-                style={{ background: "#f1f5f9", border: "1px solid #e2e8f0" }}
+                className="flex items-center gap-2 rounded-full px-4 py-2 bg-white"
+                style={{ border: "1px solid #e2e8f0" }}
               >
                 <input
+                  ref={inputRef}
                   type="text"
-                  disabled
-                  placeholder="Ask RIAA a question… (coming soon)"
-                  className="flex-1 text-xs bg-transparent text-slate-400 outline-none placeholder:text-slate-300 cursor-not-allowed"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ask RIAA anything about Vayom AI…"
+                  maxLength={15000}
+                  className="flex-1 text-sm bg-transparent text-slate-700 outline-none placeholder:text-slate-400 min-w-0"
+                  data-testid="input-riaa-chat"
                 />
                 <button
-                  disabled
-                  className="p-1.5 rounded-lg cursor-not-allowed"
-                  style={{ color: "#cbd5e1" }}
-                  aria-label="Send (coming soon)"
+                  onClick={handleSend}
+                  disabled={!inputValue.trim()}
+                  className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors disabled:opacity-30"
+                  style={{ background: "#0E7C6B" }}
+                  aria-label="Send"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-3.5 h-3.5 text-white" />
                 </button>
               </div>
-              <p className="text-center text-[10px] text-slate-300 mt-2">
-                Interactive responses launching soon
-              </p>
+              <div className="flex items-start justify-between mt-1.5 px-1">
+                <p className="text-[10px] text-slate-300 leading-snug flex-1 pr-4">
+                  Chat inputs are logged to improve response quality. We do not collect personal information. Your location is logged to comply with local rules and regulations.
+                </p>
+                <span className="text-[10px] text-slate-300 shrink-0 tabular-nums">
+                  {charCount} / 15000
+                </span>
+              </div>
             </div>
           </motion.div>
         )}
@@ -241,16 +417,9 @@ export function RIAAReasoningWidget() {
 
   return (
     <>
-      {/* ── Floating trigger button ──
-           Mobile: icon-only pill
-           Tablet+: full label pill         */}
       <motion.button
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 text-white font-semibold rounded-full shadow-xl select-none"
-        style={{
-          background: "#0E7C6B",
-          fontSize: 13,
-          padding: "10px 14px",
-        }}
+        style={{ background: "#0E7C6B", fontSize: 13, padding: "10px 14px" }}
         onClick={() => setOpen(true)}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
@@ -269,7 +438,6 @@ export function RIAAReasoningWidget() {
         <span className="hidden sm:inline">How RIAA Works</span>
       </motion.button>
 
-      {/* ── Backdrop ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -283,10 +451,6 @@ export function RIAAReasoningWidget() {
         )}
       </AnimatePresence>
 
-      {/* ── Modal ──
-           Mobile: bottom sheet
-           Tablet: centered, max 700 px
-           Laptop+: centered, max 900 px  */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -309,12 +473,10 @@ export function RIAAReasoningWidget() {
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Drag handle — mobile only */}
               <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
                 <div className="w-10 h-1 rounded-full bg-slate-200" />
               </div>
 
-              {/* Sticky header */}
               <div className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3 border-b border-[#e5e7eb] bg-white">
                 <div>
                   <h3 className="font-bold text-slate-800 text-sm sm:text-base leading-tight">
@@ -333,7 +495,6 @@ export function RIAAReasoningWidget() {
                 </button>
               </div>
 
-              {/* Scrollable image area */}
               <div className="overflow-y-auto overscroll-contain flex-1">
                 {REASONING_SLIDES.map((slide, i) => (
                   <div key={i} className={i > 0 ? "border-t border-[#e5e7eb]" : ""}>
@@ -348,7 +509,6 @@ export function RIAAReasoningWidget() {
                 ))}
               </div>
 
-              {/* Footer */}
               <div className="shrink-0 px-4 sm:px-5 py-2.5 border-t border-[#e5e7eb] bg-slate-50 flex items-center justify-between gap-3">
                 <span className="text-[11px] sm:text-xs text-slate-400">
                   {REASONING_SLIDES.length > 1
